@@ -1,0 +1,16 @@
+<?php 
+
+	Array
+		(
+			[database] => Array
+			(
+				[username] => root
+				[password] => root
+				[hostname] => localhost
+				[db_name] => dblogin
+			)
+
+		)
+
+
+?>

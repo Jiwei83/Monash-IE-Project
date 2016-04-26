@@ -1,0 +1,36 @@
+/*
+   New Perspectives on HTML and XHTML 5th Edition
+   Tutorial 6
+   Tutorial Case
+
+   Web Form Style Sheet
+   Author: 
+   Date:   
+
+   Filename:         forms.css
+   Supporting Files: none
+
+*/
+#DonationForm span {color:red}
+#DonationForm {margin-left:10px;margin-bottom:200px;}
+#FirstN{margin-left:6em;width:25em}
+#LastN{margin-left:6em;width:25em}
+#Phone{margin-left:8em;width:10em}
+#StreetA{margin-left:4em;width:25em}
+#City {width:10em;}
+#City1{margin-left:150px}
+#State{width:3em}
+#ZIP{width:7em}
+#AddressF{width:15em;margin-left:155px}
+#DonationA{margin-left:3em;}
+#CridetC{margin-left:6em;}
+#CardholderN{margin-left:3em;}
+#CardN{margin-left:5em;}
+#Mounth{margin-left:4em;}
+#Year{margin-left:0em;}
+
+
+
+
+
+
