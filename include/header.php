@@ -9,7 +9,7 @@ session_start();
 $user_id = $_SESSION['user_session'];
 $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-require_once("class.user.php");
+require_once("../user/class.user.php");
 $login = new USER();
 $stmt = $login->runQuery($sql);
 $stmt->execute(array(":user_id"=>$user_id));

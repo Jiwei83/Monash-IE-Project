@@ -1,27 +1,22 @@
 <?php
 include('../include/eventpath.php');
 include('../include/config.php');
-session_start();
-$user_id = $_SESSION['user_session'];
-require_once('class.user.php');
-$user = new USER();
+
+
 
 $eventId = $_GET['eventId'];
 
 
 
-//connection to the database
+
+/* Execute a prepared statement by passing an array of values */
 
 
-    $sql = "SELECT * FROM events where eventId =".$eventId;
-    $stmt = $pdo->query($sql);
-    $list = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt=$pdo->prepare('select * from events where eventId= ?');
 
-    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-    $sql2->execute(array(":user_id"=>$user_id));
-    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
-
-?>
+$stmt->execute(array($eventId));
+$list = $stmt->fetch();
+ ?>
 
 
 <?php 
@@ -105,11 +100,10 @@ include('../include/navigation.php');
 </section>
 <?php
 
-include('../include/footer.php')
+include('../include/footer.php');
 
 ?>
-include('include/footer1.php');
-?>
+
 <!-- Javascript -->
 <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>

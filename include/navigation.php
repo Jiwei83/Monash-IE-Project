@@ -43,7 +43,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                     <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo $url_profile ?>"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
+                    <li><a href=<?php echo $url_profile ?>><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
                     <li><a href=<?php echo $url_log ?>logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
                 </ul>
             </li>
