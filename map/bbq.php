@@ -160,6 +160,12 @@ include('../include/navigation.php');
     </div><!--//modal-dialog-->
 </div><!--//modal-->
 
+
+<?php
+
+include('../include/footer.php')
+
+?>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
@@ -167,11 +173,6 @@ include('../include/navigation.php');
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
-<?php
-
-include('../include/footer.php')
-
-?>
 </body>
 </html>
 
