@@ -1,35 +1,8 @@
 <?php
-session_start();
-$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-require_once("../user/class.user.php");
-$login = new USER();
-if($login->is_loggedin()) : ?>
-    <style type="text/css">
-        #register {
-            display: none;
-        }
-
-    </style>
-
-<?php else: ?>
-
-    <style type="text/css">
-        #notlogedin {
-            display: none;
-        }
-    </style>
-<?php endif; ?>
-
-<!--Template from: http://derekeder.com/searchable_map_template-->
-<!--Php can get latitude and longitude of category from previous map-->
-
-<?php
-$user_id = (isset($_SESSION['user_session']) ? $_SESSION['user_session'] : null);
-
-$stmt = $login->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-$stmt->execute(array(":user_id"=>$user_id));
-
-$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+include("../include/mapPath.php");
+//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+include('../include/header.php');
+include('../include/navigation.php');
 
 ?>
 
@@ -37,107 +10,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <!DOCTYPE html lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
-<head>
-    <title>Active Family</title>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript">
-        <!--//---------------------------------+
-        //  Developed by Roshan Bhattarai
-        //  Visit http://roshanbh.com.np for this script and more.
-        // --------------------------------->
-        $(document).ready(function()
-        {
-            //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
-            $("#firstpane p.menu_head").click(function()
-            {
-                $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
-                $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
-            });
-
-        });
-    </script>
-    <!--style of map-->
-    <style type="text/css">
-        #map {
-            height: 100%;
-        }
-    </style>
-    <!--style of menu-->
-    <style type="text/css">
-        body {  }
-        .menu_list { width: 100%; }
-        .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left.png) center right no-repeat; }
-        .menu_body { display:none; }
-        .menu_body a { display:block; color:#006699; background-color:#EFEFEF; padding-left:10px; font-weight:bold; text-decoration:none; }
-        .menu_body a:hover { }
-    </style>
-</head>
-
-<body class="features-page">
-
-<!-- ******HEADER****** -->
-<header id="header" class="header navbar-fixed-top" style="position: relative;">
-    <div class="container">
-        <h1 class="logo">
-            <a href="http://active-family.net"><span class="logo-icon"></span><span class="text">Active Family</span></a>
-        </h1><!--logo-->
-        <nav class="main-nav navbar-right" role="navigation">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar" id="map-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button><!--nav-toggle-->
-            </div><!--navbar-header-->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a href="../index.php">Home</a></li>
-                    <li class="active nav-item"><a href="index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
-                    <li class="nav-item"><a href="../about.php">About Us</a></li>
-                    <li class="nav-item"><a href="../user/index.php" id="register">Log in</a></li>
-                    <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="../user/sign-up.php" id="register">Sign Up Free</a></li>
-                    <li class="nav-item dropdown" id="notlogedin">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-                            <li><a href="../user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-                        </ul>
-                    </li>
-                </ul><!--nav-->
-            </div><!--navabr-collapse-->
-        </nav><!--main-nav-->
-    </div><!--container-->
-</header><!--header-->
-
-
-
 <!-- ******Steps Section****** -->
+<body style="background-color: #f5f5f5">
+
 <section class="steps section">
     <div class="container">
 
@@ -188,11 +63,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         </p>
                     </div>
                     <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
-
-
-
-
-
                 </div>
                 <div class='col-md-8'>
                     <noscript>
@@ -271,43 +141,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </div><!--//container-->
 </section><!--//steps-->
 
-<!-- ******FOOTER****** -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="container">
 
-            <div class="row has-divider">
-                <div class="footer-col download col-md-6 col-sm-12 col-xs-12">
-                    <div class="footer-col-inner">
-
-                    </div><!--//footer-col-inner-->
-                </div><!--//download-->
-                <div class="footer-col contact col-md-6 col-sm-12 col-xs-12">
-                    <div class="footer-col-inner">
-                        <h3 class="title">Contact us</h3>
-                        <p class="adr clearfix">
-                            <i class="fa fa-map-marker pull-left"></i>
-                                <span class="adr-group pull-left">
-                                    <span class="street-address">Monash University</span><br>
-                                    <span class="region">900 Dandenong Rd</span><br>
-                                    <span class="postal-code">Caulfield East VIC 3145</span><br>
-                                    <span class="country-name">Au</span>
-                                </span>
-                        </p>
-                        <p class="email"><i class="fa fa-envelope-o"></i><a href="#">enquires@active-family.net</a></p>
-                        <a href="https://twitter.com/activeFamily4" class="twitter-follow-button" data-show-count="false">Follow @activeFamily4</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div><!--//footer-col-inner-->
-                </div><!--//contact-->
-            </div>
-        </div><!--//container-->
-    </div><!--//footer-content-->
-    <div class="bottom-bar">
-        <div class="container">
-            <small class="copyright">Copyright @ 2016 <a href="../copyright.txt" target="_blank">Active family</a></small>
-        </div><!--//container-->
-    </div><!--//bottom-bar-->
-</footer><!--//footer-->
 
 <!-- Video Modal -->
 <div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
@@ -326,9 +160,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </div><!--//modal-dialog-->
 </div><!--//modal-->
 
-
-
-
 <script type="text/javascript" src="assets/plugins/bootstrap/js/"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
@@ -336,7 +167,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+<?php
 
+include('../include/footer.php')
+
+?>
 </body>
 </html>
 

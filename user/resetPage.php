@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('class.user.php');
 require_once('PHPMailer-master/class.phpmailer.php');
 require_once('PHPMailer-master/class.smtp.php');

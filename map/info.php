@@ -1,29 +1,10 @@
 <?php
-session_start();
-$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-require_once("../user/class.user.php");
-$login = new USER();
-if($login->is_loggedin()) : ?>
-    <style type="text/css">
-        #register {
-            display: none;
-        }
+include("../include/mapPath.php");
+//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+include('../include/header.php');
+include('../include/navigation.php');
 
-    </style>
-
-<?php else: ?>
-
-    <style type="text/css">
-        #notlogedin {
-            display: none;
-        }
-        .form-group {
-            pointer-events: none;
-            cursor: default;
-        }
-
-    </style>
-<?php endif; ?>
+?>
 
 <!--Template from: http://derekeder.com/searchable_map_template-->
 <!--Php can get latitude and longitude of category from previous map-->
@@ -212,43 +193,6 @@ if ($lat!=null&&$lng!=null){
 </head>
 
 <body class="features-page">
-
-<!-- ******HEADER****** -->
-<header id="header" class="header navbar-fixed-top" style="position: relative;">
-    <div class="container">
-        <h1 class="logo">
-            <a href="http://active-family.net"><span class="logo-icon"></span><span class="text">Active Family</span></a>
-        </h1><!--logo-->
-        <nav class="main-nav navbar-right" role="navigation">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar" id="map-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button><!--nav-toggle-->
-            </div><!--navbar-header-->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a href="../index.php">Home</a></li>
-                    <li class="active nav-item"><a href="index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
-                    <li class="nav-item"><a href="../about.php">About Us</a></li>
-                    <li class="nav-item"><a href="../user/index.php" id="register">Log in</a></li>
-                    <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="#" id="register">Sign Up Free</a></li>
-                    <li class="nav-item dropdown" id="notlogedin">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-                            <li><a href="../user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-                        </ul>
-                    </li>
-                </ul><!--nav-->
-            </div><!--navabr-collapse-->
-        </nav><!--main-nav-->
-    </div><!--container-->
-</header><!--header-->
 
 <a href="">
 
