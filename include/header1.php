@@ -51,7 +51,7 @@ if($login->is_loggedin()) : ?>
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="map/assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="../map/assets/css/styles.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

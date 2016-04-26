@@ -1,31 +1,5 @@
 <?php
-
-///**
-// * Created by PhpStorm.
-// * User: Tefo
-// * Date: 21/04/2016
-// * Time: 2:42 AM
-// */
-
-
-$home='"nav-item"';
-$ven='"nav-item"';
-$event='"active nav-item"';
-$about='"nav-item"';
-$navlogin='"nav-item"';
-$sign='"nav-item"';
-$url_home = '"../index.php"' ;
-$url_ven = '"..//map/index.php"' ;
-$url_event_create = '"../event/createEvent.php"' ;
-$url_event_list = '"../event/listEvent.php"' ;
-$url_about = '"../about.php"' ;
-$url_login ='"../user/index.php"';
-$url_profile ='"../user/profile.php"';
-$url_sign ='"../user/sign-up.php"';
-$url_log = '"../user/logout.php"';
-
-
-
+include('../include/eventpath.php');
 include('../include/config.php');
 session_start();
 $user_id = $_SESSION['user_session'];
@@ -37,9 +11,8 @@ $eventId = $_GET['eventId'];
 
 
 //connection to the database
-try {
 
-    $pdo = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
     $sql = "SELECT * FROM events where eventId =".$eventId;
     $stmt = $pdo->query($sql);
     $list = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,10 +20,6 @@ try {
     $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
     $sql2->execute(array(":user_id"=>$user_id));
     $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
-}
-catch(PDOException $e) {
-    echo $e->getMessage();
-}
 
 ?>
 
