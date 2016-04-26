@@ -22,7 +22,7 @@ $url_sign ='"user/sign-up.php"';
 $url_log = '"user/logout.php"';
 $class_user='"user/class.user.php"';
 
-include('include/header1.php');
+include('include/header.php');
 include('include/navigation.php');
 ?>
 
@@ -30,7 +30,7 @@ include('include/navigation.php');
 
 
 <?php
-include('include/footer1.php');
+include('include/footer.php');
 ?>
 <!-- Javascript -->
 <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
