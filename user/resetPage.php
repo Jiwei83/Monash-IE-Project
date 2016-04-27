@@ -88,7 +88,6 @@ function mailresetlink($to,$token){
 
     if($mail->send()){
         $user = new User();
-        echo "We have sent the password reset link to your  email id <b>".$to."</b>";
         $user->redirect('resetPage.php?joined');
     }
     else {
@@ -168,7 +167,7 @@ function mailresetlink($to,$token){
             {
                 ?>
                 <div class="alert alert-info">
-                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully Reset Your Password <a href='index.php'>login</a> here
+                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully Reset Your Password <a href='index.php'><i style="color: blue">login</i></a> here
                 </div>
                 <?php
             }

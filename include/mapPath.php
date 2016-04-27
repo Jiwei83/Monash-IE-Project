@@ -19,5 +19,5 @@ $url_about = '"../about.php"' ;
 $url_login ='"../user/index.php"';
 $url_profile ='"../user/profile.php"';
 $url_sign ='"../user/sign-up.php"';
-$url_log = '"../user/logout.php"';
+$url_log = "../user/logout.php";
 ?>
