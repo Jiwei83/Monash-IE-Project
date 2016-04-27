@@ -129,22 +129,51 @@ if ($lat!=null&&$lng!=null){
     }
 }
 ?>
-
-<script src="js/jquery.js"></script>
-<script type="text/javascript">
-    <!--//---------------------------------+
-    //  Developed by Roshan Bhattarai
-    //  Visit http://roshanbh.com.np for this script and more.
-    // --------------------------------->
-    $(document).ready(function()
-    {
-        //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
-        $("#firstpane p.menu_head").click(function()
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<!DOCTYPE html lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+<head>
+    <title>Active Family</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        <!--//---------------------------------+
+        //  Developed by Roshan Bhattarai
+        //  Visit http://roshanbh.com.np for this script and more.
+        // --------------------------------->
+        $(document).ready(function()
         {
-            $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
-            $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
+            //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
+            $("#firstpane p.menu_head").click(function()
+            {
+                $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+                $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
+            });
+
         });
-<<<<<<< HEAD
     </script>
     <!--style of map-->
     <style type="text/css">
@@ -165,166 +194,118 @@ if ($lat!=null&&$lng!=null){
 
 <body class="features-page">
 
-<!-- ******Steps Section****** -->
-<section class="steps section">
-    <div class="container">
+    <!-- ******Steps Section****** -->
+    <section class="steps section">
+        <div class="container">
 
-        <div class='container-fluid'>
-            <div class='row'>
-                <div class="col-md-4">
-                    <div class="well">
-                        <div id="mapfuc">
-                            <p><b>Current Weather</b></p>
-                            <div id="firstpane" class="menu_list">
-                                <!--Code for menu starts here-->
-                                <p class="menu_head">
+            <div class='container-fluid'>
+                <div class='row'>
+                    <div class="col-md-4">
+                        <div class="well">
+                            <div id="mapfuc">
+                                <p><b>Current Weather</b></p>
+                                <div id="firstpane" class="menu_list">
+                                    <!--Code for menu starts here-->
+                                    <p class="menu_head">
                                         <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
                                     </p>
-                                <div class="menu_body">
+                                    <div class="menu_body">
+                                        <a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!--Drop down Category -->
-                            <p>
-                                <label>
-                            <p><b> Please select your travel model </b> </p>
-                            <select id = "mode" class="btn-lg" style="width: 100%;" >
-                                <option value="DRIVING">Driving</option>
-                                <option value="WALKING">Walking</option>
-                                <option value="BICYCLING">Bicycling</option>
-                                <option value="TRANSIT">Public Transport</option>
-                            </select>
-                            </label>
-                            </p>
-                            <br>
-                            <!--Get direction button-->
-                            <a class='btn btn-primary btn-lg' style="width: 100%">
-                                <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i
-    });
-</script>
-<!--style of map-->
-<style type="text/css">
-    #map {
-        height: 100%;
-    }
-</style>
-<!--style of menu-->
-<style type="text/css">
-    body {  }
-    .menu_list { width: 100%; }
-    .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left.png) center right no-repeat; }
-    .menu_body { display:none; }
-    .menu_body a { display:block; color:#006699; background-color:#EFEFEF; padding-left:10px; font-weight:bold; text-decoration:none; }
-    .menu_body a:hover { }
-</style>
-<div class='container-fluid'>
-    <div class='row'>
-        <div class="col-md-4">
-            <div class="well">
-                <div id="mapfuc">
-                    <p><b>Current Weather</b></p>
-                    <div id="firstpane" class="menu_list">
-                        <!--Code for menu starts here-->
-                        <p class="menu_head">
-                            <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
-                        </p>
-                        <div class="menu_body">
-                            <a>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Drop down Category -->
-                    <p>
-                        <label>
-                    <p><b> Please select your travel mode </b> </p>
-                    <select id = "mode" class="btn-lg" style="width: 100%;" >
-                        <option value="DRIVING">Driving</option>
-                        <option value="WALKING">Walking</option>
-                        <option value="BICYCLING">Bicycling</option>
-                        <option value="TRANSIT">Transit</option>
-                    </select>
-                    </label>
-                    </p>
-                    <br>
-                    <!--Get direction button-->
-                    <a class='btn btn-primary btn-lg' style="width: 100%">
-                        <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i>
-                    </a>
-                    <hr>
-                    <!--Display information details-->
-                    <!--display Menu-->
-                    <p><b>Click for Detailed Information</b></p>
-                    <div id="firstpane" class="menu_list">
-                        <!--Code for menu starts here-->
-                        <p class="menu_head">Approximately Duration</p>
-                        <div class="menu_body">
-                            <a><label id="duration"> </label></a>
-                        </div>
-                        <p class="menu_head">Address Detail</p>
-                        <div class="menu_body">
-                            <a><?php echo $address;?></a>
-                        </div>
-                        <p class="menu_head">Forecast Weather</p>
-                        <div class="menu_body">
-                            <a>
-                                <?php
-                                for ($x=1; $x<7; $x++){
-                                    echo $forecastTamp[$x]."<br>";
-                                }?>
-
-
-                            </a>
-                        </div>
-                        <p class="menu_head">Rate</p>
-                        <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
-                        <p class="menu_head">Comments</p>
-                        <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
-                    </div>
-
-                </div>
-                <!--    <button id="reset">Reset</button>-->
-                <hr>
-                <!--display public events details-->
-                <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
-                <div>
-                    <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
-                    <form class="form-signin" method="post" id="login-form">
-                        <div class="form-group">
-                            <button type="submit" name="btn-login" class="btn">
-                                <a style="color: white" href="../event/createEvent.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
-                                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Create Event
+                                <!--Drop down Category -->
+                                <p>
+                                    <label>
+                                <p><b> Please select your travel mode </b> </p>
+                                <select id = "mode" class="btn-lg" style="width: 100%;" >
+                                    <option value="DRIVING">Driving</option>
+                                    <option value="WALKING">Walking</option>
+                                    <option value="BICYCLING">Bicycling</option>
+                                    <option value="TRANSIT">Public Transport</option>
+                                </select>
+                                </label>
+                                </p>
+                                <br>
+                                <!--Get direction button-->
+                                <a class='btn btn-primary btn-lg' style="width: 100%">
+                                    <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i>
                                 </a>
-                            </button>
-                        </div>
-                    </form>
-                    </p>
-                </div>
-                <div>
+                                <hr>
+                                <!--Display information details-->
+                                <!--display Menu-->
+                                <p><b>Click for Detailed Information</b></p>
+                                <div id="firstpane" class="menu_list">
+                                    <!--Code for menu starts here-->
+                                    <p class="menu_head">Approximately Duration</p>
+                                    <div class="menu_body">
+                                        <a><label id="duration"> </label></a>
+                                    </div>
+                                    <p class="menu_head">Address Detail</p>
+                                    <div class="menu_body">
+                                        <a><?php echo $address;?></a>
+                                    </div>
+                                    <p class="menu_head">Forecast Weather</p>
+                                    <div class="menu_body">
+                                        <a>
+                                            <?php
+                                            for ($x=1; $x<7; $x++){
+                                                echo $forecastTamp[$x]."<br>";
+                                            }?>
 
+
+                                        </a>
+                                    </div>
+                                    <p class="menu_head">Rate</p>
+                                    <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
+                                    <p class="menu_head">Comments</p>
+                                    <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
+                                </div>
+
+                            </div>
+                            <!--    <button id="reset">Reset</button>-->
+                            <hr>
+                            <!--display public events details-->
+                            <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
+                            <div>
+                                <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
+                                <form class="form-signin" method="post" id="login-form">
+                                    <div class="form-group">
+                                        <button type="submit" name="btn-login" class="btn">
+                                            <a style="color: white" href="../event/createEvent.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
+                                                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Create Event
+                                            </a>
+                                        </button>
+                                    </div>
+                                </form>
+                                </p>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="col-md-8">
-            <div id="map"></div>
-        </div>
-    </div>
-</div>
-</div>
-</section>
-
-<script>
-    //initialize google map which center is Melbourne
-    function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        //set the lat and lng for the direction purpose
-        //according to the user's current location and the selected venue
-        var startLat;
-        var startLng;
-        var endLat = <?php echo $lat;?>;
-        var endLng = <?php echo $lng;?>;
+    <script>
+        //initialize google map which center is Melbourne
+        function initMap() {
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            //set the lat and lng for the direction purpose
+            //according to the user's current location and the selected venue
+            var startLat;
+            var startLng;
+            var endLat = <?php echo $lat;?>;
+            var endLng = <?php echo $lng;?>;
 
 
 //        var mLat = Math.abs(endLat) - 37.884;
@@ -334,103 +315,102 @@ if ($lat!=null&&$lng!=null){
 //
 //        var zoomValue = Math.round(127*sqrtLatLng);
 
-        var pos;
-        var pos2
-        //set the center of the map
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 11,
-            center: {lat: -37.8141, lng: 144.9633}
-        });
-        directionsDisplay.setMap(map);
+            var pos;
+            var pos2
+            //set the center of the map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: {lat: -37.8141, lng: 144.9633}
+            });
+            directionsDisplay.setMap(map);
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                startLat = position.coords.latitude;
-                startLng = position.coords.longitude;
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    startLat = position.coords.latitude;
+                    startLng = position.coords.longitude;
 
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map,
-                    icon:"http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-                });
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        icon:"http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                    });
 //                map.setCenter(pos);
 
-                pos2 = {
-                    lat:endLat,
-                    lng:endLng
-                };
-                var marker2 = new google.maps.Marker(
-                    {
-                        position: pos2,
-                        map:map,
-                    }
-                );
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
+                    pos2 = {
+                        lat:endLat,
+                        lng:endLng
+                    };
+                    var marker2 = new google.maps.Marker(
+                        {
+                            position: pos2,
+                            map:map,
+                        }
+                    );
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+
+
+            var onChangeHandler = function() {
+                calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng);
+
+            };
+            document.getElementById('duration').innerHTML = "Please select a travel model";
+            document.getElementById('direct').addEventListener('click', onChangeHandler);
+            //document.getElementById('reset').addEventListener('click', initMap);
         }
-
-
-        var onChangeHandler = function() {
-            calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng);
-
-        };
-        document.getElementById('duration').innerHTML = "Please select a travel model";
-        document.getElementById('direct').addEventListener('click', onChangeHandler);
-        //document.getElementById('reset').addEventListener('click', initMap);
-    }
-    //calculate the direction and route
-    function calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng) {
-        var selectedMode = document.getElementById('mode').value;
-        directionsService.route({
-            origin: pos,
-            destination: {lat:endLat, lng:endLng},
-            travelMode: google.maps.TravelMode[selectedMode]
-        }, function(response, status) {
-            if (status === google.maps.DirectionsStatus.OK) {
-                document.getElementById('duration').innerHTML = " ";
-                if (status == 'ZERO_RESULTS') {
+        //calculate the direction and route
+        function calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng) {
+            var selectedMode = document.getElementById('mode').value;
+            directionsService.route({
+                origin: pos,
+                destination: {lat:endLat, lng:endLng},
+                travelMode: google.maps.TravelMode[selectedMode]
+            }, function(response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    document.getElementById('duration').innerHTML = " ";
+                    if (status == 'ZERO_RESULTS') {
+                        window.alert('Directions request failed due to ' + status);
+                    }
+                    directionsDisplay.setDirections(response);
+                    // Display the duration:
+                    if ((response.routes[0].legs[0].duration.value / 60) < 60) {
+                        document.getElementById('duration').innerHTML +=
+                            (response.routes[0].legs[0].duration.value / 60).toPrecision(4) + " Minutes";
+                    }
+                    if ((response.routes[0].legs[0].duration.value / 60) > 60) {
+                        var hours   = Math.floor(response.routes[0].legs[0].duration.value / 3600);
+                        var minutes = Math.floor((response.routes[0].legs[0].duration.value - (hours * 3600)) / 60);
+                        document.getElementById('duration').innerHTML +=
+                            hours + " Hours " + minutes + "  Minutes";
+                    }
+                } else {
                     window.alert('Directions request failed due to ' + status);
                 }
-                directionsDisplay.setDirections(response);
-                // Display the duration:
-                if ((response.routes[0].legs[0].duration.value / 60) < 60) {
-                    document.getElementById('duration').innerHTML +=
-                        (response.routes[0].legs[0].duration.value / 60).toPrecision(4) + " minutes";
-                }
-                if ((response.routes[0].legs[0].duration.value / 60) > 60) {
-                    var hours   = Math.floor(response.routes[0].legs[0].duration.value / 3600);
-                    var minutes = Math.floor((response.routes[0].legs[0].duration.value - (hours * 3600)) / 60);
-                    document.getElementById('duration').innerHTML +=
-                        hours + " hours " + minutes + " minutes";
-                }
+            });
 
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFO12yfon9WbQBqtdK_lnmY6uAiDXmB0s&callback=initMap">
+    </script>
 
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFO12yfon9WbQBqtdK_lnmY6uAiDXmB0s&callback=initMap">
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
-<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
-<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 
 </body>
 </html>
