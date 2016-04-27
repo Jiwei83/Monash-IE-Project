@@ -94,7 +94,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
             <div class='well'>
                 <h1 class="title">
-                    Bicycle Rails
+                    Swim Pools
                                     </h1>
                 <div class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,10 +102,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="drink.php">Drink Fountain</a></li>
+                        <li><a href="basketball.php">Basketball</a></li>
                         <li><a href="bbq.php">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
-                        <li><a href="bike.php">Bicycle Rails</a></li>
+                        <li><a href="swim.php">Swim Pools</a></li>
+                        <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
@@ -165,7 +166,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     $(function() {
         var myMap = new MapsLib({
-            fusionTableId:      "14C7aJpcbtibDEwXNoGdZw6iEOu-tzL2CC9wBFFYN",
+            fusionTableId:      "1a7HXJWwLxH2yXkpPnJq5qnFmPZDFfv5FdTLz03mi",
             googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
             locationColumn:     "Location",
             map_center:         [-37.8141,144.9633]

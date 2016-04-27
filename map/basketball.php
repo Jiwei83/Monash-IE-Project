@@ -22,7 +22,7 @@ include('../include/navigation.php');
 
                     <div class='well'>
                         <h1 class="title">
-                            BBQ
+                            Basketball
                         </h1>
                         <div class="btn-group">
                             <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,7 +94,7 @@ include('../include/navigation.php');
 
             $(function() {
                 var myMap = new MapsLib({
-                    fusionTableId:      "1mRsyl541Jal5UXK60_MkEYniOVnIdzrbdb--UFoY",
+                    fusionTableId:      "1cUFRvGVL_D2s2flBSeW8-S6JDzXPWSSrF2zQg-Eg",
                     googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
                     locationColumn:     "Location",
                     map_center:         [-37.8141,144.9633]

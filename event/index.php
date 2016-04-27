@@ -157,10 +157,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     </button>
                     <a class="btn btn-defult dropdown-toggle" href="listEvent.php" >View event</a>
                     <ul class="dropdown-menu">
-                        <li><a href="../map/drink.php">Drink Fountain</a></li>
+                        <li><a href="../map/yoga.php">Drink Fountain</a></li>
                         <li><a href="../map/bbq.php">BBQ</a></li>
                         <li><a href="../map/dog.php">Dog Friendly Areas</a></li>
-                        <li><a href="../map/bike.php">Bicycle Rails</a></li>
+                        <li><a href="../map/swim.php">Bicycle Rails</a></li>
                     </ul>
                 </div>
                

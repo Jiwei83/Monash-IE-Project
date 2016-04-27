@@ -194,8 +194,6 @@ if ($lat!=null&&$lng!=null){
 
 <body class="features-page">
 
-<a href="">
-
 <!-- ******Steps Section****** -->
 <section class="steps section">
     <div class="container">
@@ -212,20 +210,18 @@ if ($lat!=null&&$lng!=null){
                                         <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
                                     </p>
                                 <div class="menu_body">
-                                    <a>
-                                    </a>
                                 </div>
                             </div>
 
                             <!--Drop down Category -->
                             <p>
                                 <label>
-                            <p><b> Please select your travel mode </b> </p>
+                            <p><b> Please select your travel model </b> </p>
                             <select id = "mode" class="btn-lg" style="width: 100%;" >
                                 <option value="DRIVING">Driving</option>
                                 <option value="WALKING">Walking</option>
                                 <option value="BICYCLING">Bicycling</option>
-                                <option value="TRANSIT">Transit</option>
+                                <option value="TRANSIT">Public Transport</option>
                             </select>
                             </label>
                             </p>
@@ -385,8 +381,17 @@ if ($lat!=null&&$lng!=null){
                 }
                 directionsDisplay.setDirections(response);
                 // Display the duration:
-                document.getElementById('duration').innerHTML +=
-                    (response.routes[0].legs[0].duration.value / 60).toPrecision(4) + " minutes";
+                if ((response.routes[0].legs[0].duration.value / 60) < 60) {
+                    document.getElementById('duration').innerHTML +=
+                        (response.routes[0].legs[0].duration.value / 60).toPrecision(4) + " minutes";
+                }
+                if ((response.routes[0].legs[0].duration.value / 60) > 60) {
+                    var hours   = Math.floor(response.routes[0].legs[0].duration.value / 3600);
+                    var minutes = Math.floor((response.routes[0].legs[0].duration.value - (hours * 3600)) / 60);
+                    document.getElementById('duration').innerHTML +=
+                        hours + " hours " + minutes + " minutes";
+                }
+
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
