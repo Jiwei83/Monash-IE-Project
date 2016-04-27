@@ -129,51 +129,22 @@ if ($lat!=null&&$lng!=null){
     }
 }
 ?>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
-<!DOCTYPE html lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
-<head>
-    <title>Active Family</title>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript">
-        <!--//---------------------------------+
-        //  Developed by Roshan Bhattarai
-        //  Visit http://roshanbh.com.np for this script and more.
-        // --------------------------------->
-        $(document).ready(function()
-        {
-            //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
-            $("#firstpane p.menu_head").click(function()
-            {
-                $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
-                $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
-            });
 
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    <!--//---------------------------------+
+    //  Developed by Roshan Bhattarai
+    //  Visit http://roshanbh.com.np for this script and more.
+    // --------------------------------->
+    $(document).ready(function()
+    {
+        //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
+        $("#firstpane p.menu_head").click(function()
+        {
+            $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+            $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
         });
+<<<<<<< HEAD
     </script>
     <!--style of map-->
     <style type="text/css">
@@ -228,69 +199,119 @@ if ($lat!=null&&$lng!=null){
                             <br>
                             <!--Get direction button-->
                             <a class='btn btn-primary btn-lg' style="width: 100%">
-                                <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i>
+                                <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i
+    });
+</script>
+<!--style of map-->
+<style type="text/css">
+    #map {
+        height: 100%;
+    }
+</style>
+<!--style of menu-->
+<style type="text/css">
+    body {  }
+    .menu_list { width: 100%; }
+    .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left.png) center right no-repeat; }
+    .menu_body { display:none; }
+    .menu_body a { display:block; color:#006699; background-color:#EFEFEF; padding-left:10px; font-weight:bold; text-decoration:none; }
+    .menu_body a:hover { }
+</style>
+<div class='container-fluid'>
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="well">
+                <div id="mapfuc">
+                    <p><b>Current Weather</b></p>
+                    <div id="firstpane" class="menu_list">
+                        <!--Code for menu starts here-->
+                        <p class="menu_head">
+                            <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
+                        </p>
+                        <div class="menu_body">
+                            <a>
                             </a>
-                            <hr>
-                            <!--Display information details-->
-                            <!--display Menu-->
-                            <p><b>Click for Detailed Information</b></p>
-                            <div id="firstpane" class="menu_list">
-                                <!--Code for menu starts here-->
-                                <p class="menu_head">Approximately Duration</p>
-                                <div class="menu_body">
-                                    <a><label id="duration"> </label></a>
-                                </div>
-                                <p class="menu_head">Address Detail</p>
-                                <div class="menu_body">
-                                    <a><?php echo $address;?></a>
-                                </div>
-                                <p class="menu_head">Forecast Weather</p>
-                                <div class="menu_body">
-                                    <a>
-                                        <?php
-                                        for ($x=1; $x<7; $x++){
-                                            echo $forecastTamp[$x]."<br>";
-                                        }?>
-
-
-                                    </a>
-                                </div>
-                                <p class="menu_head">Rate</p>
-                                <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
-                                <p class="menu_head">Comments</p>
-                                <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
-                            </div>
-
-                        </div>
-                        <!--    <button id="reset">Reset</button>-->
-                        <hr>
-                        <!--display public events details-->
-                        <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
-                        <div>
-                            <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
-                            <form class="form-signin" method="post" id="login-form">
-                                <div class="form-group">
-                                    <button type="submit" name="btn-login" class="btn">
-                                        <a style="color: white" href="../event/createEvent.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
-                                            <i class="glyphicon glyphicon-log-in"></i> &nbsp; Create Event
-                                        </a>
-                                    </button>
-                                </div>
-                            </form>
-                            </p>
-                        </div>
-                        <div>
-
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-8">
-                    <div id="map"></div>
+                    <!--Drop down Category -->
+                    <p>
+                        <label>
+                    <p><b> Please select your travel mode </b> </p>
+                    <select id = "mode" class="btn-lg" style="width: 100%;" >
+                        <option value="DRIVING">Driving</option>
+                        <option value="WALKING">Walking</option>
+                        <option value="BICYCLING">Bicycling</option>
+                        <option value="TRANSIT">Transit</option>
+                    </select>
+                    </label>
+                    </p>
+                    <br>
+                    <!--Get direction button-->
+                    <a class='btn btn-primary btn-lg' style="width: 100%">
+                        <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i>
+                    </a>
+                    <hr>
+                    <!--Display information details-->
+                    <!--display Menu-->
+                    <p><b>Click for Detailed Information</b></p>
+                    <div id="firstpane" class="menu_list">
+                        <!--Code for menu starts here-->
+                        <p class="menu_head">Approximately Duration</p>
+                        <div class="menu_body">
+                            <a><label id="duration"> </label></a>
+                        </div>
+                        <p class="menu_head">Address Detail</p>
+                        <div class="menu_body">
+                            <a><?php echo $address;?></a>
+                        </div>
+                        <p class="menu_head">Forecast Weather</p>
+                        <div class="menu_body">
+                            <a>
+                                <?php
+                                for ($x=1; $x<7; $x++){
+                                    echo $forecastTamp[$x]."<br>";
+                                }?>
+
+
+                            </a>
+                        </div>
+                        <p class="menu_head">Rate</p>
+                        <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
+                        <p class="menu_head">Comments</p>
+                        <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
+                    </div>
+
+                </div>
+                <!--    <button id="reset">Reset</button>-->
+                <hr>
+                <!--display public events details-->
+                <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
+                <div>
+                    <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
+                    <form class="form-signin" method="post" id="login-form">
+                        <div class="form-group">
+                            <button type="submit" name="btn-login" class="btn">
+                                <a style="color: white" href="../event/createEvent.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
+                                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Create Event
+                                </a>
+                            </button>
+                        </div>
+                    </form>
+                    </p>
+                </div>
+                <div>
+
                 </div>
             </div>
         </div>
+
+        <div class="col-md-8">
+            <div id="map"></div>
+        </div>
     </div>
+</div>
+</div>
 </section>
 
 <script>
@@ -403,13 +424,13 @@ if ($lat!=null&&$lng!=null){
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFO12yfon9WbQBqtdK_lnmY6uAiDXmB0s&callback=initMap">
 </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 
 </body>
 </html>
