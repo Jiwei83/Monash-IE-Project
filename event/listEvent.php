@@ -18,7 +18,6 @@ include('../include/config.php');
         $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
         $sql2->execute(array(":user_id"=>$user_id));
         $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
 <?php
@@ -115,8 +114,11 @@ if($login->is_loggedin()) : ?>
                                                 echo '<script type="text/javascript">alert("Successfully Join!");</script>';
                                             }
                                         }
-                                        else {
+                                        else if(!empty($user_id)) {
                                             echo '<script type="text/javascript">alert("Already Joined!");</script>';
+                                        }
+                                        else if(empty($user_id)) {
+                                            echo '<script type="text/javascript">alert("You Have NOT LOG IN!");</script>';
                                         }
                                     }
                                     if(isset($_POST[$btnJoin[$i]]) && $curr_capa >= $capacity) {
