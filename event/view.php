@@ -96,6 +96,13 @@ include('../include/navigation.php');
         ?>
     </td>
     </form>
+    <td class="form-group">
+        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
+            <a href="listEvent.php" style="color: white">
+                <i class="glyphicon glyphicon-log-in"></i>&nbsp; Back
+            </a>
+        </button>
+    </td>
     </div>
 </section>
 <?php

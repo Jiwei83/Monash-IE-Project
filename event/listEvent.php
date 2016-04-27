@@ -54,8 +54,7 @@ if($login->is_loggedin()) : ?>
                             <th>Suburb</th>
                             <th>Capacity</th>
                             <th>Date</th>
-                            <th>View</th>
-                            <th>Join</th>
+                            <th></th>
                         </tr>
                         </thead>
 

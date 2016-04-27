@@ -518,7 +518,7 @@ select {
 }
 /* ======= sections-wrapper ======= */
 .sections-wrapper {
-  background: #fff;
+  background: #f5f5f5;
   z-index: 20;
   position: relative;
 }
@@ -2949,6 +2949,7 @@ select {
   }
   .header.navbar-fixed-top {
     position: relative;
+    background-color: white;
   }
   .navbar-collapse {
     border-top: none;
@@ -3475,6 +3476,9 @@ select {
   }
   #navbar-toggle {
     background-color: #000;
+  }
+  #header{
+    background-color: white;
   }
 }
 /* Large devices (large desktops, 1200px and up) */

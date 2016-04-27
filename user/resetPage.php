@@ -87,7 +87,9 @@ function mailresetlink($to,$token){
 
 
     if($mail->send()){
+        $user = new User();
         echo "We have sent the password reset link to your  email id <b>".$to."</b>";
+        $user->redirect('resetPage.php?joined');
     }
     else {
         //echo "Mail Error: " . $mail->ErrorInfo;
