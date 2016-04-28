@@ -5,6 +5,10 @@ a:hover { color: #4B58A6; }
   max-width: none;
 }
 
+#link{
+    color:white;
+}
+
 .title {
     font-size: 62px;
     line-height: 72px;
