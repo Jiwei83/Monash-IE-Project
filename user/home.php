@@ -7,6 +7,28 @@
     require_once('PHPMailer-master/class.smtp.php');
 	$auth_user = new USER();
 
+    $eventId = $_POST['event_id'];
+    $title = $_POST['eTitle'];
+    $desc = $_POST['description'];
+    $capacity = $_POST['capOption'];
+    $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
+    $type = $_POST['taskOption'];
+
+    if(!empty($type) && !empty($capacity)) {
+        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date', type = '$type' where eventId='$eventId'";
+
+    }
+    elseif(!empty($type)) {
+        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date', type = '$type' where eventId='$eventId'";
+    }
+    elseif(!empty($capacity)) {
+        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date' where eventId='$eventId'";
+    }
+    elseif(empty($type) && empty($capacity)) {
+        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date' where eventId='$eventId'";
+    }
+    $response = $pdo->exec($sql);
+
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
@@ -175,20 +197,17 @@
                         <td>
                             <?php echo $val['date'];?>
                         </td>
-                        <form action="" method="post">
                         <td class="form-group">
-                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
-                                <a href="../event/view.php?eventId=<?php echo $eventId; ?>">
+                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
                                 <i class="glyphicon glyphicon-log-in"></i> View
-                                </a>
                             </button>
                         </td>
                         <td>
-                            <button type="submit" name="<?php echo $btnEdit[$i]?>" class="btn btn-primary btn-lg">
-                                <a href="../event/edit.php?eventId=<?php echo $eventId; ?>">
+                            <button type="submit" name="<?php echo $btnEdit[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/edit.php?eventId=<?php echo $eventId; ?>'">
                                 <i class="glyphicon glyphicon-log-in"></i> Edit
                             </button>
                         </td>
+                        <form action="" method="post">
                             <td class="form-group">
                                 <button type="submit" name="<?php echo $btnCancel[$i]?>" class="btn btn-primary btn-lg">
                                     <i class="glyphicon glyphicon-log-in"></i> Cancel
@@ -206,7 +225,6 @@
                                                 sendCancelMail($to);
                                             }
                                             echo '<script type="text/javascript">alert("Successfully Cancelled!");</script>';
-
                                         }
                                         else {
                                             echo '<script type="text/javascript">alert("Already Cancelled");</script>';
@@ -217,10 +235,7 @@
                         </form>
                     </tr>
                     <?php $i++; }?>
-
                 </tbody>
-
-
                 <tfoot>
                 <tr>
                     <th>Name</th>

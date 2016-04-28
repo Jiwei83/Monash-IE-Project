@@ -134,15 +134,11 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                         <td>
                             <?php echo $val['date'];?>
                         </td>
-                        <form action="" method="post">
-                            <td class="form-group">
-                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
-                                    <a href="../event/view.php?eventId=<?php echo $eventId; ?>">
-                                        <i class="glyphicon glyphicon-log-in"></i> View
-                                    </a>
-                                </button>
-                            </td>
-                        </form>
+                        <td class="form-group">
+                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
+                                <i class="glyphicon glyphicon-log-in"></i> View
+                            </button>
+                        </td>
                     </tr>
                     <?php $i++; }?>
 
