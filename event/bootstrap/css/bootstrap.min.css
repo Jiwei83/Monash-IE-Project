@@ -84,7 +84,7 @@ code, kbd, pre, samp {
 	font-family:monospace, monospace;
 	font-size:1em
 }
-button, input, optgroup, select, textarea {
+button, input, optgroup, select {
 	margin:0;
 	font:inherit;
 	color:inherit

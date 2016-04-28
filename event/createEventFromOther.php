@@ -39,74 +39,82 @@ if(isset($_POST['btn-submit'])) {
 
 
 ?>
+<link rel="stylesheet" href="style.css" type="text/css"  />
+
 
 <script src="js/jquery.js"></script>
+        <form class="form-signin" method="post" id="login-form">
+            <h2 class="form-signin-heading">Create Your Event</h2><hr />
 
-<form class="form-signin" method="post" id="login-form">
-    <h2 class="form-signin-heading">Create Your Event</h2><hr />
+            <div class="form-group">
+                Title<span>*</span>
+                <input type="text" class="form-control" name="eTitle" placeholder="Event Title" required />
+                <span id="check-e"></span>
+            </div>
 
-    <div class="form-group">
-        Title<span>*</span>
-        <input type="text" class="form-control" name="eTitle" placeholder="Event Title" required />
-        <span id="check-e"></span>
-    </div>
+            <div class="form-group">
+                Address<span>*</span>
+                <input id="pac-input1" type="text" class="form-control" name="eTitle1" placeholder="Search address" />
+                <span id="check-e"></span>
+            </div>
 
-    <div class="form-group">
-        Address<span>*</span>
-        <input id="pac-input1" type="text" class="form-control" name="eTitle1" placeholder="Search address" />
-        <span id="check-e"></span>
-    </div>
+            <div class="form-group">
+                Suburb<span>*</span>
+                <input id="pac-input2" type="text" class="form-control" name="eTitle2" placeholder="Search Suburb" />
+                <span id="check-e"></span>
+            </div>
 
-    <div class="form-group">
-        Suburb<span>*</span>
-        <input id="pac-input2" type="text" class="form-control" name="eTitle2" placeholder="Search Suburb" />
-        <span id="check-e"></span>
-    </div>
+            <div class="form-group">
+                Description<span>*</span><br>
+                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus></textarea>
+                <span id="check-e"></span>
+            </div>
+            <div class="form-group">
+                Hold Date<span>*</span>
+                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" />
+                <span id="check-e"></span>
+            </div>
+            <div class="form-group">
+                Capacity<span>*</span>
+                <label>
+                    <select name="capOption" size="0" id="eType" style="width: 7em">
+                        <option selected="selected" value="">Number</option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                    </select>
+                </label>
 
-    <div class="form-group">
-        Description<span>*</span><br>
-            <textarea rows="5" cols="60" id="description" name="description" style="border-color: lightgray;" autofocus>
-            </textarea>
-        <span id="check-e"></span>
-    </div>
-    <div class="form-group">
-        Hold Date<span>*</span>
-        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate">
-        <span id="check-e"></span>
-    </div>
-    <div class="form-group">
-        Capacity<span>*</span>
-        <label>
-            <select name="capOption" size="0" id="eType" style="width: 10em">
-                <option selected="selected" value="">Number</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
-        </label>
+                <span id="check-e"></span>
+                Categories<span>*</span>
+                <label>
+                    <select name="taskOption" size="0" id="eType" style="width: 10em">
+                        <option selected="selected" value="">All Activities</option>
+                        <option>BBQ</option>
+                        <option>Walking Dog</option>
+                        <option>Yoga</option>
+                        <option>Sports Club</option>
+                        <option>Basketball</option>
+                    </select>
+                </label>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" name="btn-submit" class="btn btn-primary btn-lg">
+                    <i class="glyphicon glyphicon-log-in"></i>&nbsp; Submit
+                </button>
+            </div>
+            <br />
+        </form>
+</div>
+</section>
+<?php
 
-        <span id="check-e"></span>
-        Categories<span>*</span>
-        <label>
-            <select name="taskOption" size="0" id="eType" style="width: 10em">
-                <option selected="selected" value="">All Activities</option>
-                <option>BBQ</option>
-                <option>Walking Dog</option>
-                <option>Yoga</option>
-                <option>Sports Club</option>
-                <option>Basketball</option>
-            </select>
-        </label>
-    </div>
-    <hr />
-    <div class="form-group">
-        <button type="submit" name="btn-submit" class="btn btn-primary btn-lg">
-            <i class="glyphicon glyphicon-log-in"></i>&nbsp; Submit
-        </button>
-    </div>
-    <br />
-</form>
+include('../include/footer.php');
+
+?>
+
 <script>$(document).ready(function() {$('#datetimepicker').datetimepicker();});  </script>
 <script>
     function initAutocomplete() {
@@ -158,7 +166,6 @@ if(isset($_POST['btn-submit'])) {
         async defer></script>
 
 
-<?php include('../include/footer.php'); ?>
 </body>
 <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
 <script src="datetimepicker-master/jquery.js"></script>

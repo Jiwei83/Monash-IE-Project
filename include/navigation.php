@@ -33,7 +33,7 @@
                     Events</a>
                 <ul class="dropdown-menu">
                     <li><a href=<?php echo $url_event_create ?>><span class="glyphicon glyphicon-calendar"></span>&nbsp;Create an Event</a></li>
-                    <li><a href=<?php echo $url_event_list ?>><span class="glyphicon glyphicon-calendar"></span>View Events</a></li>
+                    <li><a href=<?php echo $url_event_list ?>><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
                 </ul>
             </li>
             <li class=<?php echo $about ?>><a href=<?php echo $url_about ?>>About Us</a></li>

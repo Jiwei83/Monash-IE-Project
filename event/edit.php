@@ -113,9 +113,7 @@ catch(PDOException $e) {
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="60" id="description" name="description"   style="border-color: lightgray;" autofocus>
-                    <?php echo $list['eventDescription']; ?>
-                </textarea>
+                <textarea rows="5" cols="60" id="description" name="description"   style="border-color: lightgray;"><?php echo $list['eventDescription']; ?></textarea>
             <span id="check-e"></span>
             </div>
         <div class="form-group">
@@ -163,6 +161,11 @@ catch(PDOException $e) {
     <span id="check-e"></span>
 
 </section>
+<?php
+
+include('../include/footer.php');
+
+?>
 <script>$(document).ready(function() {$('#datetimepicker').datetimepicker();});  </script>
 <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
 <script src="datetimepicker-master/jquery.js"></script>
