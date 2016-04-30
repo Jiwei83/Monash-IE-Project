@@ -96,10 +96,12 @@ include('../include/navigation.php');
         ?>
     </td>
     </form>
-    <td class="form-group">
-        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../user/home.php'">
-            <i class="glyphicon glyphicon-log-in"></i>&nbsp; Back
-        </button>
+    <td>
+        <div class="form-group">
+            <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
+                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Back
+            </button>
+        </div>
     </td>
     </div>
 </section>

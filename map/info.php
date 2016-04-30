@@ -2,7 +2,7 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
-include('../include/navigation.php');
+include('../include/navigation_info.php');
 
 ?>
 
@@ -52,32 +52,8 @@ if ($lat!=null&&$lng!=null){
     $wind = $data['wind']['speed'];
     //dt
     $dt = $data ['dt'];
-    $time = date('w', $dt);
-    $timeDay;
+    $timeDay = date('D', $dt);
     $tim = date('y-m-d H:m:s', $dt);
-    switch ($time) {
-        case 0:
-            $timeDay = "SUN";
-            break;
-        case 1:
-            $timeDay = 'MON';
-            break;
-        case 2:
-            $timeDay = 'TUE';
-            break;
-        case 3:
-            $timeDay = 'WED';
-            break;
-        case 4:
-            $timeDay = 'THU';
-            break;
-        case 5:
-            $timeDay = 'FRI';
-            break;
-        case 6:
-            $timeDay = 'SAT';
-            break;
-    }
 } else{
     $name = "null";
     $description = "null";
@@ -108,25 +84,37 @@ if ($lat!=null&&$lng!=null){
         $range = $min." ~ ".$max." ˚C";
         $fdescription = $fdata['list'][$x]['weather'][0]['description'];
         $fdt = $fdata ['list'][$x]['dt'];
-        $ftime = date('w', $fdt);
-        $ftimeDay;
-        if ($ftime==0) {
-            $ftimeDay = 'SUN';
-        }else if($ftime==1){
-            $ftimeDay = 'MON';
-        }else if($ftime==2){
-            $ftimeDay = 'TUE';
-        }else if($ftime==3){
-            $ftimeDay = 'WED';
-        }else if($ftime==4){
-            $ftimeDay = 'THU';
-        }else if($ftime==5){
-            $ftimeDay = 'FRI';
-        }else if($ftime==6){
-            $ftimeDay = 'SAT';
-        }
-        $forecastTamp[$x]= $ftimeDay.", ".$range.", ".$fdescription;
+        $ftime = date('D', $fdt);
+
+        $forecastTamp[$x]= $ftime.", ".$range.", ".$fdescription;
+
     }
+
+
+}
+?>
+<?php
+$lat = $_GET['lat'];
+$lng = $_GET['lng'];
+$durl = "http://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lng&appid=2685e072f39f0387a6ff22225a56f4ba";
+$json = file_get_contents($durl);
+$data = json_decode($json, true);
+$a = 272.15;
+$t[] = array();
+$tmp[] = array();
+
+for($x=0; $x<7;$x++){
+    $dt = $data ['list'][$x]['dt'];
+    $time = date('H', $dt);
+    $tmp[$x] = $data['list'][$x]['main']['temp']-$a;
+    $t[$x]=$time;
+}
+for($x=0;$x<7;$x++){
+    echo  $tmp[$x];
+    echo "<br>";
+    echo $t[$x];
+    echo "<br>";
+
 }
 ?>
 
@@ -171,6 +159,7 @@ if ($lat!=null&&$lng!=null){
         <div class="container">
 
             <div class='container-fluid'>
+                <br>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -179,26 +168,21 @@ if ($lat!=null&&$lng!=null){
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-8">
-
+                    <div class="col-md-6">
+                        <b>Direction address: <?php echo $address;?></b><br>
+                        <b>Current weather: <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
+                        </b>
+                    </div>
+                    <div class="col-md-2" style="background-color: white">
+                        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/><b>Current location </b><br>
+                        <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Direction location </b>
                     </div>
                 </div>
+                <br>
                 <div class='row'>
                     <div class="col-md-4">
                         <div class="well">
                             <div id="mapfuc">
-                                <p><b>Current Weather</b></p>
-                                <div id="firstpane" class="menu_list">
-                                    <!--Code for menu starts here-->
-                                    <p class="menu_head">
-                                        <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
-                                    </p>
-                                    <div class="menu_body">
-                                        <a>
-                                        </a>
-                                    </div>
-                                </div>
-
                                 <!--Drop down Category -->
                                 <p>
                                     <label>
@@ -226,9 +210,12 @@ if ($lat!=null&&$lng!=null){
                                     <div class="menu_body">
                                         <a><label id="duration"> </label></a>
                                     </div>
-                                    <p class="menu_head">Address Detail</p>
+                                    <p class="menu_head">Daily Forecast Weather</p>
                                     <div class="menu_body">
-                                        <a><?php echo $address;?></a>
+                                        <a>
+                                            <div id="curve_chart" style="width: 300px; height: 200px"></div>
+
+                                        </a>
                                     </div>
                                     <p class="menu_head">Forecast Weather</p>
                                     <div class="menu_body">
@@ -272,9 +259,11 @@ if ($lat!=null&&$lng!=null){
                     </div>
 
                     <div class="col-md-8">
+
                         <div id="map"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -400,6 +389,40 @@ if ($lat!=null&&$lng!=null){
     <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
     <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
     <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Temperature'],
+                ['<?php echo $t[0]?>', <?php echo $tmp[0]?> ],
+                ['<?php echo $t[1]?>', <?php echo $tmp[1]?> ],
+                ['<?php echo $t[2]?>', <?php echo $tmp[2]?> ],
+                ['<?php echo $t[3]?>', <?php echo $tmp[3]?> ],
+                ['<?php echo $t[4]?>', <?php echo $tmp[4]?> ],
+                ['<?php echo $t[5]?>', <?php echo $tmp[5]?> ],
+                ['<?php echo $t[6]?>', <?php echo $tmp[6]?> ]
+            ]);
+
+            var options = {
+                hAxis: {
+                    title: 'Time'
+                },
+                vAxis: {
+                    title: 'Temperture'
+                },
+                curveType: 'function',
+                legend: { position: 'bottom' },
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
 
 </body>
 </html>
