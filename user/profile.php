@@ -85,8 +85,9 @@
     </div><!--container-->
 </header><!--header-->
 
-	<div class="clearfix"></div>
-	
+
+
+
     <div class="container-fluid" style="margin-top:80px;">
 	
     <div class="container">
@@ -101,140 +102,68 @@
         <hr />
         <p>&nbsp;</p>
 
-        <div class="tab-pane" id="tabPane1">
 
-            <script type="text/javascript">
-                tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
-                //tp1.setClassNameTag( "dynamic-tab-pane-control-luna" );
-                //alert( 0 )
-            </script>
+
 
             <div class="col-md-6">
                 <h2 class="tab">Update Details</h2>
-
-                <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+                <?php
+                    $query = $auth_user->runQuery("SELECT * FROM user_profile WHERE user_id=:user_id");
+                    $query->execute(array(":user_id"=>$user_id));
+                    $profileRow = $query->fetch(PDO::FETCH_ASSOC);
+                ?>
                 <form name="form" action="" method="post">
                     <table>
-                        <th>Update User Details</th>
+                        <th>User Details</th>
                         <tr>
                             <td>First Name</td>
                             <td>Last Name</td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="firstname" /></td>
-                            <td><input type="text" name="lastname" /></td>
+                            <td><input type="text" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/></td>
+                            <td><input type="text" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/></td>
                         </tr>
                         <tr>
                             <td>Date of Birth</td>
                             <td>Phone</td>
                         </tr>
                         <tr>
-                            <td><input type="date" name="DOB" /></td>
-                            <td><input type="text" name="phone" /></td>
+                            <td><input type="text" name="DOB" value="<?php echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?>"/></td>
+                            <td><input type="text" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
                         </tr>
                         <tr>
                             <td>Email</td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="email" /></td>
+                            <td><input type="text" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
                         </tr>
                         <tr>
                             <td>Post Code</td>
                             <td>State</td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="postcode" /></td>
-                            <td><input type="text" name="state" /></td>
+                            <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
+                            <td><input type="text" name="state" value="<?php echo (empty($profileRow['state'])) ? " " : $profileRow['state'];?>"/></td>
                         </tr>
                         <tr>
                             <td>Street</td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="street" /></td>
+                            <td><input type="text" name="street" value="<?php echo (empty($profileRow['street'])) ? " " : $profileRow['street'];?>"/></td>
                         </tr>
                         <tr>
                             <td>Family Size</td>
                             <td>Interest</td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="family_size" /></td>
-                            <td><input type="text" name="interest" /></td>
+                            <td><input type="text" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/></td>
+                            <td><input type="text" name="interest" value="<?php echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?>"/></td>
                         </tr>
                     </table>
                     <input type="submit" name="update" value="Update"/>
                 </form>
-
             </div>
 
-            <div class="col-md-6">
-                <h2 class="tab">Details</h2>
-
-                <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
-                <?php
-                    $query = $auth_user->runQuery("SELECT * FROM user_profile WHERE user_id=:user_id");
-                    $query->execute(array(":user_id"=>$user_id));
-                    $profileRow = $query->fetch(PDO::FETCH_ASSOC);
-                ?>
-                <table>
-                    <th>User Details</th>
-                    <tr>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/></td>
-                        <td><input type="text" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/></td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth</td>
-                        <td>Phone</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="DOB" value="<?php echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?>"/></td>
-                        <td><input type="text" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
-                    </tr>
-                    <tr>
-                        <td>Post Code</td>
-                        <td>State</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
-                        <td><input type="text" name="state" value="<?php echo (empty($profileRow['state'])) ? " " : $profileRow['state'];?>"/></td>
-                    </tr>
-                    <tr>
-                        <td>Street</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="street" value="<?php echo (empty($profileRow['street'])) ? " " : $profileRow['street'];?>"/></td>
-                    </tr>
-                    <tr>
-                        <td>Family Size</td>
-                        <td>Interest</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="family size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/></td>
-                        <td><input type="text" name="interest" value="<?php echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?>"/></td>
-                    </tr>
-                </table>
-
-
-
-            </div>
-
-        </div>
-        <script type="text/javascript">
-            //<![CDATA[
-
-            setupAllTabs();
-
-            //]]>
-        </script>
     </div>
 
 </div>

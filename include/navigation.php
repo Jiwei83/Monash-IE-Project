@@ -53,8 +53,7 @@
 </div><!--//container-->
 </header><!--//header-->
 
-<div class="headline-bg about-headline-bg">
-</div><!--//headline-bg-->
+
     <div class="sections-wrapper">
 
         <!-- ******Why Section****** -->
