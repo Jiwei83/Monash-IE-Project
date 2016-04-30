@@ -109,13 +109,13 @@ for($x=0; $x<7;$x++){
     $tmp[$x] = $data['list'][$x]['main']['temp']-$a;
     $t[$x]=$time;
 }
-for($x=0;$x<7;$x++){
-    echo  $tmp[$x];
-    echo "<br>";
-    echo $t[$x];
-    echo "<br>";
-
-}
+//for($x=0;$x<7;$x++){
+//    echo  $tmp[$x];
+//    echo "<br>";
+//    echo $t[$x];
+//    echo "<br>";
+//
+//}
 ?>
 
     <script src="js/jquery.js"></script>
@@ -164,16 +164,17 @@ for($x=0;$x<7;$x++){
                     <div class="col-md-4">
                         <div class="form-group">
                             <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
-                                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Back
+                                Back
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <b>Direction address: <?php echo $address;?></b><br>
                         <b>Current weather: <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
                         </b>
                     </div>
-                    <div class="col-md-2" style="background-color: white">
+
+                    <div class="col-md-3" style="border-style: solid; border-width: 1px;">
                         <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/><b>Current location </b><br>
                         <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Direction location </b>
                     </div>
@@ -184,6 +185,12 @@ for($x=0;$x<7;$x++){
                         <div class="well">
                             <div id="mapfuc">
                                 <!--Drop down Category -->
+                                <p>
+
+                                        <div id="curve_chart" class="chart" style="width: 100%; height: 200px"></div>
+
+
+                                </p>
                                 <p>
                                     <label>
                                 <p><b> Please select your travel mode </b> </p>
@@ -197,9 +204,7 @@ for($x=0;$x<7;$x++){
                                 </p>
                                 <br>
                                 <!--Get direction button-->
-                                <a class='btn btn-primary btn-lg' style="width: 100%">
-                                    <i class="glyphicon glyphicon-search" id="direct"><b>&nbsp;GET&nbsp;DIRECTION</b></i>
-                                </a>
+                                    <i class="btn btn-primary btn-lg"" id="direct"><b>Get Direction</b></i>
                                 <hr>
                                 <!--Display information details-->
                                 <!--display Menu-->
@@ -210,13 +215,13 @@ for($x=0;$x<7;$x++){
                                     <div class="menu_body">
                                         <a><label id="duration"> </label></a>
                                     </div>
-                                    <p class="menu_head">Daily Forecast Weather</p>
-                                    <div class="menu_body">
-                                        <a>
-                                            <div id="curve_chart" style="width: 300px; height: 200px"></div>
-
-                                        </a>
-                                    </div>
+<!--                                    <p class="menu_head">Daily Forecast Weather</p>-->
+<!--                                    <div class="menu_body">-->
+<!--                                        <a>-->
+<!--                                            <div id="curve_chart" style="width: 30%; height: 200px"></div>-->
+<!---->
+<!--                                        </a>-->
+<!--                                    </div>-->
                                     <p class="menu_head">Forecast Weather</p>
                                     <div class="menu_body">
                                         <a>
@@ -243,9 +248,9 @@ for($x=0;$x<7;$x++){
                                 <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
                                 <form class="form-signin" method="post" id="login-form">
                                     <div class="form-group">
-                                        <button type="submit" name="btn-login" class="btn">
-                                            <a style="color: white" href="../event/createEvent.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
-                                                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Create Event
+                                        <button type="submit" name="btn-login" class="btn btn-primary btn-lg">
+                                            <a style="color: white" href="../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
+                                                Create Event
                                             </a>
                                         </button>
                                     </div>
@@ -408,11 +413,9 @@ for($x=0;$x<7;$x++){
             ]);
 
             var options = {
+                title: 'Daily Forecast Weather',
                 hAxis: {
                     title: 'Time'
-                },
-                vAxis: {
-                    title: 'Temperture'
                 },
                 curveType: 'function',
                 legend: { position: 'bottom' },

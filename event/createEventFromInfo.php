@@ -39,6 +39,8 @@ if(isset($_POST['btn-submit'])) {
 
 
 ?>
+<link rel="stylesheet" href="style.css" type="text/css"  />
+
 
 <script src="js/jquery.js"></script>
 
@@ -54,8 +56,7 @@ if(isset($_POST['btn-submit'])) {
 
     <div class="form-group">
         Description<span>*</span><br>
-            <textarea rows="5" cols="60" id="description" name="description" style="border-color: lightgray;" autofocus>
-            </textarea>
+            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus></textarea>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
@@ -64,9 +65,10 @@ if(isset($_POST['btn-submit'])) {
         <span id="check-e"></span>
     </div>
     <div class="form-group">
-        Capacity<span>*</span>
+        Capacity<span>*</span><input type="text" name="country_code" pattern="[A-z]{3}"
+                                     title="Three letter country code" />
         <label>
-            <select name="capOption" size="0" id="eType" style="width: 10em">
+            <select name="capOption" size="0" id="eType" style="width: 7em">
                 <option selected="selected" value="">Number</option>
                 <option>5</option>
                 <option>10</option>
@@ -96,6 +98,7 @@ if(isset($_POST['btn-submit'])) {
     </div>
     <br />
 </form>
+</section>
 <script>$(document).ready(function() {$('#datetimepicker').datetimepicker();});  </script>
 
 <?php include('../include/footer.php'); ?>
