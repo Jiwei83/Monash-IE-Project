@@ -1,4 +1,12 @@
 <?php
+include("../include/mapPath.php");
+//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+include('../include/header.php');
+include('../include/navigation.php');
+
+?>
+
+<?php
 session_start();
 require_once("class.user.php");
 $login = new USER();
@@ -33,49 +41,8 @@ if(isset($_POST['btn-login']))
     }
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Active Family : Login</title>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link rel="stylesheet" href="style.css" type="text/css"  />
-</head>
-<body style="background-color: #f5f5f5">
-<!-- ******HEADER****** -->
-<header id="header" class="header navbar-fixed-top" style="position: relative; background-color: white">
-    <div class="container">
-        <h1 class="logo">
-            <a href="http://active-family.net"><span class="logo-icon"></span><span class="text">Active Family</span></a>
-        </h1><!--logo-->
-        <nav class="main-nav navbar-right" role="navigation">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button><!--nav-toggle-->
-            </div><!--navbar-header-->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a href="../index.php">Home</a></li>
-                    <li class="nav-item"><a href="../map/index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
-                    <li class="nav-item"><a href="../about.php">About Us</a></li>
 
-                </ul><!--nav-->
-            </div><!--navabr-collapse-->
-    </div><!--container-->
-</header><!--header-->
+<link rel="stylesheet" href="style.css" type="text/css"  />
 
 <div class="signin-form">
 
@@ -127,6 +94,7 @@ if(isset($_POST['btn-login']))
     </div>
 <p><br></p>
 </div>
+</section>
 
 <?php
 include('../include/footer.php');

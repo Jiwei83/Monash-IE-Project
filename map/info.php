@@ -167,9 +167,22 @@ if ($lat!=null&&$lng!=null){
 <!---->
 <!--    <!-- ******Steps Section****** -->
 <!--    <section class="steps section">-->
+
         <div class="container">
 
             <div class='container-fluid'>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
+                                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Back
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+
+                    </div>
+                </div>
                 <div class='row'>
                     <div class="col-md-4">
                         <div class="well">
