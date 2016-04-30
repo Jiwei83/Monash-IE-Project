@@ -19,24 +19,35 @@ class USER
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-	
-	public function register($uname,$umail,$upass)
+
+	public function register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $ustate, $ustreet, $ufsize, $uinterest)
 	{
 		try
 		{
 			$new_password = password_hash($upass, PASSWORD_DEFAULT);
 			
-			$stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass) 
+			$stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass)
 		                                               VALUES(:uname, :umail, :upass)");
 												  
 			$stmt->bindparam(":uname", $uname);
 			$stmt->bindparam(":umail", $umail);
-			$stmt->bindparam(":upass", $new_password);										  
+			$stmt->bindparam(":upass", $new_password);
 				
 			$stmt->execute();
 
 			$query = $this->conn->prepare("INSERT INTO user_profile (user_fname, user_lname, dob, phone, email, postcode, state, street, family_size, interest)
-										   VALUES (' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')");
+										   VALUES (:ufname, :ulname, :udob, :uphone, :umail,:upostcode, :ustate, :ustreet, :ufsize, :uinterest)");
+
+			$query->bindparam(":ufname", $ufname);
+			$query->bindparam(":ulname", $ulname);
+			$query->bindparam(":udob", $udob);
+			$query->bindParam(":uphone", $uphone);
+			$query->bindParam(":umail", $umail);
+			$query->bindParam(":upostcode", $upostcode);
+			$query->bindParam(":ustate", $ustate);
+			$query->bindParam(":ustreet", $ustreet);
+			$query->bindParam(":ufsize", $ufsize);
+			$query->bindParam(":uinterest", $uinterest);
 
 			$query->execute();
 

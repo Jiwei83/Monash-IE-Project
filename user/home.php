@@ -7,12 +7,12 @@
     require_once('PHPMailer-master/class.smtp.php');
 	$auth_user = new USER();
 
-    $eventId = $_POST['event_id'];
-    $title = $_POST['eTitle'];
-    $desc = $_POST['description'];
-    $capacity = $_POST['capOption'];
-    $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
-    $type = $_POST['taskOption'];
+    $eventId = (isset($_POST['event_id']) ? $_POST['event_id'] : null);
+    $title = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
+    $desc = (isset($_POST['description']) ? $_POST['description'] : null);
+    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
+    $date = date('Y-m-d G:i', strtotime((isset($_POST['eDate']) ? $_POST['eDate'] : null)));
+    $type = (isset($_POST['taskOption']) ? $_POST['taskOption'] : null);
 
     if(!empty($type) && !empty($capacity)) {
         $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date', type = '$type' where eventId='$eventId'";
