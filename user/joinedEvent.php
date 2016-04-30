@@ -11,7 +11,6 @@ $stmt->execute(array(":user_id"=>$user_id));
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-//connection to the database
 $sql = "SELECT * FROM events e, eventParticipant p where p.user_id = '$user_id' and e.eventId = p.eventId";
 $stmt = $pdo->query($sql);
 $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -106,6 +105,7 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                     <th>Capacity</th>
                     <th>Date</th>
                     <th>View</th>
+                    <th>Leave</th>
                 </tr>
                 </thead>
 
@@ -134,10 +134,30 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                         <td>
                             <?php echo $val['date'];?>
                         </td>
-                        <td class="form-group">
-                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
-                                <i class="glyphicon glyphicon-log-in"></i> View
-                            </button>
+                        <td >
+                            <div class="form-group">
+                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
+                                    <i class="glyphicon glyphicon-log-in"></i> View
+                                </button>
+                            </div>
+
+
+                        </td>
+                        <td>
+                            <form method="post">
+                                <button type="submit" name="leave" class="btn btn-primary btn-lg">
+                                    <i class="glyphicon glyphicon-log-in"></i> Leave
+                                </button>
+                                <?php
+                                if(isset($_POST['leave'])) {
+                                    $sql = "DELETE FROM eventParticipant WHERE user_id = '$user_id' AND eventId = '$eventId'";
+                                    $stmt = $pdo->query($sql);
+                                    if($stmt) {
+                                        echo '<script type="text/javascript">alert("Successful!");</script>';
+                                    }
+                                }
+                                ?>
+                            </form>
                         </td>
                     </tr>
                     <?php $i++; }?>

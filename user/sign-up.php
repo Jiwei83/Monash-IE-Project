@@ -12,7 +12,21 @@ if(isset($_POST['btn-signup']))
 {
 	$uname = strip_tags($_POST['txt_uname']);
 	$umail = strip_tags($_POST['txt_umail']);
-	$upass = strip_tags($_POST['txt_upass']);	
+	$upass = strip_tags($_POST['txt_upass']);
+	$ufname = strip_tags($_POST['txt_ufname']);
+	$ulname = strip_tags($_POST['txt_ulname']);
+	$udob = strip_tags($_POST['txt_udob']);
+	$uphone = strip_tags($_POST['txt_uphone']);
+	$upostcode = strip_tags($_POST['txt_upostcode']);
+	$ustate = strip_tags($_POST['txt_ustate']);
+	$ustreet = strip_tags($_POST['txt_ustreet']);
+	$ufsize = strip_tags($_POST['txt_ufsize']);
+	$ui = $_POST['interest'];
+	$uinterest = "";
+	$n = count($ui);
+	for($i=0; $i<$n; $i++) {
+		$uinterest = $uinterest.$ui[$i].", ";
+	}
 	
 	if($uname=="")	{
 		$error[] = "provide username !";	
@@ -28,6 +42,33 @@ if(isset($_POST['btn-signup']))
 	}
 	else if(strlen($upass) < 6){
 		$error[] = "Password must be atleast 6 characters";	
+	}
+	else if($ufname=="") {
+		$error[] = "Provide First name!";
+	}
+	else if($ulname=="") {
+		$error[] = "Provide Last name!";
+	}
+	else if($udob=="") {
+		$error[] = "Provide DOB!";
+	}
+	else if($uphone=="") {
+		$error[] = "Provide Phone Number!";
+	}
+	else if($upostcode=="") {
+		$error[] = "Provide Postcode!";
+	}
+	else if($ustate=="") {
+		$error[] = "Provide State!";
+	}
+	else if($ustreet=="") {
+		$error[] = "Provide Street!";
+	}
+	else if($ufsize=="") {
+		$error[] = "Provide Family Size!";
+	}
+	else if($uinterest=="") {
+		$error[] = "Provide Interest!";
 	}
 	else
 	{
@@ -53,12 +94,11 @@ if(isset($_POST['btn-signup']))
 				$data = json_decode($response);
 
 				if(isset($data->success) && $data->success == 1) {
-					$user->register($uname,$umail,$upass);
+					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $ustate, $ustreet, $ufsize, $uinterest);
 					$user->redirect('sign-up.php?joined');
 				}else {
 					$error[] = "Captcha fails";
 				}
-
 			}
 		}
 		catch(PDOException $e)
@@ -119,52 +159,92 @@ if(isset($_POST['btn-signup']))
 <div class="signin-form">
 
 <div class="container">
-    	
-        <form method="post" class="form-signin" style="background-color: #f5f5f5">
-            <h2 class="title" style="font-size: 30px">Sign up.</h2><hr />
-            <?php
-			if(isset($error))
-			{
-			 	foreach($error as $error)
-			 	{
-					 ?>
-                     <div class="alert alert-danger">
-                        <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
-                     </div>
-                     <?php
+    	<div class="col-md-6">
+			<form method="post" class="form-signin" style="background-color: #f5f5f5">
+				<h2 class="title" style="font-size: 30px">Sign up.</h2><hr />
+				<?php
+				if(isset($error))
+				{
+					foreach($error as $error)
+					{
+						?>
+						<div class="alert alert-danger">
+							<i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+						</div>
+						<?php
+					}
 				}
-			}
-			else if(isset($_GET['joined']))
-			{
-				 ?>
-                 <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
-                 </div>
-                 <?php
-			}
-			?>
-            <div class="form-group">
-            <input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
-            </div>
-            <div class="form-group">
-            <input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
-            </div>
-            <div class="form-group">
-            	<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
-            </div>
-            <div class="clearfix"></div><hr />
-			<div class="form-group">
-				<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div>
-			</div>
-            <div class="form-group">
-            	<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
-                	<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
-                </button>
-            </div>
-            <br />
-            <label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
+				else if(isset($_GET['joined']))
+				{
+					?>
+					<div class="alert alert-info">
+						<i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
+					</div>
+					<?php
+				}
+				?>
+				<div class="form-group">
+					<div>
+						<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+						<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
+						<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+					</div>
+					<div class="clearfix"></div><hr />
+					<div class="form-group">
+						<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div>
+					</div>
+				</div>
 
-        </form>
+
+				<div class="form-group">
+					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
+						<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
+					</button>
+				</div>
+				<br />
+				<label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
+
+		</div>
+		<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
+				            <div class="form-group">
+									<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" />
+								</div>
+							<div class="form-group">
+
+									<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" />
+								</div>
+							<div class="form-group">
+								<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_ustate" placeholder="Enter State" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_ustreet" placeholder="Enter Street" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" />
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="txt_upet" placeholder="Enter Pet Number" />
+							</div>
+							<div class="form-group">
+								<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
+								<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
+								<div class="col-md-3"><input type="checkbox" name="interest[]" value="baskerball"> Basketball</div>
+								<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
+								<div class="col-md-2"><input type="checkbox" name="interest[]" value="pet"> Pet</div>
+							</div>
+
+			</form>
+		</div>
+
 
        </div>
 </div>
