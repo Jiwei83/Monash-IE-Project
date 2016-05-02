@@ -29,11 +29,11 @@ if(isset($_POST['btn-submit'])) {
     $stmt->execute($data);
 
     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-    $event_id = $userRow['eventId'];
-    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
-    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
+//    $event_id = $userRow['eventId'];
+//    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
+//    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
+//    $stmt = $user->runQuery($sql);
+//    $stmt->execute($data);
     header('Location:listEvent.php');
 }
 

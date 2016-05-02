@@ -115,6 +115,7 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                 $i = 0;
                 foreach ($list as $val){
                     $btnView[$i] = "btnView".$i;
+                    $btnLeave[$i] = "btnLeave".$i;
                     $eventId = $val['eventId'];
                     $url = "../view.php?eventId=".$eventId;
                     ?>
@@ -145,11 +146,11 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                         </td>
                         <td>
                             <form method="post">
-                                <button type="submit" name="leave" class="btn btn-primary btn-lg">
+                                <button type="submit" name="<?php echo $btnLeave[$i]?>" class="btn btn-primary btn-lg">
                                     <i class="glyphicon glyphicon-log-in"></i> Leave
                                 </button>
                                 <?php
-                                if(isset($_POST['leave'])) {
+                                if(isset($_POST[$btnLeave[$i]])) {
                                     $sql = "DELETE FROM eventParticipant WHERE user_id = '$user_id' AND eventId = '$eventId'";
                                     $stmt = $pdo->query($sql);
                                     if($stmt) {
