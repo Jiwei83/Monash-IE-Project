@@ -33,10 +33,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="drink.php">Drink Fountain</a></li>
+                        <li><a href="basketball.php">Basketball</a></li>
                         <li><a href="bbq.php">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
-                        <li><a href="bike.php">Bicycle Rails</a></li>
+                        <li><a href="swim.php">Swim Pools</a></li>
+                        <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>

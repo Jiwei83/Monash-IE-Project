@@ -101,10 +101,6 @@
         </h2>
         <hr />
         <p>&nbsp;</p>
-
-
-
-
             <div class="col-md-6">
                 <h2 class="tab">Update Details</h2>
                 <?php

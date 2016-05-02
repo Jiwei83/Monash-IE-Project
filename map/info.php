@@ -24,7 +24,7 @@ $json = file_get_contents($url);
 $data = json_decode($json);
 $address = $data->results['0']->formatted_address;
 $suburb = $data->results['0']->address_components['2']->long_name;
-$postcode = $data->results['0']->address_components['5']->long_name;
+//$postcode = $data->results['0']->address_components['5']->long_name;
 ?>
 
 <!--Current temperature by using operweathermap api-->

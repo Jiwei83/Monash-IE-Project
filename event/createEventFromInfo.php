@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 include('../include/eventpath.php');
 include ('../include/header.php');
 include('../include/navigation.php');
@@ -24,6 +23,13 @@ if(isset($_POST['btn-submit'])) {
     $stmt = $user->runQuery($sql);
     $stmt->execute($data);
 
+    if($stmt) {
+        echo '<script language="javascript">';
+        echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
+        echo '</script>';
+        echo("<script>location.href = 'listEvent.php';</script>");
+    }
+
     $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
     $data = array(':title_name'=>"$title");
     $stmt = $user->runQuery($sql);
@@ -35,8 +41,7 @@ if(isset($_POST['btn-submit'])) {
 //    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
 //    $stmt = $user->runQuery($sql);
 //    $stmt->execute($data);
-    header('Location: listEvent.php');
-    die();
+
 }
 
 

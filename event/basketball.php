@@ -84,7 +84,7 @@ include('../include/navigation.php');
 
             $(function() {
                 var myMap = new MapsLib({
-                    fusionTableId:      "1cUFRvGVL_D2s2flBSeW8-S6JDzXPWSSrF2zQg-Eg",
+                    fusionTableId:      "1ylp2YC91QpSwrB14fQ5L6qqKygcAc8Vw8ym2Mjkz",
                     googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
                     locationColumn:     "Location",
                     map_center:         [-37.8141,144.9633]

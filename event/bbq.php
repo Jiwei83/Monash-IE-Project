@@ -154,10 +154,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="drink.php">Drink Fountain</a></li>
+                                <li><a href="basketball.php">Basketball</a></li>
                                 <li><a href="bbq.php">BBQ</a></li>
                                 <li><a href="dog.php">Dog Friendly Areas</a></li>
-                                <li><a href="bike.php">Bicycle Rails</a></li>
+                                <li><a href="swim.php">Swim Pools</a></li>
+                                <li><a href="yoga.php">Yoga</a></li>
                             </ul>
                         </div>
                         <hr>
@@ -187,10 +188,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         </p>
                     </div>
                     <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
-
-
-
-
 
                 </div>
                 <div class='col-md-8'>
@@ -222,7 +219,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
             $(function() {
                 var myMap = new MapsLib({
-                    fusionTableId:      "10Y4xcGTRLBdEhHnaKZyPMlPeKbqH7hpgjJG1OabK",
+                    fusionTableId:      "1wiNz0Fosxqh5aerEnwB9JSuFNdfpSXPA_BLl5IKM",
                     googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
                     locationColumn:     "Location",
                     map_center:         [-37.8141,144.9633]

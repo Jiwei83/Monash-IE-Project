@@ -19,7 +19,6 @@ if($login->is_loggedin()) : ?>
         #register {
             display: none;
         }
-
     </style>
 
 <?php else: ?>

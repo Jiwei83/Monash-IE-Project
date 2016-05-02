@@ -8,16 +8,15 @@ include('../include/eventpath.php');
 include('../include/config.php');
 
     //connection to the database
+    $sql = "SELECT * FROM events ORDER BY `events`.`date` DESC";
+    $stmt = $pdo->query($sql);
+    $eventIDArray = array();
+    $i = 0;
+    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $sql = "SELECT * FROM events ORDER BY date";
-        $stmt = $pdo->query($sql);
-        $eventIDArray = array();
-        $i = 0;
-        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-        $sql2->execute(array(":user_id"=>$user_id));
-        $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
+    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+    $sql2->execute(array(":user_id"=>$user_id));
+    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <?php
