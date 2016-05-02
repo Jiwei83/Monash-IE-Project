@@ -184,41 +184,33 @@ if(isset($_POST['btn-signup']))
 				}
 				?>
 				<div class="form-group">
-					<div>
+
 						<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
 						<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
 						<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
 					</div>
-					<div class="clearfix"></div><hr />
+
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" />
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" />
+						</div>
 					<div class="form-group">
-						<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div>
+						<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" />
 					</div>
-				</div>
-
-
 				<div class="form-group">
-					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
-						<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
-					</button>
+					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" />
 				</div>
-				<br />
-				<label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
+
+
 
 		</div>
 		<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
-				            <div class="form-group">
-									<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" />
-								</div>
-							<div class="form-group">
 
-									<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" />
-								</div>
-							<div class="form-group">
-								<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" />
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" />
-							</div>
+
+
 							<div class="form-group">
 								<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" />
 							</div>
@@ -241,6 +233,20 @@ if(isset($_POST['btn-signup']))
 								<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
 								<div class="col-md-2"><input type="checkbox" name="interest[]" value="pet"> Pet</div>
 							</div>
+
+			<div class="clearfix"></div><hr />
+			<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div><hr/>
+			<div class="form-group">
+				<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
+					<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
+				</button>
+				<button type="goBack" name="submitBtn" class="btn btn-primary" onclick="window.history.back();">
+					Back
+				</button>
+			</div>
+			<br />
+			<label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
+
 
 			</form>
 		</div>
