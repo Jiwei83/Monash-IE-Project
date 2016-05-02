@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 include('../include/eventpath.php');
 include ('../include/header.php');
 include('../include/navigation.php');
@@ -34,7 +35,8 @@ if(isset($_POST['btn-submit'])) {
 //    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
 //    $stmt = $user->runQuery($sql);
 //    $stmt->execute($data);
-    header('Location:listEvent.php');
+    header('Location: listEvent.php');
+    die();
 }
 
 
@@ -65,8 +67,7 @@ if(isset($_POST['btn-submit'])) {
         <span id="check-e"></span>
     </div>
     <div class="form-group">
-        Capacity<span>*</span><input type="text" name="country_code" pattern="[A-z]{3}"
-                                     title="Three letter country code" />
+        Capacity<span>*</span>
         <label>
             <select name="capOption" size="0" id="eType" style="width: 7em">
                 <option selected="selected" value="">Number</option>
@@ -76,7 +77,6 @@ if(isset($_POST['btn-submit'])) {
                 <option>20</option>
             </select>
         </label>
-
         <span id="check-e"></span>
         Categories<span>*</span>
         <label>

@@ -161,14 +161,14 @@ for($x=0; $x<7;$x++){
             <div class='container-fluid'>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
                                 Back
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <b>Direction address: <?php echo $address;?></b><br>
                         <b>Current weather: <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
                         </b>
@@ -233,10 +233,6 @@ for($x=0; $x<7;$x++){
 
                                         </a>
                                     </div>
-                                    <p class="menu_head">Rate</p>
-                                    <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
-                                    <p class="menu_head">Comments</p>
-                                    <div class="menu_body"> <a href="#">Link-1</a> <a href="#">Link-2</a> <a href="#">Link-3</a> </div>
                                 </div>
 
                             </div>
@@ -248,7 +244,7 @@ for($x=0; $x<7;$x++){
                                 <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
                                 <form class="form-signin" method="post" id="login-form">
                                     <div class="form-group">
-                                        <button type="submit" name="btn-login" class="btn btn-primary btn-lg">
+                                        <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg">
                                             <a style="color: white" href="../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
                                                 Create Event
                                             </a>

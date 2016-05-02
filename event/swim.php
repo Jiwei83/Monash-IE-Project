@@ -18,6 +18,7 @@ $stmt->execute(array(":user_id"=>$user_id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
+
             
             <div class='container-fluid'>
     <div class='row'>
@@ -25,7 +26,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
             <div class='well'>
                 <h1 class="title">
-                    Drink fountains
+                    Swim Pools
                                     </h1>
                 <div class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,10 +34,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="drink.php">Drink Fountain</a></li>
+                        <li><a href="basketball.php">Basketball</a></li>
                         <li><a href="bbq.php">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
-                        <li><a href="bike.php">Bicycle Rails</a></li>
+                        <li><a href="swim.php">Swim Pools</a></li>
+                        <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
@@ -66,9 +68,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 </p>
                 </div>
             <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
-            
-
-
         </div>
         <div class='col-md-8'>
             <noscript>
@@ -99,7 +98,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     $(function() {
         var myMap = new MapsLib({
-            fusionTableId:      "1BhdWLllVcSGCJBrOC0a2kZMv0pevA6Apc0H96z5w",
+            fusionTableId:      "1a7HXJWwLxH2yXkpPnJq5qnFmPZDFfv5FdTLz03mi",
             googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
             locationColumn:     "Location",
             map_center:         [-37.8141,144.9633]
@@ -144,14 +143,13 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     //]]>
 </script>
 
-        </div><!--//container-->        
+        </div><!--//container-->
     </section><!--//steps-->
 
 <?php
-
-include('../include/footer.php')
-
+include "../include/footer.php";
 ?>
+
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
@@ -160,6 +158,4 @@ include('../include/footer.php')
 <script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
-
-
 

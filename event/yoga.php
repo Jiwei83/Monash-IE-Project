@@ -1,11 +1,10 @@
 <?php
-include("../include/eventpath.php");
+include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
 include('../include/navigation.php');
 
 ?>
-
 <!--Template from: http://derekeder.com/searchable_map_template-->
 <!--Php can get latitude and longitude of category from previous map-->
 
@@ -18,34 +17,59 @@ $stmt->execute(array(":user_id"=>$user_id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
+
+
             <div class='container-fluid'>
     <div class='row'>
         <div class='col-md-4'>
 
             <div class='well'>
-                <p id="register"><b>You need to be loged in create or view event</b>
-                </p>
-                <div id="#notlogedin" >
+                <h1 class="title">
+                    Yoga
+                                    </h1>
                 <div class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Event type
+                        Pick a Category
                         <span class="caret"></span>
                     </button>
-                    <a class="btn btn-defult dropdown-toggle" href="listEvent.php" >View event</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="basketball.php">Basketball</a></li>
-                            <li><a href="bbq.php">BBQ</a></li>
-                            <li><a href="dog.php">Dog Friendly Areas</a></li>
-                            <li><a href="swim.php">Swim Pools</a></li>
-                            <li><a href="yoga.php">Yoga</a></li>
-                        </ul>
+                    <ul class="dropdown-menu">
+                        <li><a href="basketball.php">Basketball</a></li>
+                        <li><a href="bbq.php">BBQ</a></li>
+                        <li><a href="dog.php">Dog Friendly Areas</a></li>
+                        <li><a href="swim.php">Swim Pools</a></li>
+                        <li><a href="yoga.php">Yoga</a></li>
+                    </ul>
                 </div>
-               
+                <hr>
+                <p>
+                    <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
+
+                </p>
+                <a class='btn btn-primary btn-lg' id='search' href='#'>
+                    <i class='glyphicon glyphicon-search'></i>
+                    Search
+                </a>
+                <a id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
+            <p> <br></p>
+                <p class="btn-group">
+                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Choose Search Radius
+                        <span class="caret"></span>
+                    </button>
+
+                    <select id='search_radius' multiple class=" dropdown-menu" >
+                        <option value='400'>2 blocks</option>
+                        <option value='500'>1/2 km</option>
+                        <option value='1000'>1 km</option>
+                        <option value='2000'>2 km</option>
+                    </select>
+
+                </p>
+                </div>
+            <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
             
 
 
-</div>
-</div>
         </div>
         <div class='col-md-8'>
             <noscript>
@@ -76,7 +100,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     $(function() {
         var myMap = new MapsLib({
-            googleApiKey:       "AIzaSyDGqazZZTGC6-VtXBOUG9lOErR2mq-Ug58",
+            fusionTableId:      "18NjJhapsdfaQ_ZN0QgcKMASRGF7LrR6upyvxMdFA",
+            googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
             locationColumn:     "Location",
             map_center:         [-37.8141,144.9633]
 
@@ -128,11 +153,14 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 include('../include/footer.php')
 
 ?>
+
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+            
 </body>
-</html>
+</html> 
+

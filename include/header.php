@@ -28,6 +28,10 @@ if($login->is_loggedin()) : ?>
         #notlogedin {
             display: none;
         }
+        #create {
+            pointer-events: none;
+            cursor: default;
+        }
     </style>
 <?php endif; ?>
 <!DOCTYPE html>
