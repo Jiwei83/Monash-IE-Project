@@ -1,14 +1,15 @@
 <?php
-	require_once("session.php");
-	
-	require_once("class.user.php");
-	$auth_user = new USER();
+require_once("session.php");
+include('../include/config.php');
+require_once("class.user.php");
+$auth_user = new USER();
 
-	$user_id = $_SESSION['user_session'];
 
-	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-	$stmt->execute(array(":user_id"=>$user_id));
-	$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+$user_id = $_SESSION['user_session'];
+$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+$stmt->execute(array(":user_id"=>$user_id));
+
+$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -71,6 +72,7 @@
                     <li class="nav-item"><a href="../map/index.php">Venues</a></li>
                     <li class="nav-item"><a href="../event/index.php">Events</a></li>
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
+
                     <li class="active nav-item dropdown" id="notlogedin">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
@@ -89,15 +91,16 @@
 
 
     <div class="container-fluid" style="margin-top:80px;">
-	
+
     <div class="container">
     
     	<label class="h5">welcome : <?php print($userRow['user_name']); ?></label>
         <hr />
 
         <h2>
-            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> home</a> &nbsp;
+            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
             <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
+            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matech People </a> &nbsp;
         </h2>
         <hr />
         <p>&nbsp;</p>
@@ -109,52 +112,37 @@
                     $profileRow = $query->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <form name="form" action="" method="post">
-                    <table>
-                        <th>User Details</th>
+                    <table class="table table-bordered">
                         <tr>
                             <td>First Name</td>
                             <td>Last Name</td>
+                            <td>Date of Birth</td>
+                            <td>Phone</td>
+                            <td>Email</td>
                         </tr>
                         <tr>
                             <td><input type="text" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/></td>
                             <td><input type="text" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Birth</td>
-                            <td>Phone</td>
-                        </tr>
-                        <tr>
                             <td><input type="text" name="DOB" value="<?php echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?>"/></td>
                             <td><input type="text" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                        </tr>
-                        <tr>
                             <td><input type="text" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Post Code</td>
-                            <td>State</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
-                            <td><input type="text" name="state" value="<?php echo (empty($profileRow['state'])) ? " " : $profileRow['state'];?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Street</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="street" value="<?php echo (empty($profileRow['street'])) ? " " : $profileRow['street'];?>"/></td>
+
                         </tr>
                         <tr>
                             <td>Family Size</td>
                             <td>Interest</td>
+                            <td>Post Code</td>
+                            <td>State</td>
+                            <td>Street</td>
                         </tr>
                         <tr>
                             <td><input type="text" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/></td>
                             <td><input type="text" name="interest" value="<?php echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?>"/></td>
+                            <td><input type="text" name="street" value="<?php echo (empty($profileRow['street'])) ? " " : $profileRow['street'];?>"/></td>
+                            <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
+                            <td><input type="text" name="state" value="<?php echo (empty($profileRow['state'])) ? " " : $profileRow['state'];?>"/></td>
                         </tr>
+
                     </table>
                     <input type="submit" name="update" value="Update"/>
                 </form>

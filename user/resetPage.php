@@ -145,7 +145,7 @@ function mailresetlink($to,$token){
                     <i class="glyphicon glyphicon-open-file"></i>&nbsp;Reset
                 </button>
 
-                <button type="goBack" name="submitBtn" class="btn btn-primary" onclick="window.history.back();">
+                <button type="goBack" name="submitBt" class="btn btn-primary btn-lg" onclick="window.history.back();">
                     Back
                 </button>
 

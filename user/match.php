@@ -1,23 +1,19 @@
 <?php
-require_once("session.php");
 include('../include/config.php');
+require_once("session.php");
+
 require_once("class.user.php");
+require_once('PHPMailer-master/class.phpmailer.php');
+require_once('PHPMailer-master/class.smtp.php');
 $auth_user = new USER();
 
-
 $user_id = $_SESSION['user_session'];
-$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+$stmt = $auth_user->runQuery("SELECT * FROM user_profile WHERE location");
 $stmt->execute(array(":user_id"=>$user_id));
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM events e, eventParticipant p where p.user_id = '$user_id' and e.eventId = p.eventId";
-$stmt = $pdo->query($sql);
-$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql2 = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-$sql2->execute(array(":user_id"=>$user_id));
-$userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -40,7 +36,7 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.css"/>
     <link rel="stylesheet" href="style.css" type="text/css"  />
-    <title>welcome - <?php print($userRow['user_email']); ?></title>
+    <title>Welcome - <?php print($userRow['user_email']); ?></title>
 </head>
 
 <body style="background-color: #f5f5f5">
@@ -59,13 +55,12 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                     <span class="icon-bar"></span>
                 </button><!--nav-toggle-->
             </div><!--navbar-header-->
-            <div id="navbar-collapse" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a href="../index.php">Home</a></li>
                     <li class="nav-item"><a href="../map/index.php">Venues</a></li>
                     <li class="nav-item"><a href="../event/index.php">Events</a></li>
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
-
                     <li class="active nav-item dropdown" id="notlogedin">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
@@ -91,10 +86,10 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
         <label class="h5">welcome : <?php print($userRow['user_name']); ?></label>
         <hr />
         <h2>
+            &nbsp;
             <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
+            <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
             <a href="profile.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Profile</a>
-            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Matched People</a>
-
         </h2>
         <hr />
         <div class='row'>
@@ -181,14 +176,12 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                     responsive: true
                 });</script>
 
-        </div>
-    </div>
+        </div>    </div>
 
 </div>
+
 <?php
-
-include('../include/footer1.php')
-
+include("../include/footer.php");
 ?>
 
 
