@@ -21,6 +21,7 @@ if(isset($_POST['btn-signup']))
 	$usuburb = strip_tags($_POST['txt_usuburb']);
 	$uaddress = strip_tags($_POST['txt_uaddress']);
 	$ufsize = strip_tags($_POST['txt_ufsize']);
+	$upno = strip_tags($_POST['txt_upno']);
 	$ui = (isset($_POST['interest']) ? $_POST['interest'] : null);
 	$uinterest = "";
 	$n = count($ui);
@@ -70,6 +71,9 @@ if(isset($_POST['btn-signup']))
 	else if($uinterest=="") {
 		$error[] = "Provide Interest!";
 	}
+	else if($upno=="") {
+		$error[] = "Provide Pet Number!";
+	}
 	else
 	{
 		try
@@ -94,7 +98,7 @@ if(isset($_POST['btn-signup']))
 				$data = json_decode($response);
 
 				if(isset($data->success) && $data->success == 1) {
-					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $ustreet, $ufsize, $uinterest);
+					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $ustreet, $ufsize, $uinterest, $upno);
 					$user->redirect('sign-up.php?joined');
 				}else {
 					$error[] = "Captcha fails";
@@ -223,6 +227,10 @@ if(isset($_POST['btn-signup']))
 				<div class="form-group">
 					<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" value="<?php if(isset($error)){echo $ufsize;}?>" />
 				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_upno" placeholder="Enter Pet Number" value="<?php if(isset($error)){echo $upno;}?>" />
+				</div>
+
 				<div class="form-group">
 					<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
 					<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
