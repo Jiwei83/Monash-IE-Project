@@ -146,7 +146,7 @@ if(isset($_POST['btn-signup']))
 			</div><!--navbar-header-->
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="nav-item"><a href="../index.html">Home</a></li>
+					<li class="nav-item"><a href="../index.php">Home</a></li>
 					<li class="nav-item"><a href="../map/index.php">Venues</a></li>
 					<li class="nav-item"><a href="../event/index.php">Events</a></li>
 
@@ -157,10 +157,9 @@ if(isset($_POST['btn-signup']))
 </header><!--header-->
 
 <div class="signin-form">
-
-<div class="container">
-    	<div class="col-md-6">
-			<form method="post" class="form-signin" style="background-color: #f5f5f5">
+	<div class="container">
+		<form method="post">
+			<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
 				<h2 class="title" style="font-size: 30px">Sign up.</h2><hr />
 				<?php
 				if(isset($error))
@@ -184,78 +183,71 @@ if(isset($_POST['btn-signup']))
 				}
 				?>
 				<div class="form-group">
-
-						<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
-						<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
-						<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
-					</div>
-
-
-						<div class="form-group">
-							<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" />
-						</div>
-					<div class="form-group">
-						<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" />
-					</div>
+					<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" />
+					<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" value="<?php if(isset($error)){echo $ufname;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" value="<?php if(isset($error)){echo $uphone;}?>" />
 				</div>
 
-
-
-		</div>
-		<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
-
-
-
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" />
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_ustate" placeholder="Enter State" />
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_ustreet" placeholder="Enter Street" />
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" />
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="txt_upet" placeholder="Enter Pet Number" />
-							</div>
-							<div class="form-group">
-								<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
-								<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
-								<div class="col-md-3"><input type="checkbox" name="interest[]" value="baskerball"> Basketball</div>
-								<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
-								<div class="col-md-2"><input type="checkbox" name="interest[]" value="pet"> Pet</div>
-							</div>
-
-			<div class="clearfix"></div><hr />
-			<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div><hr/>
-			<div class="form-group">
-				<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
-					<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
-				</button>
-				<button type="goBack" name="submitBtn" class="btn btn-primary" onclick="window.history.back();">
-					Back
-				</button>
 			</div>
-			<br />
-			<label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
+			<div class="col-md-1"></div>
+			<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" value="<?php if(isset($error)){echo $upostcode;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_ustate" placeholder="Enter State" value="<?php if(isset($error)){echo $ustate;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_ustreet" placeholder="Enter Street" value="<?php if(isset($error)){echo $ustreet;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" value="<?php if(isset($error)){echo $ufsize;}?>" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="txt_upet" placeholder="Enter Pet Number" />
+				</div>
+				<div class="form-group">
+					<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
+					<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
+					<div class="col-md-3"><input type="checkbox" name="interest[]" value="basketball"> Basketball</div>
+					<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
+					<div class="col-md-2"><input type="checkbox" name="interest[]" value="pet"> Pet</div>
+				</div>
 
+				<div class="clearfix"></div><hr />
+				<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div><hr/>
+				<div class="form-group">
+					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
+						<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
+					</button>
+					<button type="goBack" name="submitBtn" class="btn btn-primary" onclick="window.history.back();">
+						Back
+					</button>
+				</div>
+				<br />
+				<label style="color: #ffa400">Have an account ! <a href="index.php" id="link">Sign In</a></label>
 
-			</form>
-		</div>
-
-
-       </div>
+			</div>
+	</div>
+	</form>
 </div>
 
-</div>
 <!-- ******FOOTER****** -->
 <footer class="footer">
 	<div class="footer-content">

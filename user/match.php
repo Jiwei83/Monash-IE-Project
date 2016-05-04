@@ -8,11 +8,68 @@ require_once('PHPMailer-master/class.smtp.php');
 $auth_user = new USER();
 
 $user_id = $_SESSION['user_session'];
-$stmt = $auth_user->runQuery("SELECT * FROM user_profile WHERE location");
+$stmt = $auth_user->runQuery("SELECT * FROM user_profile WHERE user_id = $user_id");
 $stmt->execute(array(":user_id"=>$user_id));
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+$postcode = $userRow['postcode'];
+$interest = $userRow['interest'];
+$intrList = explode(',', $interest);
 
+function getSelectForOneScale($intrList, $postcode, $user_id) {
+    $select = "SELECT user_fname, postcode, street, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+
+    for($i=0; $i<count($intrList); $i++) {
+        if($intrList[$i] != " ") {
+            $intrList[$i] = trim($intrList[$i]);
+            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+        }
+    }
+    $select = $select."null)";
+    return $select;
+}
+
+function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
+    $select = "SELECT user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
+
+    for($i=0; $i<count($intrList); $i++) {
+        if($intrList[$i] != " ") {
+            $intrList[$i] = trim($intrList[$i]);
+            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+        }
+    }
+    $select = $select."null)";
+    return $select;
+}
+
+function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
+    $select = "SELECT user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+
+    for($i=0; $i<count($intrList); $i++) {
+        if($intrList[$i] != " ") {
+            $intrList[$i] = trim($intrList[$i]);
+            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+        }
+    }
+    $select = $select."null)";
+    return $select;
+}
+
+$selectOne = getSelectForOneScale($intrList, $postcode, $user_id);
+$sql = "INSERT INTO interest ($selectOne)";
+$stmt = $pdo->exec($sql);
+
+$selectTwo = getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id);
+$sql = "INSERT INTO interest ($selectTwo)";
+$stmt = $pdo->exec($sql);
+
+$selectThree = getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id);
+$sql = "INSERT INTO interest ($selectThree)";
+$stmt = $pdo->query($sql);
+
+$sql = "SELECT * FROM interest";
+$stmt = $pdo->query($sql);
+$interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -63,7 +120,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
                     <li class="active nav-item dropdown" id="notlogedin">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_fname']; ?>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="../user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
                             <li><a href="../user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
@@ -83,7 +140,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     <div class="container">
 
-        <label class="h5">welcome : <?php print($userRow['user_name']); ?></label>
+        <label class="h5">welcome : <?php print($userRow['user_fname']); ?></label>
         <hr />
         <h2>
             &nbsp;
@@ -97,12 +154,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Type</th>
                     <th>Suburb</th>
-                    <th>Capacity</th>
-                    <th>Date</th>
-                    <th>View</th>
-                    <th>Leave</th>
+                    <th>Interest</th>
+                    <th>Match Scale</th>
                 </tr>
                 </thead>
 
@@ -110,55 +164,44 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 <?php
                 $btnView = array();
                 $i = 0;
-                foreach ($list as $val){
-                    $btnView[$i] = "btnView".$i;
-                    $btnLeave[$i] = "btnLeave".$i;
-                    $eventId = $val['eventId'];
-                    $url = "../view.php?eventId=".$eventId;
-                    ?>
+                foreach ($interestRow as $intr){
+                ?>
                     <tr>
                         <td>
-                            <?php echo $val['eventName'];?>
+                            <?php echo $intr['name'];?>
                         </td>
                         <td>
-                            <?php echo $val['type'];?>
+                            <?php echo $intr['postcode'];?>
                         </td>
                         <td>
-                            <?php echo $val['suburb'];?>
+                            <?php echo $intr['interest'];?>
                         </td>
                         <td>
-                            <?php echo $val['capacity'];?>
+                            <?php echo $intr['match_scale'];?>
                         </td>
-                        <td>
-                            <?php echo $val['date'];?>
-                        </td>
-                        <td >
-                            <div class="form-group">
-                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
-                                    <i class="glyphicon glyphicon-log-in"></i> View
-                                </button>
-                            </div>
 
-
-                        </td>
-                        <td>
-                            <form method="post">
-                                <button type="submit" name="<?php echo $btnLeave[$i]?>" class="btn btn-primary btn-lg">
-                                    <i class="glyphicon glyphicon-log-in"></i> Leave
-                                </button>
-                                <?php
-                                if(isset($_POST[$btnLeave[$i]])) {
-                                    $sql = "DELETE FROM eventParticipant WHERE user_id = '$user_id' AND eventId = '$eventId'";
-                                    $stmt = $pdo->query($sql);
-                                    if($stmt) {
-                                        echo '<script type="text/javascript">alert("Successful!");</script>';
-                                    }
-                                }
-                                ?>
-                            </form>
-                        </td>
+<!--                        <td>-->
+<!--                            <form method="post">-->
+<!--                                <button type="submit" name="--><?php //echo $btnLeave[$i]?><!--" class="btn btn-primary btn-lg">-->
+<!--                                    <i class="glyphicon glyphicon-log-in"></i> Leave-->
+<!--                                </button>-->
+<!--                                --><?php
+//                                if(isset($_POST[$btnLeave[$i]])) {
+//                                    $sql = "DELETE FROM eventParticipant WHERE user_id = '$user_id' AND eventId = '$eventId'";
+//                                    $stmt = $pdo->query($sql);
+//                                    if($stmt) {
+//                                        echo '<script type="text/javascript">alert("Successful!");</script>';
+//                                    }
+//                                }
+//                                ?>
+<!--                            </form>-->
+<!--                        </td>-->
                     </tr>
-                    <?php $i++; }?>
+                    <?php
+                        $i++; }
+                        $sql = "DELETE FROM interest";
+                        $pdo->exec($sql);
+                    ?>
 
                 </tbody>
 
