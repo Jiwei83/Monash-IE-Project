@@ -154,7 +154,8 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Suburb</th>
+                    <th>Postcode</th>
+                    <th>Street</th>
                     <th>Interest</th>
                     <th>Match Scale</th>
                 </tr>
@@ -172,6 +173,9 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td>
                             <?php echo $intr['postcode'];?>
+                        </td>
+                        <td>
+                            <?php echo $intr['street'];?>
                         </td>
                         <td>
                             <?php echo $intr['interest'];?>
