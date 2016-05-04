@@ -18,10 +18,10 @@ if(isset($_POST['btn-signup']))
 	$udob = strip_tags($_POST['txt_udob']);
 	$uphone = strip_tags($_POST['txt_uphone']);
 	$upostcode = strip_tags($_POST['txt_upostcode']);
-	$ustate = strip_tags($_POST['txt_ustate']);
-	$ustreet = strip_tags($_POST['txt_ustreet']);
+	$usuburb = strip_tags($_POST['txt_usuburb']);
+	$uaddress = strip_tags($_POST['txt_uaddress']);
 	$ufsize = strip_tags($_POST['txt_ufsize']);
-	$ui = $_POST['interest'];
+	$ui = (isset($_POST['interest']) ? $_POST['interest'] : null);
 	$uinterest = "";
 	$n = count($ui);
 	for($i=0; $i<$n; $i++) {
@@ -58,7 +58,7 @@ if(isset($_POST['btn-signup']))
 	else if($upostcode=="") {
 		$error[] = "Provide Postcode!";
 	}
-	else if($ustate=="") {
+	else if($usuburb=="") {
 		$error[] = "Provide State!";
 	}
 	else if($ustreet=="") {
@@ -94,7 +94,7 @@ if(isset($_POST['btn-signup']))
 				$data = json_decode($response);
 
 				if(isset($data->success) && $data->success == 1) {
-					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $ustate, $ustreet, $ufsize, $uinterest);
+					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $ustreet, $ufsize, $uinterest);
 					$user->redirect('sign-up.php?joined');
 				}else {
 					$error[] = "Captcha fails";
@@ -200,27 +200,28 @@ if(isset($_POST['btn-signup']))
 				<div class="form-group">
 					<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
 				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" value="<?php if(isset($error)){echo $uphone;}?>" />
-				</div>
+
 
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
 				<div class="form-group">
+					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" value="<?php if(isset($error)){echo $uphone;}?>" />
+				</div>
+				<div class="form-group">
 					<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" value="<?php if(isset($error)){echo $upostcode;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_ustate" placeholder="Enter State" value="<?php if(isset($error)){echo $ustate;}?>" />
+					<input id="pac-input1" type="text" class="form-control" name="txt_usuburb" placeholder="Search Suburb" value="<?php if(isset($error)){echo $usuburb;}?>"/>
+					<span id="check-e"></span>
 				</div>
+
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_ustreet" placeholder="Enter Street" value="<?php if(isset($error)){echo $ustreet;}?>" />
+					<input id="pac-input2" type="text" class="form-control" name="txt_uaddress" placeholder="Search Address" value="<?php if(isset($error)){echo $uaddress;}?>"/>
+					<span id="check-e"></span>
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" value="<?php if(isset($error)){echo $ufsize;}?>" />
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" name="txt_upet" placeholder="Enter Pet Number" />
 				</div>
 				<div class="form-group">
 					<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
@@ -285,6 +286,55 @@ if(isset($_POST['btn-signup']))
 		</div><!--//container-->
 	</div><!--//bottom-bar-->
 </footer><!--//footer-->
+
+<script>
+	function initAutocomplete() {
+		// Create the search box and link it to the UI element.
+		var input1 = document.getElementById('pac-input1');
+		var input2 = document.getElementById('pac-input2');
+		var searchBox1 = new google.maps.places.SearchBox(input1);
+		var searchBox2 = new google.maps.places.SearchBox(input2);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input1);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
+
+		// Bias the SearchBox results towards current map's viewport.
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
+
+		// Listen for the event fired when the user selects a prediction and retrieve
+		// more details for that place.
+		searchBox.addListener('places_changed', function() {
+			var places1 = searchBox1.getPlaces();
+			var places2 = searchBox2.getPlaces();
+
+			if (places1.length == 0) {
+				return;
+			}
+
+			// For each place, get the icon, name and location.
+			var bounds = new google.maps.LatLngBounds();
+			places.forEach(function(place) {
+				var icon = {
+					url: place.icon,
+					size: new google.maps.Size(71, 71),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(17, 34),
+					scaledSize: new google.maps.Size(25, 25)
+				};
+				if (place.geometry.viewport) {
+					// Only geocodes have viewport.
+					bounds.union(place.geometry.viewport);
+				} else {
+					bounds.extend(place.geometry.location);
+				}
+			});
+		});
+	}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&libraries=places&callback=initAutocomplete"
+		async defer></script>
 
 </body>
 </html>
