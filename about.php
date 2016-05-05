@@ -110,12 +110,7 @@ if($login->is_loggedin()) : ?>
             </div><!--//container-->
         </div><!--//bottom-bar-->
     </footer><!--//footer-->
-    
-    
 
-
-
-    
     <!-- Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>

@@ -2,14 +2,6 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
-?>
-
-
-<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
-
-
-
-<?php
 include('../include/navigation_info.php');
 
 ?>
@@ -30,6 +22,7 @@ $lng = $_GET['lng'];
 $url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&sensor=true";
 $json = file_get_contents($url);
 $data = json_decode($json);
+
 $address = $data->results['0']->formatted_address;
 $suburb = $data->results['0']->address_components['2']->long_name;
 //$postcode = $data->results['0']->address_components['5']->long_name;
@@ -407,13 +400,13 @@ for($x=0; $x<7;$x++){
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Time', 'Temperature'],
-                ['<?php echo $t[0]?>', <?php echo $tmp[0]?> ],
-                ['<?php echo $t[1]?>', <?php echo $tmp[1]?> ],
-                ['<?php echo $t[2]?>', <?php echo $tmp[2]?> ],
-                ['<?php echo $t[3]?>', <?php echo $tmp[3]?> ],
-                ['<?php echo $t[4]?>', <?php echo $tmp[4]?> ],
-                ['<?php echo $t[5]?>', <?php echo $tmp[5]?> ],
-                ['<?php echo $t[6]?>', <?php echo $tmp[6]?> ]
+                ['<?php echo $t[0]?>:00', <?php echo $tmp[0]?> ],
+                ['<?php echo $t[1]?>:00', <?php echo $tmp[1]?> ],
+                ['<?php echo $t[2]?>:00', <?php echo $tmp[2]?> ],
+                ['<?php echo $t[3]?>:00', <?php echo $tmp[3]?> ],
+                ['<?php echo $t[4]?>:00', <?php echo $tmp[4]?> ],
+                ['<?php echo $t[5]?>:00', <?php echo $tmp[5]?> ],
+                ['<?php echo $t[6]?>:00', <?php echo $tmp[6]?> ]
             ]);
 
             var options = {
