@@ -112,6 +112,7 @@ if(isset($_POST['btn-signup']))
 	}
 }
 
+
 ?>
 
 
@@ -131,6 +132,17 @@ if(isset($_POST['btn-signup']))
 	<link rel="stylesheet" href="css/custom.css"/>
 	<link rel="stylesheet" href="style.css" type="text/css"  />
 	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<meta charset="utf-8">
+	<title>jQuery UI Datepicker - Default functionality</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script>
+		$(function() {
+			$( "#datepicker" ).datepicker();
+		});
+	</script>
 </head>
 <body style="background-color: #f5f5f5">
 <!-- ******HEADER****** -->
@@ -202,7 +214,7 @@ if(isset($_POST['btn-signup']))
 					<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="date" class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
+					<input type="text" id="datepicker" class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
 				</div>
 
 
@@ -345,4 +357,5 @@ if(isset($_POST['btn-signup']))
 		async defer></script>
 
 </body>
+
 </html>
