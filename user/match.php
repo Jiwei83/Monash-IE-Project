@@ -3,8 +3,6 @@ include('../include/config.php');
 require_once("session.php");
 
 require_once("class.user.php");
-require_once('PHPMailer-master/class.phpmailer.php');
-require_once('PHPMailer-master/class.smtp.php');
 $auth_user = new USER();
 
 $user_id = $_SESSION['user_session'];
@@ -17,7 +15,7 @@ $interest = $userRow['interest'];
 $intrList = explode(',', $interest);
 
 function getSelectForOneScale($intrList, $postcode, $user_id) {
-    $select = "SELECT user_fname, postcode, street, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -30,7 +28,7 @@ function getSelectForOneScale($intrList, $postcode, $user_id) {
 }
 
 function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
-    $select = "SELECT user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_fname, postcode, suburb, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -184,22 +182,6 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo $intr['match_scale'];?>
                         </td>
 
-<!--                        <td>-->
-<!--                            <form method="post">-->
-<!--                                <button type="submit" name="--><?php //echo $btnLeave[$i]?><!--" class="btn btn-primary btn-lg">-->
-<!--                                    <i class="glyphicon glyphicon-log-in"></i> Leave-->
-<!--                                </button>-->
-<!--                                --><?php
-//                                if(isset($_POST[$btnLeave[$i]])) {
-//                                    $sql = "DELETE FROM eventParticipant WHERE user_id = '$user_id' AND eventId = '$eventId'";
-//                                    $stmt = $pdo->query($sql);
-//                                    if($stmt) {
-//                                        echo '<script type="text/javascript">alert("Successful!");</script>';
-//                                    }
-//                                }
-//                                ?>
-<!--                            </form>-->
-<!--                        </td>-->
                     </tr>
                     <?php
                         $i++; }
