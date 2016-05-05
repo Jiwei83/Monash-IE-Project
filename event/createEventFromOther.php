@@ -34,7 +34,10 @@ if(isset($_POST['btn-submit'])) {
 //    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
 //    $stmt = $user->runQuery($sql);
 //    $stmt->execute($data);
-    echo "<script language='javascript'> window.location.href='listEvent.php'</script>";
+    echo '<script language="javascript">';
+    echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
+    echo '</script>';
+    echo("<script>location.href = 'listEvent.php';</script>");
 }
 
 
