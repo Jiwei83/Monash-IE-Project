@@ -2,7 +2,10 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
-include('../include/navigation.php');
+?>
+<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
+
+<?php include('../include/navigation.php');
 if(isset($_POST['search']) || isset($_POST['location'])) {
     $address = $_GET['address'];
 }

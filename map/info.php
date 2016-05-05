@@ -2,6 +2,14 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
+?>
+
+
+<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
+
+
+
+<?php
 include('../include/navigation_info.php');
 
 ?>
