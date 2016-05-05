@@ -8,7 +8,6 @@ $eventId = $_GET['eventId'];
 
 
 
-
 /* Execute a prepared statement by passing an array of values */
 
 
@@ -16,6 +15,9 @@ $stmt=$pdo->prepare('select * from events where eventId= ?');
 
 $stmt->execute(array($eventId));
 $list = $stmt->fetch();
+
+$title= $list['eventName'];
+
  ?>
 
 
@@ -54,12 +56,12 @@ include('../include/navigation.php');
 
     <h2>Event Details</h2>
 <dl class="table table-striped table-bordered">
-    <dt><?php echo "event title"; ?></dt>
+    <dt><?php echo "Event title"; ?></dt>
     <dd>
         <?php echo $list['eventName']; ?>
         &nbsp;
     </dd>
-    <dt><?php echo "event Description"; ?></dt>
+    <dt><?php echo "Event Description"; ?></dt>
     <dd>
         <?php echo $list['eventDescription']; ?>
         &nbsp;

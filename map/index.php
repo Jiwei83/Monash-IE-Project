@@ -3,6 +3,9 @@ include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
 include('../include/navigation.php');
+if(isset($_POST['search']) || isset($_POST['location'])) {
+    $address = $_GET['address'];
+}
 
 ?>
 
@@ -35,22 +38,23 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="basketball.php">Basketball</a></li>
-                        <li><a href="bbq.php">BBQ</a></li>
+                        <li><a href="bbq.php?address=<?php echo $address;?>">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
                         <li><a href="swim.php">Swim Pools</a></li>
                         <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
+                <form method="post">
                 <p>
-                    <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
-
+                    <input name='ad' class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
                 </p>
-                <a class='btn btn-primary btn-lg' id='search' href='#'>
+
+                <a name="search" class='btn btn-primary btn-lg' id='search' href='#'>
                     <i class='glyphicon glyphicon-search'></i>
                     Search
                 </a>
-                <a id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
+                <a name="location" id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
             <p> <br></p>
                 <p class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,7 +71,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     </select>
 
                 </p>
-                
+                </form>
             </div>
 
 

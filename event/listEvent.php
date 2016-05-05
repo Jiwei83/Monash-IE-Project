@@ -82,7 +82,8 @@ if($login->is_loggedin()) : ?>
                                     <?php echo $val['capacity'];?>
                                 </td>
                                 <td>
-                                    <?php echo $val['date'];?>
+                                    <?php echo $val['date'];
+                                          $eventId = $val['eventId'];?>
                                 </td>
                                 <form action="" method="post">
                                     <td class="form-group">
