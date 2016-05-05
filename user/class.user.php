@@ -20,7 +20,7 @@ class USER
 		return $stmt;
 	}
 
-	public function register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $ustate, $ustreet, $ufsize, $uinterest)
+	public function register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno)
 	{
 		try
 		{
@@ -35,8 +35,8 @@ class USER
 				
 			$stmt->execute();
 
-			$query = $this->conn->prepare("INSERT INTO user_profile (user_fname, user_lname, dob, phone, email, postcode, state, street, family_size, interest)
-										   VALUES (:ufname, :ulname, :udob, :uphone, :umail,:upostcode, :ustate, :ustreet, :ufsize, :uinterest)");
+			$query = $this->conn->prepare("INSERT INTO user_profile (user_fname, user_lname, dob, phone, email, postcode, suburb, address, family_size, interest, pet_number)
+										   VALUES (:ufname, :ulname, :udob, :uphone, :umail,:upostcode, :usuburb, :uaddress, :ufsize, :uinterest, :upno)");
 
 			$query->bindparam(":ufname", $ufname);
 			$query->bindparam(":ulname", $ulname);
@@ -44,10 +44,11 @@ class USER
 			$query->bindParam(":uphone", $uphone);
 			$query->bindParam(":umail", $umail);
 			$query->bindParam(":upostcode", $upostcode);
-			$query->bindParam(":ustate", $ustate);
-			$query->bindParam(":ustreet", $ustreet);
+			$query->bindParam(":usuburb", $usuburb);
+			$query->bindParam(":uaddress", $uaddress);
 			$query->bindParam(":ufsize", $ufsize);
 			$query->bindParam(":uinterest", $uinterest);
+			$query->bindParam(":upno", $upno);
 
 			$query->execute();
 

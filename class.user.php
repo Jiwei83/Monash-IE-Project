@@ -20,7 +20,7 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($uname,$umail,$upass)
+	public function register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno)
 	{
 		try
 		{
@@ -35,8 +35,8 @@ class USER
 				
 			$stmt->execute();
 
-			$query = $this->conn->prepare("INSERT INTO user_profile (user_fname, user_lname, dob, phone, email, postcode, state, street, family_size, interest)
-										   VALUES (' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')");
+			$query = $this->conn->prepare("INSERT INTO user_profile (user_fname, user_lname, dob, phone, email, postcode, suburb, address, family_size, interest, pet_number)
+										   VALUES ('$ufname', '$ulname', '$udob', '$uphone', '$umail', '$upostcode', '$usuburb', '$uaddress', '$ufsize', '$uinterest', '$upno')");
 
 			$query->execute();
 

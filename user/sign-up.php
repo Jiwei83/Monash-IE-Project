@@ -60,10 +60,10 @@ if(isset($_POST['btn-signup']))
 		$error[] = "Provide Postcode!";
 	}
 	else if($usuburb=="") {
-		$error[] = "Provide State!";
+		$error[] = "Provide suburb!";
 	}
-	else if($ustreet=="") {
-		$error[] = "Provide Street!";
+	else if($uaddress=="") {
+		$error[] = "Provide Address!";
 	}
 	else if($ufsize=="") {
 		$error[] = "Provide Family Size!";
@@ -98,7 +98,7 @@ if(isset($_POST['btn-signup']))
 				$data = json_decode($response);
 
 				if(isset($data->success) && $data->success == 1) {
-					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $ustreet, $ufsize, $uinterest, $upno);
+					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno);
 					$user->redirect('sign-up.php?joined');
 				}else {
 					$error[] = "Captcha fails";
