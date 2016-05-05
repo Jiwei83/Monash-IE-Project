@@ -116,31 +116,31 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <tr>
                             <td>First Name</td>
                             <td>Last Name</td>
-                            <td>Date of Birth</td>
+<!--                            <td>Date of Birth</td>-->
                             <td>Phone</td>
                             <td>Email</td>
                         </tr>
                         <tr>
                             <td><input type="text" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/></td>
                             <td><input type="text" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/></td>
-                            <td><input type="text" name="DOB" value="<?php echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?>"/></td>
+<!--                            <td><input type="text" name="DOB" value="--><?php //echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?><!--"/></td>-->
                             <td><input type="text" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
                             <td><input type="text" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
 
                         </tr>
                         <tr>
                             <td>Family Size</td>
-                            <td>Interest</td>
+<!--                            <td>Interest</td>-->
+                            <td>Suburb</td>
                             <td>Post Code</td>
-                            <td>State</td>
-                            <td>Street</td>
+                            <td>Address</td>
                         </tr>
                         <tr>
                             <td><input type="text" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/></td>
-                            <td><input type="text" name="interest" value="<?php echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?>"/></td>
-                            <td><input type="text" name="street" value="<?php echo (empty($profileRow['street'])) ? " " : $profileRow['street'];?>"/></td>
+<!--                            <td><input type="text" name="interest" value="--><?php //echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?><!--"/></td>-->
+                            <td><input type="text" name="suburb" value="<?php echo (empty($profileRow['suburb'])) ? " " : $profileRow['suburb'];?>"/></td>
                             <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
-                            <td><input type="text" name="state" value="<?php echo (empty($profileRow['state'])) ? " " : $profileRow['state'];?>"/></td>
+                            <td><input type="text" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/></td>
                         </tr>
 
                     </table>
@@ -160,8 +160,8 @@ if(isset($_POST['update'])) {
     $phone = (isset($_POST['phone']) ? $_POST['phone'] : null);
     $email = (isset($_POST['email']) ? $_POST['email'] : null);
     $postcode = (isset($_POST['postcode']) ? $_POST['postcode'] : null);
-    $state = (isset($_POST['state']) ? $_POST['state'] : null);
-    $street = (isset($_POST['street']) ? $_POST['street'] : null);
+    $suburb = (isset($_POST['suburb']) ? $_POST['suburb'] : null);
+    $address = (isset($_POST['address']) ? $_POST['address'] : null);
     $familySize = (isset($_POST['family_size']) ? $_POST['family_size'] : 0);
     $interest = (isset($_POST['interest']) ? $_POST['interest'] : null);
 
@@ -213,16 +213,16 @@ if(isset($_POST['update'])) {
         $query->execute(array(":user_id"=>$user_id));
     }
 
-    if(!empty($state)) {
+    if(!empty($suburb)) {
         $query = $auth_user->runQuery("UPDATE user_profile
-                                       SET state = '$state'
+                                       SET state = '$suburb'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
 
-    if(!empty($street)) {
+    if(!empty($address)) {
         $query = $auth_user->runQuery("UPDATE user_profile
-                                       SET street = '$street'
+                                       SET street = '$address'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
