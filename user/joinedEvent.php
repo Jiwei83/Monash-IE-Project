@@ -19,6 +19,8 @@ $sql2 = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $sql2->execute(array(":user_id"=>$user_id));
 $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -120,6 +122,10 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                     $btnLeave[$i] = "btnLeave".$i;
                     $eventId = $val['eventId'];
                     $url = "../view.php?eventId=".$eventId;
+                    $createdby = $val['create_user_id'];
+                    if ($user_id == $createdby){
+
+                    }
                     ?>
                     <tr>
                         <td>
