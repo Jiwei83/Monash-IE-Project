@@ -100,7 +100,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         <h2>
             <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
             <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
-            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matech People </a> &nbsp;
+            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matched Profile </a> &nbsp;
         </h2>
         <hr />
         <p>&nbsp;</p>
