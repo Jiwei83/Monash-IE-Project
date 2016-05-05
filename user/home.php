@@ -158,7 +158,7 @@
         </h2>
        	<hr />
         <div class='row'>
-            <table id='event' class="table table-striped table-bordered" style="width: 10%">
+            <table id='event' class="table table-striped table-bordered" style="width: 100%">
                 <thead>
                 <tr>
                     <th>Name</th>
