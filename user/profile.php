@@ -104,46 +104,51 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         </h2>
         <hr />
         <p>&nbsp;</p>
-            <div class="col-md-6">
-                <h2 class="tab">Update Details</h2>
-                <?php
-                    $query = $auth_user->runQuery("SELECT * FROM user_profile WHERE user_id=:user_id");
-                    $query->execute(array(":user_id"=>$user_id));
-                    $profileRow = $query->fetch(PDO::FETCH_ASSOC);
-                ?>
-                <form name="form" action="" method="post">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-<!--                            <td>Date of Birth</td>-->
-                            <td>Phone</td>
-                            <td>Email</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/></td>
-                            <td><input type="text" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/></td>
-<!--                            <td><input type="text" name="DOB" value="--><?php //echo (empty($profileRow['dob'])) ? " " : $profileRow['dob'];?><!--"/></td>-->
-                            <td><input type="text" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
-                            <td><input type="text" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
-
-                        </tr>
-                        <tr>
-                            <td>Family Size</td>
-<!--                            <td>Interest</td>-->
-                            <td>Suburb</td>
-                            <td>Post Code</td>
-                            <td>Address</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/></td>
-<!--                            <td><input type="text" name="interest" value="--><?php //echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?><!--"/></td>-->
-                            <td><input type="text" name="suburb" value="<?php echo (empty($profileRow['suburb'])) ? " " : $profileRow['suburb'];?>"/></td>
-                            <td><input type="text" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/></td>
-                            <td><input type="text" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/></td>
-                        </tr>
-
-                    </table>
+        <div class="col-md-6 form-signin" style="background-color: #f5f5f5">
+            <h2 class="tab">Update Details</h2>
+            <?php
+            $query = $auth_user->runQuery("SELECT * FROM user_profile WHERE user_id=:user_id");
+            $query->execute(array(":user_id"=>$user_id));
+            $profileRow = $query->fetch(PDO::FETCH_ASSOC);
+            ?>
+            <form name="form" action="" method="post">
+                <div class="form-group">
+                    <td>First Name</td>
+                    <input type="text" class="form-control" name="firstname" value="<?php echo (empty($profileRow['user_fname'])) ? " " : $profileRow['user_fname'];?>"/>
+                </div>
+                <div class="form-group">
+                    <td>Last Name</td>
+                    <input type="text" class="form-control" name="lastname" value="<?php echo (empty($profileRow['user_lname'])) ? " " : $profileRow['user_lname'];?>"/>
+                </div>
+                <div class="form-group">
+                    <td>Phone</td>
+                    <td><input type="text" class="form-control" name="phone" value="<?php echo (empty($profileRow['phone'])) ? " " : $profileRow['phone'];?>"/></td>
+                </div>
+                <div class="form-group">
+                    <td>Email</td>
+                    <td><input type="text" class="form-control" name="email" value="<?php echo (empty($profileRow['email'])) ? " " : $profileRow['email'];?>"/></td>
+                </div>
+        </div>
+        <div class="col-md-1" style="background-color: #f5f5f5"></div>
+        <div class="col-md-6 form-signin" style="background-color: #f5f5f5">
+            <h2 class="tab">&nbsp;</h2>
+                <div class="form-group">
+                    <td>Family Size</td>
+                    <input type="text" class="form-control" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/>
+                </div>
+                <div class="form-group">
+                    <td>Suburb</td>
+                    <input type="text" class="form-control" name="suburb" value="<?php echo (empty($profileRow['suburb'])) ? " " : $profileRow['suburb'];?>"/>
+                </div>
+                <div class="form-group">
+                    <td>Post Code</td>
+                    <input type="text" class="form-control" name="postcode" value="<?php echo (empty($profileRow['postcode'])) ? " " : $profileRow['postcode'];?>"/>
+                </div>
+                <div class="form-group">
+                    <td>Address</td>
+                    <input type="text" class="form-control" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/>
+                </div>
+        </div>
                     <input type="submit" name="update" value="Update"/>
                 </form>
             </div>
