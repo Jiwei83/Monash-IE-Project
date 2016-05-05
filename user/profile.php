@@ -100,7 +100,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         <h2>
             <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
             <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
-            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matech People </a> &nbsp;
+            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matched Profiles </a> &nbsp;
         </h2>
         <hr />
         <p>&nbsp;</p>
@@ -254,6 +254,15 @@ if(isset($_POST['update'])) {
 }
 ?>
 
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
 
 <?php
 include "../include/footer.php";

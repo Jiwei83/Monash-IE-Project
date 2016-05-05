@@ -1,48 +1,34 @@
 <?php
-    session_start();
-    require_once('../user/class.user.php');
-    $user = new USER();
-    $user_id = $_SESSION['user_session'];
-
 include('../include/eventpath.php');
+include('../include/header.php');
+include('../include/navigation.php');
+
+    //session_start();
+    //require_once('../user/class.user.php');
+    //$user = new USER();
+    //$user_id = $_SESSION['user_session'];
+
+
 include('../include/config.php');
 
     //connection to the database
-    $sql = "SELECT * FROM events ORDER BY `events`.`date` DESC";
+    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `events`.`date` DESC";
     $stmt = $pdo->query($sql);
     $eventIDArray = array();
-    $i = 0;
+    //$i = 0;
     $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-    $sql2->execute(array(":user_id"=>$user_id));
-    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
+//
+//    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+//    $sql2->execute(array(":user_id"=>$user_id));
+//    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <?php
-require_once("../user/class.user.php");
-$login = new USER();
-if($login->is_loggedin()) : ?>
-    <style type="text/css">
-        #register {
-            display: none;
-        }
-
-    </style>
-
-<?php else: ?>
-    <style type="text/css">
-        #notlogedin {
-            display: none;
-        }
-    </style>
-<?php endif; ?>
-
-<?php include('../include/header.php');?>
+//require_once("../user/class.user.php");
+//$login = new USER(); ?>
+<?php ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.css"/>
-<?php include('../include/navigation.php');?>
-
-
+<?php ?>
     <div class="container" >
             <div class='row'>
                     <table id='event' class="display responsive nowrap" cellspacing="0" width="100%">
@@ -70,19 +56,20 @@ if($login->is_loggedin()) : ?>
                                 $btnJoin[$i] = "btn-join".$i;?>
                             <tr>
                                 <td>
-                                    <?php echo $val['eventName'];?>
+                                    <?php echo substr($val['eventName'], 0, 100);?>
                                 </td>
                                 <td>
                                     <?php echo $val['type'];?>
                                 </td>
                                 <td>
-                                    <?php echo $val['suburb'];?>
+                                    <?php echo substr($val['suburb'], 0, 100);?>
                                 </td>
                                 <td>
                                     <?php echo $val['capacity'];?>
                                 </td>
                                 <td>
-                                    <?php echo $val['date'];?>
+                                    <?php echo $val['date'];
+                                          $eventId = $val['eventId'];?>
                                 </td>
                                 <form action="" method="post">
                                     <td class="form-group">
@@ -147,7 +134,7 @@ if($login->is_loggedin()) : ?>
                 <script>$('#event').DataTable({
                         responsive: true
                 });</script>
-                
+
         </div>
     </div>
 </section>

@@ -2,10 +2,15 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
-include('../include/navigation.php');
+?>
+<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
+
+<?php include('../include/navigation.php');
+if(isset($_POST['search']) || isset($_POST['location'])) {
+    $address = $_POST['ad'];
+}
 
 ?>
-
 
 <!--Template from: http://derekeder.com/searchable_map_template-->
 <!--Php can get latitude and longitude of category from previous map-->
@@ -23,7 +28,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
             <div class='container-fluid'>
     <div class='row'>
         <div class='col-md-4'>
-
             <div class='well'>
                 <h1 class="title">
                 Search for Venue                                    
@@ -35,22 +39,23 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="basketball.php">Basketball</a></li>
-                        <li><a href="bbq.php">BBQ</a></li>
+                        <li><a href="bbq.php?address=<?php echo $address;?>">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
                         <li><a href="swim.php">Swim Pools</a></li>
                         <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
+                <form method="post">
                 <p>
-                    <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
-
+                    <input name='ad' class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
                 </p>
-                <a class='btn btn-primary btn-lg' id='search' href='#'>
+
+                <a name="search" class='btn btn-primary btn-lg' id='search' href='#'>
                     <i class='glyphicon glyphicon-search'></i>
                     Search
                 </a>
-                <a id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
+                <a name="location" id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
             <p> <br></p>
                 <p class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,9 +70,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <option value='2000'>2 km</option>
                         <option value='5000'>5 km</option>
                     </select>
-
                 </p>
-                
+                </form>
             </div>
 
 

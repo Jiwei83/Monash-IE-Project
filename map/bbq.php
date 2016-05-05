@@ -1,13 +1,18 @@
 <?php
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-include('../include/header.php');
+include('../include/header.php');?>
+
+
+<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
+
+<?php
 include('../include/navigation.php');
 
 ?>
 
 
-        <div class='container-fluid'>
+        <div class='co ntainer-fluid'>
             <div class='row'>
                 <div class='col-md-4'>
 
@@ -29,6 +34,7 @@ include('../include/navigation.php');
                             </ul>
                         </div>
                         <hr>
+                        <form method="post">
                         <p>
                             <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
 
@@ -45,14 +51,15 @@ include('../include/navigation.php');
                                 <span class="caret"></span>
                             </button>
 
-                            <select id='search_radius' multiple class=" dropdown-menu" >
+                            <select id='search_radius' multiple class=" dropdown-menu" name="radius">
                                 <option value='400'>2 blocks</option>
                                 <option value='500'>1/2 km</option>
                                 <option value='1000'>1 km</option>
                                 <option value='2000'>2 km</option>
                             </select>
-
                         </p>
+                        </form>
+                        <?php ?>
                     </div>
                     <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
                 </div>

@@ -8,8 +8,8 @@ $user_id = $_SESSION['user_session'];
 $user = new User();
 
 if(isset($_POST['btn-submit'])) {
-    $address = $_GET['eTitle1'];
-    $suburb = $_GET['eTitle2'];
+    $address = $_POST['eAddress'];
+    $suburb = $_POST['eSuburb'];
     $title = $_POST['eTitle'];
     $desc = $_POST['description'];
     $curr_capa = 0;
@@ -29,12 +29,17 @@ if(isset($_POST['btn-submit'])) {
     $stmt->execute($data);
 
     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-    $event_id = $userRow['eventId'];
-    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
-    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
-    header('Location: listEvent.php');
+//    $event_id = $userRow['eventId'];
+//    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
+//    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
+//    $stmt = $user->runQuery($sql);
+//    $stmt->execute($data);
+    if($stmt) {
+        echo '<script language="javascript">';
+        echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
+        echo '</script>';
+        echo("<script>location.href = 'listEvent.php';</script>");
+    }
 }
 
 
@@ -54,13 +59,13 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Address<span>*</span>
-                <input id="pac-input1" type="text" class="form-control" name="eTitle1" placeholder="Search address" />
+                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" />
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Suburb<span>*</span>
-                <input id="pac-input2" type="text" class="form-control" name="eTitle2" placeholder="Search Suburb" />
+                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" />
                 <span id="check-e"></span>
             </div>
 

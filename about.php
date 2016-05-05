@@ -1,25 +1,28 @@
 <?php
+include('include/header.php');
 include('include/aboutpath.php');
-session_start();
-$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-require_once("user/class.user.php");
-$login = new USER();
-if($login->is_loggedin()) : ?>
-    <style type="text/css">
-        #register {
-            display: none;
-        }
 
-    </style>
+//session_start();
+//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+//require_once("user/class.user.php");
+//$login = new USER();
+//if($login->is_loggedin()) : ?>
+<!--    <style type="text/css">-->
+<!--        #register {-->
+<!--            display: none;-->
+<!--        }-->
+<!---->
+<!--    </style>-->
+<!---->
+<?php //else: ?>
+<!---->
+<!--    <style type="text/css">-->
+<!--        #notlogedin {-->
+<!--            display: none;-->
+<!--        }-->
+<!--    </style>-->
+<?php //endif; ?>
 
-<?php else: ?>
-
-    <style type="text/css">
-        #notlogedin {
-            display: none;
-        }
-    </style>
-<?php endif; ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -51,7 +54,7 @@ if($login->is_loggedin()) : ?>
 
 <body class="home-page">
     <!-- ******HEADER****** -->
-    <?php include('include/navigation.php') ;?>
+    <?php include('include/navigation.php');?>
 
     <div class="headline-bg about-headline-bg">
     </div><!--//headline-bg-->
@@ -108,12 +111,7 @@ if($login->is_loggedin()) : ?>
             </div><!--//container-->
         </div><!--//bottom-bar-->
     </footer><!--//footer-->
-    
-    
 
-
-
-    
     <!-- Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>

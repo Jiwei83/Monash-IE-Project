@@ -152,13 +152,13 @@
          &nbsp;
 
             <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
-        <a href="profile.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Profile</a>
-            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Matched People</a>
+        <a href="profile.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Profile </a>
+            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Matched Profiles </a>
 
         </h2>
        	<hr />
         <div class='row'>
-            <table id='event' class="table table-striped table-bordered" style="width: 10%">
+            <table id='event' class="table table-striped table-bordered" style="width: 100%">
                 <thead>
                 <tr>
                     <th>Name</th>
