@@ -6,10 +6,12 @@ include('../include/header.php');
 <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
 <?php include('../include/navigation.php');
-if(isset($_POST['search']) || isset($_POST['location'])) {
-    $address = $_POST['ad'];
-}
 
+if(isset($_POST['btn'])) {
+    $ad = $_COOKIE['ad'];
+    $ad = rawurlencode($ad);
+    $rd = $_COOKIE['rd'];
+}
 ?>
 
 <!--Template from: http://derekeder.com/searchable_map_template-->
@@ -23,6 +25,7 @@ $stmt->execute(array(":user_id"=>$user_id));
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+
 ?>
 
             <div class='container-fluid'>
@@ -33,29 +36,29 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 Search for Venue                                    
                 </h1>
                 <div class="btn-group">
-                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button name="btn" class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getdata()">
                         Pick a Category
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="basketball.php">Basketball</a></li>
-                        <li><a href="bbq.php?address=<?php echo $address;?>">BBQ</a></li>
+                        <li><a onclick="updatecookie()" href="bbq.php#/?address=<?php echo $ad;?>&radius=<?php echo $rd?>">BBQ</a></li>
                         <li><a href="dog.php">Dog Friendly Areas</a></li>
                         <li><a href="swim.php">Swim Pools</a></li>
                         <li><a href="yoga.php">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
-                <form method="post">
+
                 <p>
                     <input name='ad' class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' onfocus="document.getElementById('search_address').value=''" onclick="document.getElementById('search_address').value=''" />
                 </p>
 
-                <a name="search" class='btn btn-primary btn-lg' id='search' href='#'>
+                <a name="search" class='btn btn-primary btn-lg' id='search'  href='#'>
                     <i class='glyphicon glyphicon-search'></i>
                     Search
                 </a>
-                <a name="location" id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
+                <a name="location" id='find_me' href='#' class="btn btn-primary btn-lg" >Locate</a>
             <p> <br></p>
                 <p class="btn-group">
                     <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,11 +74,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <option value='5000'>5 km</option>
                     </select>
                 </p>
-                </form>
+
             </div>
-
-
-
         </div>
         <div class='col-md-8'>
             <noscript>
@@ -154,8 +154,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </section><!--//steps-->
     
 
-<?
+<?php
 include "../include/footer.php";
+
 ?>
 
 
@@ -166,6 +167,33 @@ include "../include/footer.php";
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript">
+        // Parse the URL
+//
+        function getdata(){
+            var txtOne = document.getElementById('search_address').value;
+            var txtTwo = document.getElementById('search_radius').value;
+
+            document.cookie = "ad=" + txtOne;
+            document.cookie = "rd=" + txtTwo;
+        }
+
+//        function updatecookie(){
+//            var txtOne = document.getElementById('search_address').value;
+//            var txtTwo = document.getElementById('search_radius').value;
+//
+//            document.cookie = "ad=" + txtOne;
+//            document.cookie = "rd=" + txtTwo;
+//            <?php
+//                $ad = $_COOKIE['ad'];
+//                $ad = rawurlencode($ad);
+//
+//                $rd = $_COOKIE['rd'];
+//            ?>
+//            window.alert("updated");
+//
+//        }
+</script>
 
 
 </body>

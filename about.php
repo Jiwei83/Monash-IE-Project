@@ -1,27 +1,26 @@
 <?php
-include('include/header.php');
 include('include/aboutpath.php');
 
-//session_start();
-//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-//require_once("user/class.user.php");
-//$login = new USER();
-//if($login->is_loggedin()) : ?>
-<!--    <style type="text/css">-->
-<!--        #register {-->
-<!--            display: none;-->
-<!--        }-->
-<!---->
-<!--    </style>-->
-<!---->
-<?php //else: ?>
-<!---->
-<!--    <style type="text/css">-->
-<!--        #notlogedin {-->
-<!--            display: none;-->
-<!--        }-->
-<!--    </style>-->
-<?php //endif; ?>
+session_start();
+$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+require_once("user/class.user.php");
+$login = new USER();
+if($login->is_loggedin()) : ?>
+    <style type="text/css">
+        #register {
+            display: none;
+        }
+
+    </style>
+
+<?php else: ?>
+
+    <style type="text/css">
+        #notlogedin {
+            display: none;
+        }
+    </style>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
