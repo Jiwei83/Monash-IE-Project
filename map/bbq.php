@@ -27,11 +27,11 @@ include('../include/navigation.php');
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="basketball.php">Basketball</a></li>
-                                <li><a href="bbq.php">BBQ</a></li>
-                                <li><a href="dog.php">Dog Friendly Areas</a></li>
-                                <li><a href="swim.php">Swim Pools</a></li>
-                                <li><a href="yoga.php">Yoga</a></li>
+                                <li><a onclick="updateBasketball()">Basketball</a></li>
+                                <li><a onclick="updateBBQ()" >BBQ</a></li>
+                                <li><a onclick="updateDog()">Dog Friendly Areas</a></li>
+                                <li><a onclick="updateSwim()">Swim Pools</a></li>
+                                <li><a onclick="updateYoga()">Yoga</a></li>
                             </ul>
                         </div>
                         <hr>
@@ -154,6 +154,40 @@ include('../include/footer.php')
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript">
+    // Parse the URL
+    //
+    function updateBasketball(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "basketball.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateBBQ(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "bbq.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateDog(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "dog.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateSwim(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "swim.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateYoga(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "yoga.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+</script>
 </body>
 </html>
 

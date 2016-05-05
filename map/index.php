@@ -7,11 +7,6 @@ include('../include/header.php');
 
 <?php include('../include/navigation.php');
 
-if(isset($_POST['btn'])) {
-    $ad = $_COOKIE['ad'];
-    $ad = rawurlencode($ad);
-    $rd = $_COOKIE['rd'];
-}
 ?>
 
 <!--Template from: http://derekeder.com/searchable_map_template-->
@@ -41,11 +36,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="basketball.php">Basketball</a></li>
-                        <li><a onclick="updatecookie()" href="bbq.php#/?address=<?php echo $ad;?>&radius=<?php echo $rd?>">BBQ</a></li>
-                        <li><a href="dog.php">Dog Friendly Areas</a></li>
-                        <li><a href="swim.php">Swim Pools</a></li>
-                        <li><a href="yoga.php">Yoga</a></li>
+                        <li><a onclick="updateBasketball()">Basketball</a></li>
+                        <li><a onclick="updateBBQ()" >BBQ</a></li>
+                        <li><a onclick="updateDog()">Dog Friendly Areas</a></li>
+                        <li><a onclick="updateSwim()">Swim Pools</a></li>
+                        <li><a onclick="updateYoga()">Yoga</a></li>
                     </ul>
                 </div>
                 <hr>
@@ -170,29 +165,36 @@ include "../include/footer.php";
 <script type="text/javascript">
         // Parse the URL
 //
-        function getdata(){
-            var txtOne = document.getElementById('search_address').value;
-            var txtTwo = document.getElementById('search_radius').value;
+    function updateBasketball(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
 
-            document.cookie = "ad=" + txtOne;
-            document.cookie = "rd=" + txtTwo;
-        }
+        window.location.href = "basketball.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateBBQ(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
 
-//        function updatecookie(){
-//            var txtOne = document.getElementById('search_address').value;
-//            var txtTwo = document.getElementById('search_radius').value;
-//
-//            document.cookie = "ad=" + txtOne;
-//            document.cookie = "rd=" + txtTwo;
-//            <?php
-//                $ad = $_COOKIE['ad'];
-//                $ad = rawurlencode($ad);
-//
-//                $rd = $_COOKIE['rd'];
-//            ?>
-//            window.alert("updated");
-//
-//        }
+        window.location.href = "bbq.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateDog(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "dog.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateSwim(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "swim.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
+    function updateYoga(){
+        var txtOne = document.getElementById('search_address').value;
+        var txtTwo = document.getElementById('search_radius').value;
+
+        window.location.href = "yoga.php#/?address=" + txtOne + "&radius=" + txtTwo;
+    }
 </script>
 
 
