@@ -187,7 +187,7 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 </div>
 <?php
 
-include('../include/footer1.php')
+include('../include/footer.php')
 
 ?>
 
