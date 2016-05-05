@@ -25,6 +25,7 @@ $data = json_decode($json);
 
 $lat = $data->results['0']->geometry->location->lat;
 $lng = $data->results['0']->geometry->location->lng;
+$title=$list['eventName'];
  ?>
 
 
