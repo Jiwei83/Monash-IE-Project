@@ -7,11 +7,10 @@ include('../include/header.php');
 
 <?php include('../include/navigation.php');
 if(isset($_POST['search']) || isset($_POST['location'])) {
-    $address = $_GET['address'];
+    $address = $_POST['ad'];
 }
 
 ?>
-
 
 <!--Template from: http://derekeder.com/searchable_map_template-->
 <!--Php can get latitude and longitude of category from previous map-->
@@ -29,7 +28,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
             <div class='container-fluid'>
     <div class='row'>
         <div class='col-md-4'>
-
             <div class='well'>
                 <h1 class="title">
                 Search for Venue                                    
@@ -72,7 +70,6 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <option value='2000'>2 km</option>
                         <option value='5000'>5 km</option>
                     </select>
-
                 </p>
                 </form>
             </div>
