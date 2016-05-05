@@ -12,7 +12,7 @@ include('../include/navigation.php');
 include('../include/config.php');
 
     //connection to the database
-    $sql = "SELECT * FROM events ORDER BY `events`.`date` DESC";
+    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `events`.`date` DESC";
     $stmt = $pdo->query($sql);
     $eventIDArray = array();
     //$i = 0;
@@ -56,13 +56,13 @@ include('../include/config.php');
                                 $btnJoin[$i] = "btn-join".$i;?>
                             <tr>
                                 <td>
-                                    <?php echo $val['eventName'];?>
+                                    <?php echo substr($val['eventName'], 0, 100);?>
                                 </td>
                                 <td>
                                     <?php echo $val['type'];?>
                                 </td>
                                 <td>
-                                    <?php echo $val['suburb'];?>
+                                    <?php echo substr($val['suburb'], 0, 100);?>
                                 </td>
                                 <td>
                                     <?php echo $val['capacity'];?>
