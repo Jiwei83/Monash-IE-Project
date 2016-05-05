@@ -32,7 +32,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                     Events</a>
                 <ul class="dropdown-menu">
-                    <li><a href=<?php echo $url_event_create ?>><span class="glyphicon glyphicon-calendar"></span>&nbsp;Create an Event</a></li>
+                    <li><a href=<?php echo $url_event_create ?>id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
                     <li><a href=<?php echo $url_event_list ?>><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
                 </ul>
             </li>
