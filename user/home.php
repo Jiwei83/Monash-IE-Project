@@ -59,7 +59,7 @@
             <title>Cancel Reminder From active-family.net</title>
             </head>
             <body>
-            <p>Your event Has Been Cancelled!;</p>
+            <p>Your event Has Been Cancelled!</p>
 
             </body>
             </html>
@@ -227,6 +227,7 @@
                                                 sendCancelMail($to);
                                             }
                                             echo '<script type="text/javascript">alert("Successfully Cancelled!");</script>';
+                                            echo '<script type="text/javascript">location.reload();</script>';
                                         }
                                         else {
                                             echo '<script type="text/javascript">alert("Already Cancelled");</script>';

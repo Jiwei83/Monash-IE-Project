@@ -163,6 +163,7 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                                     $stmt = $pdo->query($sql);
                                     if($stmt) {
                                         echo '<script type="text/javascript">alert("Successful!");</script>';
+                                        echo '<script type="text/javascript">location.reload();</script>';
                                     }
                                 }
                                 ?>
