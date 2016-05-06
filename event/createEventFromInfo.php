@@ -88,21 +88,26 @@ if(isset($_POST['btn-submit'])) {
     </div>
     <div class="form-group">
         Hold Date<span>*</span>
-        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required>
+        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required />
         <span id="check-e"></span>
     </div>
     <div class="form-group">
         Capacity<span>*</span>
-        <label>
-            <select name="capOption" size="0" id="eType" style="width: 7em" required>
-                <option selected="selected" value="">Number</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
-        </label>
+        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');this.value=this.value.replace('.','');"  required />
         <span id="check-e"></span>
+    </div>
+    <div class="form-group">
+<!--        Capacity<span>*</span>-->
+<!--        <label>-->
+<!--            <select name="capOption" size="0" id="eType" style="width: 7em" required>-->
+<!--                <option selected="selected" value="">Number</option>-->
+<!--                <option>5</option>-->
+<!--                <option>10</option>-->
+<!--                <option>15</option>-->
+<!--                <option>20</option>-->
+<!--            </select>-->
+<!--        </label>-->
+<!--        <span id="check-e"></span>-->
         Categories<span>*</span>
         <label>
             <select name="taskOption" size="0" id="eType" style="width: 10em" required>
