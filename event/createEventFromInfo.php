@@ -10,13 +10,19 @@ $user = new User();
 if(isset($_POST['btn-submit'])) {
     $address = $_GET['address'];
     $suburb = $_GET['suburb'];
-    $title = $_POST['eTitle'];
-    $desc = $_POST['description'];
+    $title = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
+    $desc = (isset($_POST['description']) ? $_POST['description'] : null);
     $curr_capa = 0;
     $status='active';
-    $capacity = $_POST['capOption'];
+    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
     $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
     $type = $_POST['taskOption'];
+
+
+
+
+
+
     $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
               VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
     $data = array(':user_id'=>"$user_id",':title'=>"$title",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
