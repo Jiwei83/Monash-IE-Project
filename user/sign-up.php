@@ -56,8 +56,14 @@ if(isset($_POST['btn-signup']))
 	else if($uphone=="") {
 		$error[] = "Provide Phone Number!";
 	}
+	else if(is_numeric($uphone)) {
+		$error[] = "Not a Number!";
+	}
 	else if($upostcode=="") {
 		$error[] = "Provide Postcode!";
+	}
+	else if(is_numeric($upostcode)) {
+		$error[] = "Not a Number!";
 	}
 	else if($usuburb=="") {
 		$error[] = "Provide suburb!";
@@ -73,6 +79,9 @@ if(isset($_POST['btn-signup']))
 	}
 	else if($upno=="") {
 		$error[] = "Provide Pet Number!";
+	}
+	else if(is_numeric($upno)) {
+		$error[] = "Not a Number!";
 	}
 	else
 	{
