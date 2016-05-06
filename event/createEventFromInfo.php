@@ -15,33 +15,35 @@ if(isset($_POST['btn-submit'])) {
     $curr_capa = 0;
     $status='active';
     $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
-    $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
-    $type = $_POST['taskOption'];
-
-
-
-
-
-
-    $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
+    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
+    if (!empty($date)) {
+        $date = date('Y-m-d G:i', strtotime($date));
+    }
+    else {
+        $date = null;
+    }
+    $type = (isset($_POST['taskOption']) ? $_POST['taskOption'] : null);
+    if(!empty($title) && !empty($desc) && !empty($capacity) && !empty($date) && !empty($type)) {
+        $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
               VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
-    $data = array(':user_id'=>"$user_id",':title'=>"$title",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
+        $data = array(':user_id'=>"$user_id",':title'=>"$title",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
+        $stmt = $user->runQuery($sql);
+        $stmt->execute($data);
 
-    if($stmt) {
-        echo '<script language="javascript">';
-        echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
-        echo '</script>';
-        echo("<script>location.href = 'listEvent.php';</script>");
+        if($stmt) {
+            echo '<script type="text/javascript">
+                    alert("Event Successfully Created!!!");
+                    window.location.href = "listEvent.php";
+                  </script>';
+        }
     }
 
-    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
-    $data = array(':title_name'=>"$title");
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
-
-    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+//    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
+//    $data = array(':title_name'=>"$title");
+//    $stmt = $user->runQuery($sql);
+//    $stmt->execute($data);
+//
+//    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 //    $event_id = $userRow['eventId'];
 //    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
 //    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
@@ -60,7 +62,19 @@ if(isset($_POST['btn-submit'])) {
 
 <form class="form-signin" method="post" id="login-form">
     <h2 class="form-signin-heading">Create Your Event</h2><hr />
-
+    <?php
+    if(isset($error))
+    {
+        foreach($error as $error)
+        {
+            ?>
+            <div class="alert alert-danger">
+                <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+            </div>
+            <?php
+        }
+    }
+    ?>
     <div class="form-group">
         Title<span>*</span>
         <input type="text" class="form-control" name="eTitle" placeholder="Event Title" required />
@@ -69,18 +83,18 @@ if(isset($_POST['btn-submit'])) {
 
     <div class="form-group">
         Description<span>*</span><br>
-            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus></textarea>
+            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required></textarea>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
         Hold Date<span>*</span>
-        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate">
+        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
         Capacity<span>*</span>
         <label>
-            <select name="capOption" size="0" id="eType" style="width: 7em">
+            <select name="capOption" size="0" id="eType" style="width: 7em" required>
                 <option selected="selected" value="">Number</option>
                 <option>5</option>
                 <option>10</option>
@@ -91,7 +105,7 @@ if(isset($_POST['btn-submit'])) {
         <span id="check-e"></span>
         Categories<span>*</span>
         <label>
-            <select name="taskOption" size="0" id="eType" style="width: 10em">
+            <select name="taskOption" size="0" id="eType" style="width: 10em" required>
                 <option selected="selected" value="">All Activities</option>
                 <option>BBQ</option>
                 <option>Walking Dog</option>

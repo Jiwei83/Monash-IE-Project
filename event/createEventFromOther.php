@@ -8,10 +8,10 @@ $user_id = $_SESSION['user_session'];
 $user = new User();
 
 if(isset($_POST['btn-submit'])) {
-    $address = $_POST['eAddress'];
-    $suburb = $_POST['eSuburb'];
     $title = $_POST['eTitle'];
     $desc = $_POST['description'];
+    $address = $_POST['eAddress'];
+    $suburb = $_POST['eSuburb'];
     $curr_capa = 0;
     $status='active';
     $capacity = $_POST['capOption'];
@@ -23,12 +23,12 @@ if(isset($_POST['btn-submit'])) {
     $stmt = $user->runQuery($sql);
     $stmt->execute($data);
 
-    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
-    $data = array(':title_name'=>"$title");
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
-
-    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+//    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
+//    $data = array(':title_name'=>"$title");
+//    $stmt = $user->runQuery($sql);
+//    $stmt->execute($data);
+//
+//    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 //    $event_id = $userRow['eventId'];
 //    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
 //    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
@@ -59,30 +59,30 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Address<span>*</span>
-                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" />
+                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" required/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Suburb<span>*</span>
-                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" />
+                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" required/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus></textarea>
+                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Hold Date<span>*</span>
-                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" />
+                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
                 <label>
-                    <select name="capOption" size="0" id="eType" style="width: 7em">
+                    <select name="capOption" size="0" id="eType" style="width: 7em" required>
                         <option selected="selected" value="">Number</option>
                         <option>5</option>
                         <option>10</option>
@@ -94,7 +94,7 @@ if(isset($_POST['btn-submit'])) {
                 <span id="check-e"></span>
                 Categories<span>*</span>
                 <label>
-                    <select name="taskOption" size="0" id="eType" style="width: 10em">
+                    <select name="taskOption" size="0" id="eType" style="width: 10em" required>
                         <option selected="selected" value="">All Activities</option>
                         <option>BBQ</option>
                         <option>Walking Dog</option>
