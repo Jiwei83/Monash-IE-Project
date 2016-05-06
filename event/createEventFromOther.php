@@ -81,7 +81,8 @@ if(isset($_POST['btn-submit'])) {
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
-                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');this.value=this.value.replace('.','');"  required />
+<!--                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/^[^0][\d]?$/,'');this.value=this.value.replace('.','');"  required />-->
+                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);"/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
@@ -187,6 +188,21 @@ include('../include/footer.php');
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+
+
+<script>
+    function checkInt(n,max){
+        var regex = /^\d+$/;
+        if(regex.test(n)){
+            if(n<max && n>0){
+            }else{
+                alert("Please insert number less than"+max)
+            }
+        }else{
+            alert("It is not integer");
+        }
+    }
+</script>
 
 
 </html>
