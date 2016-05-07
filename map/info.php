@@ -121,7 +121,10 @@ for($x=0; $x<7;$x++){
 ?>
 <?php
 //Fetch rating deatails from database
-$query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM post_rating WHERE post_id = 1 AND status = 1";
+//$query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM post_rating WHERE post_id = 1 AND status = 1";
+//$result = $pdo->query($query);
+//$ratingRow = $result->fetch(PDO::FETCH_ASSOC);
+$query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM location WHERE latitude = $lat AND status = 1";
 $result = $pdo->query($query);
 $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -169,6 +172,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
         <div class="container">
             <input name="rating" value="0" id="rating_star" type="hidden" postID="1" />
+<!--            <input name="rating" value="0" id="rating_star" type="hidden" lat=--><?php //echo $lat?><!-- />-->
             <div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow['average_rating']; ?></span>
                 Based on <span id="totalrat"><?php echo $ratingRow['rating_number']; ?></span>  rating)</span></div>
             <div class='container-fluid'>
@@ -445,15 +449,17 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             initialValue: '',
             callbackFunctionName: 'processRating',
             imageDirectory: 'rating/images/',
-            inputAttr: 'postID'
+            inputAttr1: 'postID',
+            inputAttr2: 'lat'
+            //inputAttr: 'lat'
         });
     });
 
-    function processRating(val, attrVal){
+    function processRating(val, attrVal1, attrVal2){
         $.ajax({
             type: 'POST',
-            url: 'rating/rating.php',
-            data: 'postID='+attrVal+'&ratingPoints='+val,
+            url: 'rating/rating.php?lat='+<?php echo $lat?>,
+            data: 'postID='+attrVal1+'&ratingPoints='+val+'&lat='+attrVal2,
             dataType: 'json',
             success : function(data) {
                 if (data.status == 'ok') {
@@ -466,6 +472,23 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             }
         });
     }
+//    function processRating(val, attrVal){
+//        $.ajax({
+//            type: 'POST',
+//            url: 'rating/rating.php',
+//            data: 'lat='+attrVal+'&ratingPoints='+val,
+//            dataType: 'json',
+//            success : function(data) {
+//                if (data.status == 'ok') {
+//                    alert('You have rated '+val+' to this place on ' +attrVal);
+//                    $('#avgrat').text(data.average_rating);
+//                    $('#totalrat').text(data.rating_number);
+//                }else{
+//                    alert('Some problem occured, please try again.');
+//                }
+//            }
+//        });
+//    }
 </script>
 
 </body>

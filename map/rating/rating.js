@@ -17,7 +17,8 @@
         var c = p&&p.callbackFunctionName?p.callbackFunctionName:"";
         var e = p&&p.initialValue?p.initialValue:"0";
         var d = p&&p.imageDirectory?p.imageDirectory:"images";
-        var r = p&&p.inputAttr?p.inputAttr:"";
+        var r = p&&p.inputAttr1?p.inputAttr1:"";
+        var l = p&&p.inputAttr2?p.inputAttr2:"";
         var f = e;
         var g = a(this);
         b = parseInt(b);
@@ -29,11 +30,12 @@
         },function(){});
         g.next("ul").children("li").click(function(){
             var a = $(this).parent().children("li").index($(this));
-            var attrVal = (r != '')?g.attr(r):'';
+            var attrVal1 = (r != '')?g.attr(r):'';
+            var attrVal2 = (l != '')?g.attr(l):'';
             f = a+1;
             g.val(f);
             if(c != ""){
-                eval(c+"("+g.val()+", "+attrVal+")")
+                eval(c+"("+g.val()+", "+attrVal1+", "+attrVal2+")")
             }
         });
         g.next("ul").hover(function(){},function(){
