@@ -26,6 +26,7 @@ $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $lname = $user['user_lname'];
         $ldate = $user['latest'];
         $sub = $user['subscription'];
+        $user_id1=$user['user_id'];
         // echo $to.$fname.$lname.$ldate;
         if ($sub=='subscribed') {
             if ($to != null) {
@@ -47,7 +48,9 @@ $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <body>
             <p>Dear $fname,</p>
             <p>You have not been active for the last month <br> the last event you participated in was on $ldate <br></p>
-            <p><b>here are some event that may interest you</b></p>
+            <a href='http://dc3.active-family.net/event/listEvent.php'>here are some event that may interest you</a>
+            <p><br></p>
+            <a href='http://dc3.active-family.net/user/unsubscribe.php?user_id=$user_id1'>to unsubscribe please click here</a>
 
             </body>
             </html>
