@@ -169,8 +169,14 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a href="../index.php">Home</a></li>
                     <li class="nav-item"><a href="../map/index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
-                    <li class="nav-item"><a href="../about.php">About Us</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                            Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+                            <li><a href="../event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                        </ul>
+                    </li>                    <li class="nav-item"><a href="../about.php">About Us</a></li>
                     <li class="active nav-item dropdown" id="notlogedin">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_fname']; ?>&nbsp;<span class="caret"></span></a>

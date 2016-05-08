@@ -94,7 +94,7 @@ if(isset($_POST['btn-submit'])) {
     <div class="form-group">
         Capacity<span>*</span>
 <!--        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');this.value=this.value.replace('.','');"  required />-->
-        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);"/>
+        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);" required/>
 
         <span id="check-e"></span>
     </div>
