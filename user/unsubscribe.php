@@ -11,13 +11,12 @@ include('../include/userpath.php');
 include('../include/config.php');
 include('../include/header.php');
 include('../include/navigation.php');
+$user_id1 = (isset($_GET['user_id']) ? $_GET['user_id'] : 700);
 
-
-$user_id1 = $_GET['user_id'];
 $status= "block";
 $status1= "none";
 
-if ($user_id1== $user_id) {
+if ($user_id1 == $user_id) {
     $stmt = $pdo->prepare('select * from user_profile where user_id= ?');
 
     $stmt->execute(array($user_id1));
