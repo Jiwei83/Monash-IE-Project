@@ -21,7 +21,7 @@ if(isset($_POST['btn-login']))
             $url = "home.php";
             $login->redirect($url);
         }
-        header("Location: home.php");
+        //header("Location: home.php");
         //header("Location:$url");
     }
     else
