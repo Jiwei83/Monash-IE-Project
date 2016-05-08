@@ -42,6 +42,7 @@ include_once '../../include/config.php';
 if(!empty($_POST['ratingPoints'])){
     $postID = $_POST['postID'];
     $lat = $_GET['lat'];
+    $user_id = $_GET['user_id'];
     $ratingNum = 1;
     $ratingPoints = $_POST['ratingPoints'];
 
@@ -56,6 +57,8 @@ if(!empty($_POST['ratingPoints'])){
         $query = "UPDATE location SET rating_number = '".$ratingNum."', total_points = '".$ratingPoints."', modified_at = '".date("Y-m-d H:i:s")."' WHERE latitude = ".$lat;
         //$query = "UPDATE location SET rating_number = 4 WHERE latitude = ".$lat;
         $update = $pdo->query($query);
+        $sql = "UPDATE users SET rating_status = 'rated' WHERE user_id = $user_id";
+        $pdo->exec($sql);
 //    else:
 //        //Insert rating data into the database
 //        $query = "INSERT INTO post_rating (post_id,rating_number,total_points,created,modified) VALUES(".$postID.",'".$ratingNum."','".$ratingPoints."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."')";

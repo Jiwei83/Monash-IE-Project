@@ -20,6 +20,9 @@ if($login->is_loggedin()) : ?>
         #register {
             display: none;
         }
+        #info{
+            display: none;
+        }
     </style>
 
 <?php else: ?>

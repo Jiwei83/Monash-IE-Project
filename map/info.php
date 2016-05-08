@@ -17,6 +17,7 @@ $stmt = $login->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+$rateStatus = $userRow['rating_status'];
 
 $lat = $_GET['lat'];
 $lng = $_GET['lng'];
@@ -171,10 +172,24 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 <!--    <section class="steps section">-->
 
         <div class="container">
-            <input name="rating" value="0" id="rating_star" type="hidden" postID="1" />
+            <?php
+            if(!empty($user_id)) {
+                if($rateStatus == 'not rated') {
+                    echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="1" />';
+                    echo '<div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow[\'average_rating\']; ?></span>
+                Based on <span id="totalrat"><?php echo $ratingRow[\'rating_number\']; ?></span>  rating)</span></div>';
+                }
+                else {
+                    echo '<div class="overall-rating">You Have Rated This Place!</span></div>';
+                    echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
+                }
+
+            }
+            ?>
+<!--            <input name="rating" value="0" id="rating_star" type="hidden" postID="1" />-->
 <!--            <input name="rating" value="0" id="rating_star" type="hidden" lat=--><?php //echo $lat?><!-- />-->
-            <div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow['average_rating']; ?></span>
-                Based on <span id="totalrat"><?php echo $ratingRow['rating_number']; ?></span>  rating)</span></div>
+<!--            <div class="overall-rating">(Average Rating <span id="avgrat">--><?php //echo $ratingRow['average_rating']; ?><!--</span>-->
+<!--                Based on <span id="totalrat">--><?php //echo $ratingRow['rating_number']; ?><!--</span>  rating)</span></div>-->
             <div class='container-fluid'>
                 <br>
                 <div class="row">
@@ -267,8 +282,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 <!--                                            </a>-->
                                         </button>
                                     </div>
+                                <p id="info">Please create event and rate after login</p>
 <!--                                </form>-->
-                                </p>
                             </div>
                             <div>
 
@@ -458,12 +473,14 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
     function processRating(val, attrVal1, attrVal2){
         $.ajax({
             type: 'POST',
-            url: 'rating/rating.php?lat='+<?php echo $lat?>,
+//            url: 'rating/rating.php?lat='+<?php //echo $lat?>//,
+            url: "rating/rating.php?lat=<?php echo $lat?>&user_id=<?php echo $user_id?>",
             data: 'postID='+attrVal1+'&ratingPoints='+val+'&lat='+attrVal2,
             dataType: 'json',
             success : function(data) {
                 if (data.status == 'ok') {
                     alert('You have rated '+val+' to this place');
+                    location.reload();
                     $('#avgrat').text(data.average_rating);
                     $('#totalrat').text(data.rating_number);
                 }else{
