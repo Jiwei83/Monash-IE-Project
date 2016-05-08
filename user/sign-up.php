@@ -196,14 +196,7 @@ if(isset($_POST['btn-signup']))
 					<li class="nav-item"><a href="../about.php">About Us</a></li>
 					<li class="nav-item"><a href="index.php" id="register">Log in</a></li>
 					<li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="sign-up.php" id="register">Sign Up Free</a></li>
-					<li class="nav-item" id="notlogedin">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-							<span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-							<li><a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-						</ul>
-					</li>
+
 				</ul><!--//nav-->
 			</div><!--//navabr-collapse-->
 		</nav><!--//main-nav-->

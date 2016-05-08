@@ -96,7 +96,9 @@ function mailresetlink($to,$token){
 
     if($mail->send()){
         $user = new User();
-        $user->redirect('resetPage.php?joined');
+//        $user->redirect('resetPage.php?joined');
+        echo '<script type="text/javascript">window.location.href="resetPage.php?joined"</script>';
+
     }
     else {
         //echo "Mail Error: " . $mail->ErrorInfo;
@@ -141,7 +143,7 @@ function mailresetlink($to,$token){
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-                <button id="submitBtn" type="submit" class="btn btn-primary" name="btn-reset" >
+                <button id="submitBtn" type="submit" class="btn btn-primary btn-lg" name="btn-reset" >
                     <i class="glyphicon glyphicon-open-file"></i>&nbsp;Reset
                 </button>
 
