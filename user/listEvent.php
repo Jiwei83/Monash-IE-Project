@@ -7,12 +7,13 @@ include('../include/navigation.php');
     //require_once('../user/class.user.php');
     //$user = new USER();
     //$user_id = $_SESSION['user_session'];
-
+$user_id1 = $_GET['user_id'];
+$user_id2 = $_SESSION['user_session'];
 
 include('../include/config.php');
 
     //connection to the database
-    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `events`.`date` DESC";
+    $sql = "SELECT * FROM events WHERE status = 'active' AND  create_user_id = '$user_id1' ORDER BY `events`.`date` DESC";
     $stmt = $pdo->query($sql);
     $eventIDArray = array();
     //$i = 0;
@@ -73,10 +74,10 @@ include('../include/config.php');
                                 </td>
                                 <form action="" method="post">
                                     <td class="form-group">
-                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='view.php?eventId=<?php echo $eventId; ?>'">
-<!--                                            <a href="view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
+                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
+                                            <a href="../event/view.php?eventId=<?php echo $eventId; ?>" style="color: white">
                                                 <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-<!--                                            </a>-->
+                                            </a>
                                         </button>
                                     </td>
                                 </form>
@@ -91,7 +92,8 @@ include('../include/config.php');
                                     $curr_capa = $val['curr_capa'];
                                     $capacity = $val['capacity'];
                                     if(isset($_POST[$btnJoin[$i]]) && $curr_capa < $capacity) {
-                                        $sql1 = "INSERT INTO eventParticipant VALUES ($eventId, $user_id)";
+                                        $sql1 = "INSERT INTO eventParticipant VALUES ($eventId, $user_id2)";
+                                        echo $sql1;
                                         $resp1 = $pdo->exec($sql1);
                                         if($resp1) {
                                             $sql2 = "UPDATE events SET curr_capa = curr_capa + 1 WHERE eventId = $eventId";

@@ -14,8 +14,63 @@ $postcode = $userRow['postcode'];
 $interest = $userRow['interest'];
 $intrList = explode(',', $interest);
 
+//function getSelectForOneScale($intrList, $postcode, $user_id) {
+//    $select = "SELECT user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+//
+//    for($i=0; $i<count($intrList); $i++) {
+//        if($intrList[$i] != " ") {
+//            $intrList[$i] = trim($intrList[$i]);
+//            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+//        }
+//    }
+//    $select = $select."null)";
+//    return $select;
+//}
+//
+//function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
+//    $select = "SELECT user_fname, postcode, suburb, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
+//
+//    for($i=0; $i<count($intrList); $i++) {
+//        if($intrList[$i] != " ") {
+//            $intrList[$i] = trim($intrList[$i]);
+//            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+//        }
+//    }
+//    $select = $select."null)";
+//    return $select;
+//}
+//
+//function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
+//    $select = "SELECT user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+//
+//    for($i=0; $i<count($intrList); $i++) {
+//        if($intrList[$i] != " ") {
+//            $intrList[$i] = trim($intrList[$i]);
+//            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+//        }
+//    }
+//    $select = $select."null)";
+//    return $select;
+//}
+//
+//$selectOne = getSelectForOneScale($intrList, $postcode, $user_id);
+//$sql = "INSERT INTO interest ($selectOne)";
+//$stmt = $pdo->exec($sql);
+//
+//$selectTwo = getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id);
+//$sql = "INSERT INTO interest ($selectTwo)";
+//$stmt = $pdo->exec($sql);
+//
+//$selectThree = getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id);
+//$sql = "INSERT INTO interest ($selectThree)";
+//$stmt = $pdo->query($sql);
+//
+//$sql = "SELECT * FROM interest";
+//$stmt = $pdo->query($sql);
+//$interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 function getSelectForOneScale($intrList, $postcode, $user_id) {
-    $select = "SELECT user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -28,7 +83,7 @@ function getSelectForOneScale($intrList, $postcode, $user_id) {
 }
 
 function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
-    $select = "SELECT user_fname, postcode, suburb, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -41,7 +96,7 @@ function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
 }
 
 function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
-    $select = "SELECT user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -156,6 +211,7 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Street</th>
                     <th>Interest</th>
                     <th>Match Scale</th>
+                    <th>View Event</th>
                 </tr>
                 </thead>
 
@@ -181,6 +237,15 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <?php echo $intr['match_scale'];?>
                         </td>
+                        <form action="" method="post">
+                            <td class="form-group">
+                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
+                                    <a href="listEvent.php?user_id=<?php echo $intr['user_id']; ?>" style="color: white">
+                                        <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
+                                    </a>
+                                </button>
+                            </td>
+                        </form>
 
                     </tr>
                     <?php
