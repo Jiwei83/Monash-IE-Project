@@ -7,7 +7,7 @@
  */
 
 
-include('../include/eventpath.php');
+include('../include/userpath.php');
 include('../include/config.php');
 include('../include/header.php');
 include('../include/navigation.php');

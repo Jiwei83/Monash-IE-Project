@@ -13,52 +13,57 @@ require_once('PHPMailer-master/class.phpmailer.php');
 require_once('PHPMailer-master/class.smtp.php');
 
 
-
-$sql = 'select * from (select ep.user_id, e.eventId, date(max(e.date)) as latest from eventParticipant ep, events e where ep.eventId = e.eventId group by ep.user_id) as t1, user_profile u where latest < CURDATE()-30 and u.user_id = t1.user_id';
+$sql = 'select * from (select ep.user_id, e.eventId, date(max(e.date)) as latest from eventParticipant ep, events e where ep.eventId = e.eventId group by ep.user_id) as t1, user_profile where latest < CURDATE()-30 and user_profile.user_id = t1.user_id';
 $stmt = $pdo->query($sql);
 $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//print("<pre>");
-//print_r($userList);
-foreach($userList as $user) {
-    $to = $user['email'];
-    $fname = $user['user_fname'];
-    $lname = $user['user_lname'];
-    $ldate = $user['latest'];
-   // echo $to.$fname.$lname.$ldate;
-    if($to != null){
-        $mail = new PHPMailer();
-        $mail->IsSMTP();
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
-        $mail->Host = "cp152.ezyreg.com";
-        $mail->Port = 465;
-        $mail->IsHTML(true);
-        $mail->Username = "no-reply@active-family.net";
-        $mail->Password = "0500500";
-        $subject = "Create Or Join More events and find the healthier you";
-        $message = "
-        <html>
-        <head>
-        <title>You have not been active for the last month</title>
-        </head>
-        <body>
-        <p>Dear $fname,</p>
-        <p>You have not been active for the last month <br> the last event you participated in was on $ldate <br></p>
-        <p><b>here are some event that may interest you</b></p>
-
-        </body>
-        </html>
-        ";
-        $mail->Body = $message;
-        $mail->AddAddress($to);
-        $mail->Subject = $subject;
-        $mail->setFrom("no-reply@active-family.net");
-        $mail->SMTPDebug = true;
-
-        $mail->send();
 
 
+
+    foreach ($userList as $user) {
+
+        $to = $user['email'];
+        $fname = $user['user_fname'];
+        $lname = $user['user_lname'];
+        $ldate = $user['latest'];
+        $sub = $user['subscription'];
+        // echo $to.$fname.$lname.$ldate;
+        if ($sub=='subscribed') {
+            if ($to != null) {
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Host = "cp152.ezyreg.com";
+                $mail->Port = 465;
+                $mail->IsHTML(true);
+                $mail->Username = "no-reply@active-family.net";
+                $mail->Password = "0500500";
+                $subject = "Create Or Join More events and find the healthier you";
+                $message = "
+            <html>
+            <head>
+            <title>You have not been active for the last month</title>
+            </head>
+            <body>
+            <p>Dear $fname,</p>
+            <p>You have not been active for the last month <br> the last event you participated in was on $ldate <br></p>
+            <p><b>here are some event that may interest you</b></p>
+
+            </body>
+            </html>
+            ";
+                $mail->Body = $message;
+                $mail->AddAddress($to);
+                $mail->Subject = $subject;
+                $mail->setFrom("no-reply@active-family.net");
+                $mail->SMTPDebug = true;
+
+                $mail->send();
+
+
+            }
+        }
     }
-}
+
 ?>
 
