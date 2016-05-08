@@ -162,7 +162,10 @@ if($auth_user->is_loggedin()) : ?>
         </div>
         <div class="col-md-1" style="background-color: #f5f5f5"></div>
         <div class="col-md-6 form-signin" style="background-color: #f5f5f5">
-            <h2 class="tab">&nbsp;</h2>
+<!--            <div class="form-group">-->
+<!--<!--                <td>Interest</td>-->
+<!--<!--                <input type="text" class="form-control" name="interest" value="--><?php ////echo (empty($profileRow['interest'])) ? " " : $profileRow['interest'];?><!--<!--"/>-->
+<!--            </div>-->
                 <div class="form-group">
                     <td>Family Size</td>
                     <input type="text" class="form-control" name="family_size" value="<?php echo (empty($profileRow['family_size'])) ? " " : $profileRow['family_size'];?>"/>
@@ -179,6 +182,14 @@ if($auth_user->is_loggedin()) : ?>
                     <td>Address</td>
                     <input type="text" class="form-control" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/>
                 </div>
+
+            <div class="form-group">
+                <div class="col-md-2"><input type="checkbox" name="interest[]" id="BBQ" value="BBQ"> BBQ</div>
+                <div class="col-md-2"><input type="checkbox" name="interest[]" id="Yoga" value="Yoga">Yoga</div>
+                <div class="col-md-3"><input type="checkbox" name="interest[]" id="Basketball" value="basketball"> Basketball</div>
+                <div class="col-md-3"><input type="checkbox" name="interest[]" id="Swim" value="Swim"> Swim</div>
+                <div class="col-md-2"><input type="checkbox" name="interest[]" id="Pet" value="pet"> Pet</div>
+            </div>
         </div>
                     <input type="submit" name="update" value="Update"/>
                 </form>
@@ -199,83 +210,76 @@ if(isset($_POST['update'])) {
     $suburb = (isset($_POST['suburb']) ? $_POST['suburb'] : null);
     $address = (isset($_POST['address']) ? $_POST['address'] : null);
     $familySize = (isset($_POST['family_size']) ? $_POST['family_size'] : 0);
-    $interest = (isset($_POST['interest']) ? $_POST['interest'] : null);
-
+    $ui = (isset($_POST['interest']) ? $_POST['interest'] : null);
+    $interest = "";
+    $n = count($ui);
+    for($i=0; $i<$n; $i++) {
+        $interest = $interest.$ui[$i].",";
+    }
     if(!empty($fname)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET user_fname = '$fname'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($lname)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET user_lname = '$lname'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($dob)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET dob = '$dob'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($phone)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET phone = '$phone'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET email = '$email'
                                        WHERE user_id = '$user_id'");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo '<script language="javascript">';
         echo 'alert("Email Address is not valid!")';
         echo '</script>';
     }
-
     if(!empty($postcode)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET postcode = '$postcode'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($suburb)) {
         $query = $auth_user->runQuery("UPDATE user_profile
-                                       SET state = '$suburb'
+                                       SET suburb = '$suburb'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($address)) {
         $query = $auth_user->runQuery("UPDATE user_profile
-                                       SET street = '$address'
+                                       SET address = '$address'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if((!empty($familySize) && (filter_var($familySize, FILTER_VALIDATE_INT)))) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET family_size = '$familySize'
                                        WHERE user_id = $user_id");
         $query->execute(array(":user_id"=>$user_id));
     }
-
     if(!empty($familySize) && (!filter_var($familySize, FILTER_VALIDATE_INT))) {
         echo '<script language="javascript">';
         echo 'alert("Family Size should be number")';
         echo '</script>';
     }
-
     if(!empty($interest)) {
         $query = $auth_user->runQuery("UPDATE user_profile
                                        SET interest = '$interest'
@@ -284,7 +288,61 @@ if(isset($_POST['update'])) {
     }
 }
 ?>
+<?php
+$stmt = $auth_user->runQuery("SELECT interest FROM user_profile WHERE user_id = $user_id");
+$stmt->execute();
+$userInterestList = $stmt->fetch(PDO::FETCH_ASSOC);
+$userInterest = $userInterestList['interest'];
 
+$interests = explode(',', $userInterest);
+
+for($i=0; $i<sizeof($interests); $i++){
+
+    if(trim($interests[$i]) == 'BBQ') {
+        echo '<script type="text/javascript">document.getElementById("BBQ").checked=true;</script>';
+    }
+    if(trim($interests[$i]) == 'basketball') {
+        echo '<script type="text/javascript">document.getElementById("Basketball").checked=true;</script>';
+    }
+    if(trim($interests[$i]) == 'Swim') {
+        echo '<script type="text/javascript">document.getElementById("Swim").checked=true;</script>';
+    }
+    if(trim($interests[$i]) == 'Yoga') {
+        echo '<script type="text/javascript">document.getElementById("Yoga").checked=true;</script>';
+    }
+    if(trim($interests[$i]) == 'Pet') {
+        echo '<script type="text/javascript">document.getElementById("Pet").checked=true;</script>';
+    }
+}
+?>
+
+<script type="text/javascript">
+//    function check() {
+//        document.getElementById("BBQ").checked=true;
+//        var length = <?php //echo $interests.count();?>
+
+//        for(var i=0; i<length; i++) {
+//            if(<?php //echo $interests[$i]?>//=="BBQ"){
+//                document.getElementById("BBQ").checked=true;
+//            }
+//            if(<?php //echo $interests[$i]?>//=="Basketball"){
+//                document.getElementById("").checked=true;
+//            }
+//            if(<?php //echo $interests[$i]?>//=="Yoga"){
+//                document.getElementById("").checked=true;
+//            }
+//            if(<?php //echo $interests[$i]?>//=="Swim"){
+//                document.getElementById("").checked=true;
+//            }
+//            if(<?php //echo $interests[$i]?>//=="Pet"){
+//                document.getElementById("").checked=true;
+//            }
+//            <?php //$i++;?>
+//        }
+
+    }
+
+</script>
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
