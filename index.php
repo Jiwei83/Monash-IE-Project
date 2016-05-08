@@ -111,7 +111,7 @@ if($login->is_loggedin()) : ?>
     
     <section class="promo section section-on-bg">
         <div class="container text-center">                
-            <h2 class="title">Active Family</h2>
+            <h2 class="title">Active Family - Home</h2>
             <p class="intro">Sign up and start searching and find the healthier you! <br /> </p> <strong>Together for a Healthier Community</strong> <p> <br /> </p>
             <p><a class="btn btn-cta btn-cta-primary" href="map/index.php">Search for Venues</a></p>
             <button type="button" class="play-trigger btn-link " data-toggle="modal" data-target="#modal-video" ><i class="fa fa-youtube-play"></i> Watch the video</button>
