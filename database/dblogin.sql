@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: May 08, 2016 at 03:56 PM
+-- Generation Time: May 08, 2016 at 04:47 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.6
 
@@ -56,7 +56,7 @@ CREATE TABLE `events` (
   `curr_capa` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
@@ -65,7 +65,9 @@ CREATE TABLE `events` (
 INSERT INTO `events` (`eventId`, `create_user_id`, `eventName`, `eventDescription`, `type`, `address`, `suburb`, `capacity`, `curr_capa`, `date`, `status`) VALUES
 (32, 1, 'run cat', 'have fun in running', 'Walking Dog', '132B Kensington Rd, Kensington VIC 3031, Australia', 'Kensington', 14, 1, '2016-05-08 17:00:00', 'active'),
 (33, 2, 'fly to the sky', 'lol', 'Yoga', '15 Cambridge St, Maidstone VIC 3012, Australia', 'Maidstone', 14, 0, '2016-05-08 17:00:00', 'active'),
-(34, 1, 'fly to the ground', 'lol', 'BBQ', '25 Van Ness Ave, Maribyrnong VIC 3032, Australia', 'Maribyrnong', 2, 2, '2016-05-08 19:00:00', 'active');
+(34, 1, 'fly to the ground', 'lol', 'BBQ', '25 Van Ness Ave, Maribyrnong VIC 3032, Australia', 'Maribyrnong', 2, 2, '2016-05-08 19:00:00', 'active'),
+(35, 1, 'play basketball', 'play', 'basketball', 'Stadium Dr, Keilor Park VIC 3042, Australia', 'Victoria', 10, 0, '2016-05-08 19:00:00', 'active'),
+(36, 1, 'walking dog', 'lol', 'Walking Dog', '75 Village Way, Maribyrnong VIC 3032, Australia', 'Maribyrnong', 15, 0, '2016-05-08 19:00:00', 'active');
 
 -- --------------------------------------------------------
 
@@ -374,7 +376,7 @@ INSERT INTO `location` (`Location_ID`, `Title`, `Address`, `Latitude`, `Longitud
 (264, 'Barbeque - Brick Single Hotplate', 'LOT 9 Buncle St, North Melbourne VIC 3051, Australia', '-37.79363713', '144.9403181', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (265, 'Barbeque - Urban Design Double Hotplate', 'Capital City Trail, Melbourne VIC 3004, Australia', '-37.82768004', '144.9824170', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (266, 'Barbeque - Urban Design Double Hotplate - Royal Park', '10 Brens Dr, Parkville VIC 3052, Australia', '-37.78545233', '144.9461880', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
-(267, 'Barbeque - Urban Design Double Hotplate', 'Peel St, West Melbourne VIC 3003, Australia', '-37.80957101', '144.9548589', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
+(267, 'Barbeque - Urban Design Double Hotplate', 'Peel St, West Melbourne VIC 3003, Australia', '-37.80957101', '144.9548589', 'bbq', 0, 1, 4, '0000-00-00', '2016-05-08', 1),
 (268, 'Barbeque - Urban Design Double Hotplate Spanning Two Units - Alexandra Park', 'Burnley Tunnel, Melbourne VIC 3004, Australia', '-37.82426005', '144.9776466', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (269, 'Barbeque - Urban Design Double Hotplate', 'Capital City Trail, Parkville VIC 3052, Australia', '-37.78305874', '144.9443604', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (270, 'Barbeque - Barbeque (Docklands - not categorised)', '509/13 Point Park Cres, Docklands VIC 3008, Australia', '-37.82306496', '144.9418028', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
@@ -465,7 +467,7 @@ INSERT INTO `location` (`Location_ID`, `Title`, `Address`, `Latitude`, `Longitud
 (354, 'Loyola Reserve', 'Loyola Reserve, Bundoora, VIC, 3083, Australia', '-37.70352380', '145.0751813', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (355, 'Macleod Reserve', 'Aberdeen Road, Macleod, VIC, 3085, Australia', '-37.72733881', '145.0700301', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (356, 'Malahang Reserve', 'Malahang Reserve, Heidelberg West, Victoria, Australia', '-37.74276910', '145.0441697', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
-(357, 'Malcolm Blair Reserve', 'Malcolm Blair Reserve Dog Park, Greensborough, Victoria, Australia', '-37.70383500', '145.1272371', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
+(357, 'Malcolm Blair Reserve', 'Malcolm Blair Reserve Dog Park, Greensborough, Victoria, Australia', '-37.70383500', '145.1272371', 'bbq', 0, 1, 4, '0000-00-00', '2016-05-08', 1),
 (358, 'Mental Health Reserve', '220-266 Greenwood Drive, Bundoora, VIC, 3083, Australia', '-37.70817470', '145.0752243', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (359, 'Montmorency Park', '83 Para Road, Montmorency, VIC, 3094, Australia', '-37.71812303', '145.1128209', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (360, 'Nellie Ibbott Park', 'Nellie Ibbott Reserve, Ivanhoe, VIC, 3079, Australia', '-37.76841610', '145.0374520', 'bbq', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
@@ -549,7 +551,7 @@ INSERT INTO `location` (`Location_ID`, `Title`, `Address`, `Latitude`, `Longitud
 (438, 'Clarke St Reserve', 'Clarke St, Elwood, Victoria, 3184, Australia', '-37.87760242', '144.9857232', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (439, 'Greenmeadows Gardens', 'Green St, St Kilda East, Victoria, 3183, Australia', '-37.87336174', '145.0037511', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (440, 'Cruickshank Park', 'Austin Cres E, Yarraville, Victoria, 3013, Australia', '-37.81546871', '144.8760527', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
-(441, 'Thompson Reserve', 'Van Ness Ave, Maribyrnong, Victoria, 3032, Australia', '-37.77177560', '144.8960199', 'Dog Friendly', 0, 1, 3, '0000-00-00', '2016-05-08', 1),
+(441, 'Thompson Reserve', 'Van Ness Ave, Maribyrnong, Victoria, 3032, Australia', '-37.77177560', '144.8960199', 'Dog Friendly', 0, 5, 18, '0000-00-00', '2016-05-08', 1),
 (442, 'Malvern Cricket Ground', 'Malvern Cricket Ground, Malvern, Victoria, Australia', '-37.85599710', '145.0312516', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (443, 'Darebin Parklands', 'Darebin Parklands, Separation Street, Alphington, Victoria, Australia', '-37.77242330', '145.0341795', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
 (444, 'Penders Park', 'Penders Park, Thornbury, Victoria, Australia', '-37.75473050', '145.0069708', 'Dog Friendly', 0, 0, 0, '0000-00-00', '0000-00-00', 1),
@@ -778,18 +780,17 @@ CREATE TABLE `users` (
   `user_name` varchar(15) NOT NULL,
   `user_email` varchar(40) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
-  `joining_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rating_status` varchar(11) NOT NULL
+  `joining_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `joining_date`, `rating_status`) VALUES
-(1, 'kric', '12@11.com', '$2y$10$nMaXNfU.YP448go3y245nO9sEmlej9W/TSB0OhLvFgA71nVSv2ZVS', '2016-05-05 03:43:02', 'rated'),
-(2, 'zoe', '1234@qq.com', '$2y$10$O7NcgNOlEGpk2ouc9aUqd.Zg9PZiGUgD6OI4HcbOAGsucnl0RoGQK', '2016-05-05 03:44:00', 'not rated'),
-(3, 'jerry', 'jerry@123.com', '$2y$10$TCnWVSjuQ.HA2Rr6TUsuAubnb/L.txgf6iN8N.2Fn9sVKFai8YWqG', '2016-05-08 04:56:01', 'not rated');
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `joining_date`) VALUES
+(1, 'kric', '12@11.com', '$2y$10$nMaXNfU.YP448go3y245nO9sEmlej9W/TSB0OhLvFgA71nVSv2ZVS', '2016-05-05 03:43:02'),
+(2, 'zoe', '1234@qq.com', '$2y$10$O7NcgNOlEGpk2ouc9aUqd.Zg9PZiGUgD6OI4HcbOAGsucnl0RoGQK', '2016-05-05 03:44:00'),
+(3, 'jerry', 'jerry@123.com', '$2y$10$TCnWVSjuQ.HA2Rr6TUsuAubnb/L.txgf6iN8N.2Fn9sVKFai8YWqG', '2016-05-08 04:56:01');
 
 -- --------------------------------------------------------
 
@@ -820,6 +821,27 @@ INSERT INTO `user_profile` (`user_id`, `user_fname`, `user_lname`, `dob`, `phone
 (1, 'kricm', 'ma', '2016-05-05', '123456', '12@11.com', '3145', 'California, United States', 'California, United States', 1, 'BBQ, basketball, ', 1),
 (2, 'zoe', 'huang', '2016-05-06', '1234567890', '1234@qq.com', '3145', 'Caulfield, Victoria, Australia', 'Caulfield, Victoria, Australia', 1, 'BBQ, basketball, pet, ', 1),
 (3, 'jerry', 'zhang', '0000-00-00', '123456', 'jerry@123.com', '3168', 'Caulfield, Victoria, Australia', '900 Dandenong Road, Caulfield East, Victoria, Australia', 1, 'BBQ, basketball, ', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_rating_status`
+--
+
+CREATE TABLE `user_rating_status` (
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `rating_status` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_rating_status`
+--
+
+INSERT INTO `user_rating_status` (`user_id`, `lat`, `rating_status`) VALUES
+(1, -37.80957101, 'rated'),
+(1, -37.77177429199219, 'rated'),
+(1, -37.703835, 'rated');
 
 --
 -- Indexes for dumped tables
@@ -856,6 +878,12 @@ ALTER TABLE `user_profile`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `user_rating_status`
+--
+ALTER TABLE `user_rating_status`
+  ADD PRIMARY KEY (`user_id`,`lat`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -863,7 +891,7 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eventId` int(60) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `eventId` int(60) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `users`
 --
