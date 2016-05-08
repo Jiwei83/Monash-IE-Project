@@ -74,7 +74,14 @@ if($login->is_loggedin()) : ?>
                                         <ul class="nav navbar-nav">
                         <li class="active nav-item"><a href="index.php">Home</a></li>
                         <li class="nav-item"><a href="map/index.php">Venues</a></li>
-                        <li class="nav-item"><a href="event/index.php">Events</a></li>
+                        <li class="nav-item">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                             Events</a>
+                             <ul class="dropdown-menu">
+                                     <li><a href="event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+                                     <li><a href="event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                             </ul>
+                        </li>
                         <li class="nav-item"><a href="about.php">About Us</a></li>
                         <li class="nav-item"><a href="user/index.php" id="register">Log in</a></li>
                         <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="user/sign-up.php" id="register">Sign Up Free</a></li>

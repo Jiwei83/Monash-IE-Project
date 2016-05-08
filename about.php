@@ -1,6 +1,4 @@
 <?php
-include('include/aboutpath.php');
-
 session_start();
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 require_once("user/class.user.php");
@@ -21,13 +19,12 @@ if($login->is_loggedin()) : ?>
         }
     </style>
 <?php endif; ?>
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Active Family</title>
+    <title>Active Family -  About Us</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,18 +48,58 @@ if($login->is_loggedin()) : ?>
     <![endif]-->
 </head> 
 
-<body class="home-page">
-    <!-- ******HEADER****** -->
-    <?php include('include/navigation.php');?>
-
+<body class="home-page">   
+    <!-- ******HEADER****** --> 
+    <header id="header" class="header navbar-fixed-top">  
+        <div class="container">       
+            <h1 class="logo">
+                <a href="index.php"><span class="text">Active Family</span></a>
+            </h1><!--//logo-->
+            <nav class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                                        <ul class="nav navbar-nav">
+                        <li class="nav-item"><a href="index.php">Home</a></li>
+                        <li class="nav-item"><a href="map/index.php">Venues</a></li>
+                                            <li class="nav-item">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                                                    Events</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+                                                    <li><a href="event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                                                </ul>
+                                            </li>                        <li class="active nav-item"><a href="about.php">About Us</a></li>
+                        <li class="nav-item"><a href="user/index.php" id="register">Log in</a></li>
+                        <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="user/sign-up.php" id="register">Sign Up Free</a></li>
+                                            <li class="nav-item dropdown" id="notlogedin">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
+                                                    <li><a href="user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
+                                                </ul>
+                                            </li>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->                     
+        </div><!--//container-->
+    </header><!--//header-->
+    
     <div class="headline-bg about-headline-bg">
-    </div><!--//headline-bg-->
-
-    <!-- ******list of the team****** -->
+    </div><!--//headline-bg-->         
+    
+    <!-- ******list of the team****** --> 
     <section class="story-section section section-on-bg">
         <h2 class="title container text-center"></h2>
-        <div class="story-container container text-center">
-            <div class="story-container-inner" >
+        <div class="story-container container text-center"> 
+            <div class="story-container-inner" >                    
                 
                 <div class="team row">
                     <h3 class="title">About Us</h3>
@@ -110,7 +147,12 @@ if($login->is_loggedin()) : ?>
             </div><!--//container-->
         </div><!--//bottom-bar-->
     </footer><!--//footer-->
+    
+    
 
+
+
+    
     <!-- Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
