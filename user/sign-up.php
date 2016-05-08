@@ -132,7 +132,7 @@ if(isset($_POST['btn-signup']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Active Family : Login</title>
+	<title>Active Family : Sign up</title>
 	<!-- Global CSS -->
 	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 	<!-- Plugins CSS -->
@@ -151,8 +151,11 @@ if(isset($_POST['btn-signup']))
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script>
-		$(function() {
-			$( "#datepicker" ).datepicker();
+		$(document).ready(function() {
+			$("#datepicker").datepicker({
+				changeYear:true,
+				yearRange: "-100:+0"
+			});
 		});
 	</script>
 </head>
