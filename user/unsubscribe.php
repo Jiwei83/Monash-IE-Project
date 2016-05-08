@@ -14,7 +14,8 @@ include('../include/navigation.php');
 
 
 $user_id1 = $_GET['user_id'];
-
+$status= "block";
+$status1= "none";
 
 if ($user_id1== $user_id) {
     $stmt = $pdo->prepare('select * from user_profile where user_id= ?');
@@ -24,12 +25,28 @@ if ($user_id1== $user_id) {
 
     $stmt = $pdo->prepare('update user_profile set subscription = \'unsubscribed\' where user_id = ?');
     $stmt->execute(array($user_id1));
+    $status1="block";
+    $status= "none";
+
+} else {
+    $status1 = "none";
+
 }
 ?>
+<p><br>
+<br></p>
+<div class="alert alert-success" style="display: <?php echo $status1;?>">
+    <strong>You have successfully unsubscribed. </strong> You will not be receiving these Kinds of emails anymore.
+</div>
 
-<p id="notlogedin"> You have successfully unsubscribed. You will not be receiving these Kinds of emails anymore.  </p>
+<div class="alert alert-danger"  style="display: <?php echo $status;?>">
+    <strong>Error!</strong> You are either not logged in or not authorised to perform this action.
+</div>
 
-<p id="register">You are either not logged in or not authorised to perform this action. </p>
+<p><br>
+    <br>
+    <br>
+    <br></p>
 
 <?php
 
