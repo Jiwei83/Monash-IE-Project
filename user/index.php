@@ -60,19 +60,25 @@ if(isset($_POST['btn-login']))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button><!--nav-toggle-->
-            </div><!--navbar-header-->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+                </button><!--//nav-toggle-->
+            </div><!--//navbar-header-->
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
                     <li class="nav-item"><a href="../index.php">Home</a></li>
                     <li class="nav-item"><a href="../map/index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                            Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
-
-                </ul><!--nav-->
-            </div><!--navabr-collapse-->
-    </div><!--container-->
-</header><!--header-->
+                    <li class="nav-item"><a href="index.php" id="register">Log in</a></li>
+                    <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="sign-up.php" id="register">Sign Up Free</a></li>
+                </ul><!--//nav-->
+            </div><!--//navabr-collapse-->
+        </nav><!--//main-nav--></header><!--header-->
 
 <div class="signin-form">
 
@@ -162,5 +168,15 @@ if(isset($_POST['btn-login']))
         </div><!--//container-->
     </div><!--//bottom-bar-->
 </footer><!--//footer-->
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
