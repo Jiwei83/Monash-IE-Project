@@ -6,7 +6,8 @@
  * Time: 3:22 PM
  */
 session_start();
-$user_id = $_SESSION['user_session'];
+//$user_id = $_SESSION['user_session'];
+$user_id = (isset($_SESSION['user_session']) ? $_SESSION['user_session'] : null);
 $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 require_once("../user/class.user.php");

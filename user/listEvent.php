@@ -72,15 +72,15 @@ include('../include/config.php');
                                     <?php echo $val['date'];
                                           $eventId = $val['eventId'];?>
                                 </td>
-                                <form action="" method="post">
+<!--                                <form action="" method="post">-->
                                     <td class="form-group">
-                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
-                                            <a href="../event/view.php?eventId=<?php echo $eventId; ?>" style="color: white">
+                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
+<!--                                            <a href="../event/view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
                                                 <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-                                            </a>
+<!--                                            </a>-->
                                         </button>
                                     </td>
-                                </form>
+<!--                                </form>-->
 
                                 <form action="" method="post">
                                 <td class="form-group">

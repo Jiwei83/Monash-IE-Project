@@ -237,15 +237,15 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <?php echo $intr['match_scale'];?>
                         </td>
-                        <form action="" method="post">
+<!--                        <form action="" method="post">-->
                             <td class="form-group">
-                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg">
-                                    <a href="listEvent.php?user_id=<?php echo $intr['user_id']; ?>" style="color: white">
+                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='listEvent.php?user_id=<?php echo $intr['user_id']; ?>'">
+<!--                                    <a href="listEvent.php?user_id=--><?php //echo $intr['user_id']; ?><!--" style="color: white">-->
                                         <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-                                    </a>
+<!--                                    </a>-->
                                 </button>
                             </td>
-                        </form>
+<!--                        </form>-->
 
                     </tr>
                     <?php

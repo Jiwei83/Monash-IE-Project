@@ -259,15 +259,15 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                             <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
                             <div>
                                 <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
-                                <form class="form-signin" method="post" id="login-form">
+<!--                                <form class="form-signin" method="post" id="login-form">-->
                                     <div class="form-group">
-                                        <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg">
-                                            <a style="color: white" href="../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>" class="event">
+                                        <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg" onclick="window.location.href='../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>'">
+<!--                                            <a style="color: white" href="../event/createEventFromInfo.php?address=--><?php //echo $address?><!--&suburb=--><?php //echo $suburb?><!--" class="event">-->
                                                 Create Event
-                                            </a>
+<!--                                            </a>-->
                                         </button>
                                     </div>
-                                </form>
+<!--                                </form>-->
                                 </p>
                             </div>
                             <div>
