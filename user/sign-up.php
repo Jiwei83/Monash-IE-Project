@@ -26,7 +26,7 @@ if(isset($_POST['btn-signup']))
 	$uinterest = "";
 	$n = count($ui);
 	for($i=0; $i<$n; $i++) {
-		$uinterest = $uinterest.$ui[$i].", ";
+		$uinterest = $uinterest.$ui[$i].",";
 	}
 	
 	if($uname=="")	{
