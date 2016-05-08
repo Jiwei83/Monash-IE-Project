@@ -1,5 +1,5 @@
 a { color:  dimgrey; }
-a:hover { color: #fff; }
+a:hover { color: dimgrey; }
 
 #map_canvas img {
   max-width: none;
