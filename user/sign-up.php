@@ -56,8 +56,8 @@ if(isset($_POST['btn-signup']))
 	else if($uphone=="") {
 		$error[] = "Provide Phone Number!";
 	}
-	else if(filter_var($uphone, FILTER_VALIDATE_INT) === false) {
-		$error[] = "Provide Phone Number!";
+	else if(!preg_match('/^[0-9]{10}$/', $uphone)) {
+		$error[] = "Not Phone Number!";
 	}
 	else if($upostcode=="") {
 		$error[] = "Provide Postcode!";
