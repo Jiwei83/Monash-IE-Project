@@ -105,7 +105,7 @@ if(isset($_POST['btn-submit'])) {
                         <option>BBQ</option>
                         <option>Walking Dog</option>
                         <option>Yoga</option>
-                        <option>Sports Club</option>
+                        <option>Swimming</option>
                         <option>Basketball</option>
                     </select>
                 </label>

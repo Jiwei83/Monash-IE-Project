@@ -22,7 +22,7 @@ if(isset($_POST['btn-submit'])) {
     else {
         $date = null;
     }
-    $type = (isset($_POST['taskOption']) ? $_POST['taskOption'] : null);
+    $type = $_GET['cata'];
     if(!empty($title) && !empty($desc) && !empty($capacity) && !empty($date) && !empty($type)) {
         $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
               VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
@@ -110,17 +110,17 @@ if(isset($_POST['btn-submit'])) {
 <!--            </select>-->
 <!--        </label>-->
 <!--        <span id="check-e"></span>-->
-        Categories<span>*</span>
-        <label>
-            <select name="taskOption" size="0" id="eType" style="width: 10em" required>
-                <option selected="selected" value="">All Activities</option>
-                <option>BBQ</option>
-                <option>Walking Dog</option>
-                <option>Yoga</option>
-                <option>Sports Club</option>
-                <option>Basketball</option>
-            </select>
-        </label>
+<!--        Categories<span>*</span>-->
+<!--        <label>-->
+<!--            <select name="taskOption" size="0" id="eType" style="width: 10em" required>-->
+<!--                <option selected="selected" value="">All Activities</option>-->
+<!--                <option>BBQ</option>-->
+<!--                <option>Walking Dog</option>-->
+<!--                <option>Yoga</option>-->
+<!--                <option>Sports Club</option>-->
+<!--                <option>Basketball</option>-->
+<!--            </select>-->
+<!--        </label>-->
     </div>
     <hr />
     <div class="form-group">

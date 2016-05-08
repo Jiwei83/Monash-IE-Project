@@ -21,6 +21,7 @@ $rateStatus = $userRow['rating_status'];
 
 $lat = $_GET['lat'];
 $lng = $_GET['lng'];
+$cata = $_GET['cata'];
 $url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&sensor=true";
 $json = file_get_contents($url);
 $data = json_decode($json);
@@ -276,7 +277,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                 <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
 <!--                                <form class="form-signin" method="post" id="login-form">-->
                                     <div class="form-group">
-                                        <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg" onclick="window.location.href='../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>'">
+                                        <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg" onclick="window.location.href='../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>&cata=<?php echo $cata?>'">
 <!--                                            <a style="color: white" href="../event/createEventFromInfo.php?address=--><?php //echo $address?><!--&suburb=--><?php //echo $suburb?><!--" class="event">-->
                                                 Create Event
 <!--                                            </a>-->
