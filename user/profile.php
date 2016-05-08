@@ -190,8 +190,13 @@ if($auth_user->is_loggedin()) : ?>
                 <div class="col-md-3"><input type="checkbox" name="interest[]" id="Swim" value="Swim"> Swim</div>
                 <div class="col-md-2"><input type="checkbox" name="interest[]" id="Pet" value="pet"> Pet</div>
             </div>
+            <div class="form-group">
+                <input type="submit" name="update" class="btn btn-primary btn-lg" style="float: right;" value="Update"/>
+            </div>
         </div>
-                    <input type="submit" name="update" value="Update"/>
+
+
+
                 </form>
             </div>
 
@@ -310,7 +315,7 @@ for($i=0; $i<sizeof($interests); $i++){
     if(trim($interests[$i]) == 'Yoga') {
         echo '<script type="text/javascript">document.getElementById("Yoga").checked=true;</script>';
     }
-    if(trim($interests[$i]) == 'Pet') {
+    if(trim($interests[$i]) == 'pet') {
         echo '<script type="text/javascript">document.getElementById("Pet").checked=true;</script>';
     }
 }
