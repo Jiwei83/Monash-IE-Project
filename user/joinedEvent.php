@@ -19,9 +19,28 @@ $sql2 = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $sql2->execute(array(":user_id"=>$user_id));
 $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 
+if($auth_user->is_loggedin()) : ?>
+    <style type="text/css">
+        #register {
+            display: none;
+        }
+        #info{
+            display: none;
+        }
+    </style>
 
+<?php else: ?>
 
-?>
+    <style type="text/css">
+        #notlogedin {
+            display: none;
+        }
+        #create {
+            pointer-events: none;
+            cursor: default;
+        }
+    </style>
+<?php endif; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -59,26 +78,34 @@ $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button><!--nav-toggle-->
-            </div><!--navbar-header-->
+                </button><!--//nav-toggle-->
+            </div><!--//navbar-header-->
             <div id="navbar-collapse" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a href="../index.php">Home</a></li>
                     <li class="nav-item"><a href="../map/index.php">Venues</a></li>
-                    <li class="nav-item"><a href="../event/index.php">Events</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                            Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+                            <li><a href="../event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
-
-                    <li class="active nav-item dropdown" id="notlogedin">
+                    <li class="nav-item"><a href="index.php" id="register">Log in</a></li>
+                    <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="sign-up.php" id="register">Sign Up Free</a></li>
+                    <li class="nav-item" id="notlogedin">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-                            <li><a href="../user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
+                            <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
+                            <li><a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
                         </ul>
                     </li>
-                </ul><!--nav-->
-            </div><!--navabr-collapse-->
-        </nav><!--main-nav-->
+                </ul><!--//nav-->
+            </div><!--//navabr-collapse-->
+        </nav><!--//main-nav-->
     </div><!--container-->
 </header><!--header-->
 

@@ -116,6 +116,7 @@ for($x=0; $x<7;$x++){
     $time = date('H', $dt);
     $tmp[$x] = $data['list'][$x]['main']['temp']-$a;
     $t[$x]=$time;
+    $des[$x] = $data['list'][$x]['weather'][0]['description'];
 }
 //for($x=0;$x<7;$x++){
 //    echo  $tmp[$x];
@@ -270,6 +271,13 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
                                         </a>
                                     </div>
+                                    <p class="menu_head">Average Rate</p>
+                                    <div class="menu_body">
+                                        <a>
+                                            <?php echo $ratingRow['average_rating']; ?>
+                                        </a>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -436,13 +444,13 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Time', 'Temperature'],
-                ['<?php echo $t[0]?>:00', <?php echo $tmp[0]?> ],
-                ['<?php echo $t[1]?>:00', <?php echo $tmp[1]?> ],
-                ['<?php echo $t[2]?>:00', <?php echo $tmp[2]?> ],
-                ['<?php echo $t[3]?>:00', <?php echo $tmp[3]?> ],
-                ['<?php echo $t[4]?>:00', <?php echo $tmp[4]?> ],
-                ['<?php echo $t[5]?>:00', <?php echo $tmp[5]?> ],
-                ['<?php echo $t[6]?>:00', <?php echo $tmp[6]?> ]
+                ['<?php echo $t[0]?>:00, <?php echo $des[0]?>', <?php echo $tmp[0]?> ],
+                ['<?php echo $t[1]?>:00, <?php echo $des[1]?>', <?php echo $tmp[1]?> ],
+                ['<?php echo $t[2]?>:00, <?php echo $des[2]?>', <?php echo $tmp[2]?> ],
+                ['<?php echo $t[3]?>:00, <?php echo $des[3]?>', <?php echo $tmp[3]?> ],
+                ['<?php echo $t[4]?>:00, <?php echo $des[4]?>', <?php echo $tmp[4]?> ],
+                ['<?php echo $t[5]?>:00, <?php echo $des[5]?>', <?php echo $tmp[5]?> ],
+                ['<?php echo $t[6]?>:00, <?php echo $des[6]?>', <?php echo $tmp[6]?> ]
             ]);
 
             var options = {
