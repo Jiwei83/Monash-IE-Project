@@ -52,7 +52,7 @@ if($auth_user->is_loggedin()) : ?>
 
 <!--    <script type="text/javascript" src="jquery-1.11.3-jquery.min.js"></script>-->
 <link rel="stylesheet" href="style.css" type="text/css"  />
-<title>welcome - <?php print($userRow['user_email']); ?></title>
+<title>welcome - <?php print($userRow['user_name']); ?></title>
 
     <script type="text/javascript" src="js/webfxlayout.js"></script>
 
