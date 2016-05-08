@@ -191,6 +191,9 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 }
 
             }
+            else {
+                echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
+            }
             ?>
 <!--            <input name="rating" value="0" id="rating_star" type="hidden" postID="1" />-->
 <!--            <input name="rating" value="0" id="rating_star" type="hidden" lat=--><?php //echo $lat?><!-- />-->
