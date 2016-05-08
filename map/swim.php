@@ -106,7 +106,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     $(function() {
         var myMap = new MapsLib({
-            fusionTableId:      "1awwrQfCc0yGCz5dM5VC1H_N5po6ZWExUcZ9srHRO",
+            fusionTableId:      "1a7HXJWwLxH2yXkpPnJq5qnFmPZDFfv5FdTLz03mi",
             googleApiKey:       "AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk",
             locationColumn:     "Location",
             map_center:         [-37.8141,144.9633]
