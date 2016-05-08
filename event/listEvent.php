@@ -12,8 +12,9 @@ include('../include/navigation.php');
 include('../include/config.php');
 
     //connection to the database
-    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `events`.`date` DESC";
-    $stmt = $pdo->query($sql);
+    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `date` DESC";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
     $eventIDArray = array();
     //$i = 0;
     $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -69,7 +70,8 @@ include('../include/config.php');
                                 </td>
                                 <td>
                                     <?php echo $val['date'];
-                                          $eventId = $val['eventId'];?>
+                                          $eventId = $val['eventId'];
+                                    ?>
                                 </td>
 <!--                                <form action="" method="post">-->
                                     <td class="form-group">
