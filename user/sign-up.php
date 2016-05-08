@@ -110,8 +110,14 @@ if(isset($_POST['btn-signup']))
 				$data = json_decode($response);
 
 				if(isset($data->success) && $data->success == 1) {
-					$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno);
-					$user->redirect('sign-up.php?joined');
+					if(isset($_POST['Terms'])) {
+						$user->register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno);
+						$user->redirect('sign-up.php?joined');
+					}
+					else {
+						$error[] = "Please Accept Terms of Condition";
+					}
+
 				}else {
 					$error[] = "Captcha fails";
 				}
@@ -268,6 +274,7 @@ if(isset($_POST['btn-signup']))
 
 				<div class="clearfix"></div><hr />
 				<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div><hr/>
+				<INPUT TYPE="checkbox" NAME="Terms" VALUE="Conditions"> "I have read and agree to the following" <a target="_blank" href="http://ideamensch.com/terms-and-conditions">Terms and conditions</a>
 				<div class="form-group">
 					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
 						<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
