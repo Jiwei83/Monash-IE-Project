@@ -91,7 +91,7 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.css"/>
     <link rel="stylesheet" href="style.css" type="text/css"  />
-    <title>Welcome - <?php print($userRow['user_email']); ?></title>
+    <title>Welcome - <?php print($userRow['email']); ?></title>
 </head>
 
 <body style="background-color: #f5f5f5">
