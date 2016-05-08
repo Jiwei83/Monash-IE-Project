@@ -1,8 +1,13 @@
 <?php
 session_start();
+$user_id = $_SESSION['user_session'];
+$sql = "SELECT * FROM users WHERE user_id = '$user_id'";
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-require_once("user/class.user.php");
+require_once("class.user.php");
 $login = new USER();
+$stmt = $login->runQuery($sql);
+$stmt->execute(array(":user_id"=>$user_id));
+$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 if($login->is_loggedin()) : ?>
     <style type="text/css">
         #register {
@@ -19,6 +24,7 @@ if($login->is_loggedin()) : ?>
         }
     </style>
 <?php endif; ?>
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
