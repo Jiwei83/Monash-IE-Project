@@ -185,12 +185,14 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 Based on <span id="totalrat"><?php echo $ratingRow[\'rating_number\']; ?></span>  rating)</span></div>';
                 }
                 else {
+                    echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="0" />';
                     echo '<div class="overall-rating">You Have Rated This Place!</span></div>';
                     echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
                 }
 
             }
             else {
+                echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="0" />';
                 echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
             }
             ?>
@@ -234,7 +236,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                 </p>
                                 <p>
                                     <label>
-                                <p><b> Please select your travel mode </b> </p>
+                                <p><b> Please select your travel model </b> </p>
                                 <select id = "mode" class="btn-lg" style="width: 100%;" >
                                     <option value="DRIVING">Driving</option>
                                     <option value="WALKING">Walking</option>
@@ -461,7 +463,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
     $(function() {
         $("#rating_star").codexworld_rating_widget({
             starLength: '5',
-            initialValue: '',
+            initialValue: '<?php echo $ratingRow['average_rating']?>',
             callbackFunctionName: 'processRating',
             imageDirectory: 'rating/images/',
             inputAttr1: 'postID',
@@ -479,12 +481,17 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             dataType: 'json',
             success : function(data) {
                 if (data.status == 'ok') {
-                    alert('You have rated '+val+' to this place');
+                    alert('You have rated ' + val + ' to this place');
                     location.reload();
                     $('#avgrat').text(data.average_rating);
                     $('#totalrat').text(data.rating_number);
-                }else{
-                    alert('Some problem occured, please try again.');
+
+                }else if(data.status == 'rated'){
+                    alert('rated');
+                    location.reload();
+                }else if(data.status == 'notLogin'){
+                    alert('Please Log in first');
+                    location.reload();
                 }
             }
         });
