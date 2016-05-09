@@ -396,7 +396,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                     // Display the duration:
                     if ((response.routes[0].legs[0].duration.value / 60) < 60) {
                         document.getElementById('duration').innerHTML +=
-                            (response.routes[0].legs[0].duration.value / 60).toPrecision(4) + " Minutes";
+                            Math.ceil((response.routes[0].legs[0].duration.value / 60)) + " Minutes";
                     }
                     if ((response.routes[0].legs[0].duration.value / 60) > 60) {
                         var hours   = Math.floor(response.routes[0].legs[0].duration.value / 3600);
