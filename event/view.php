@@ -167,7 +167,8 @@ include('../include/footer.php');
     function direct() {
         lat = <?php echo $lat?>;
         lng = <?php echo $lng?>;
-        window.location = '../map/info.php?lat=' + lat + '&lng=' + lng;
+        type1 = <?php echo $list['type']?>;
+        window.location.href = '../map/info.php?lat=' + lat + '&lng=' + lng + '&cata=' + type1;
     }
 </script>
 
