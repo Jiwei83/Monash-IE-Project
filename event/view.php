@@ -17,6 +17,8 @@ $stmt=$pdo->prepare('select * from events where eventId= ?');
 $stmt->execute(array($eventId));
 $list = $stmt->fetch(PDO::FETCH_ASSOC);
 $address = $list['address'];
+$type = $list['type'];
+
 
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address='$address'&sensor=true";
 $url = str_replace(' ', '%20', $url);
@@ -65,7 +67,7 @@ include('../include/navigation.php');
    <h2>
        Event Details
        <div class="form-group" style="float: right">
-           <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="direct()">
+           <button type="submit" name="btn-login" class="btn btn-primary btn-lg" onclick="direct()">
                Venue Information
            </button>
        </div>
@@ -141,6 +143,7 @@ include('../include/navigation.php');
         if(isset($_POST['btn-join']) && $curr_capa >= $capacity) {
             echo '<script type="text/javascript">alert("This event is full!");</script>';
         }
+        echo $type;
         ?>
     </td>
     </form>
@@ -165,10 +168,10 @@ include('../include/footer.php');
 
 <script type="text/javascript">
     function direct() {
-        lat = <?php echo $lat?>;
-        lng = <?php echo $lng?>;
-        type1 = <?php echo $list['type']?>;
-        window.location.href = '../map/info.php?lat=' + lat + '&lng=' + lng + '&cata=' + type1;
+        var lat = <?php echo $lat?>;
+        var lng = <?php echo $lng?>;
+        var category = '<?php echo $type?>';
+        window.location.href = '../map/info.php?lat=' + lat + '&lng=' + lng + '&cata=' + category;
     }
 </script>
 
