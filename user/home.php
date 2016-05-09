@@ -43,14 +43,13 @@
     function sendCancelMail($to){
         $mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->SMTPDebug = 1;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'ssl';
-        $mail->Host = "smtp.gmail.com";
+        $mail->Host = "cp152.ezyreg.com";
         $mail->Port = 465;
         $mail->IsHTML(true);
-        $mail->Username = "auroraemailtest@gmail.com";
-        $mail->Password = "ma91814@.";
+        $mail->Username = "no-reply@active-family.net";
+        $mail->Password = "0500500";
         $subject = "Cancel Reminder From active-family.net";
         $uri = 'http://'. $_SERVER['HTTP_HOST'] ;
         $message = '
