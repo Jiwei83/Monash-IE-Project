@@ -210,14 +210,14 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <b>Direction address: <?php echo $address;?></b><br>
+                        <b>Destination address: <?php echo $address;?></b><br>
                         <b>Current weather: <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
                         </b>
                     </div>
 
                     <div class="col-md-3" style="border-style: solid; border-width: 1px;">
                         <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/><b>Current location </b><br>
-                        <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Direction location </b>
+                        <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Destination location </b>
                     </div>
                 </div>
                 <br>
