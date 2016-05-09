@@ -40,8 +40,8 @@ include('../include/config.php');
                             <th>Suburb</th>
                             <th>Capacity</th>
                             <th>Date</th>
-                            <th>View</th>
-                            <th>Join</th>
+                            <th Style="display: none"></th>
+                            <th Style="display: none"></th>
                         </tr>
                         </thead>
 
@@ -88,6 +88,7 @@ include('../include/config.php');
                                     <button type="submit" name="<?php echo $btnJoin[$i]?>" class="btn btn-primary btn-lg">
                                         <i class="glyphicon glyphicon-log-in"></i> Join
                                     </button>
+                                    </td>
                                     <?php
                                     $eventId = $val['eventId'];
                                     $curr_capa = $val['curr_capa'];
