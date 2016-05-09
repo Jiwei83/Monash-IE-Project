@@ -211,7 +211,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                     <div class="col-md-7">
                         <b>Destination address: <?php echo $address;?></b><br>
                         <b>Current weather: <?php echo $timeDay?>, <?php echo $temp?> ˚C, <?php echo $description?>, <?php echo $wind?> km/h.
-                        </b>
+                        </b><br>
+                        <b> Category: <?php echo $cata?>
                     </div>
 
                     <div class="col-md-3" style="border-style: solid; border-width: 1px;">
@@ -251,7 +252,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                 <p><b>Click for Detailed Information</b></p>
                                 <div id="firstpane" class="menu_list">
                                     <!--Code for menu starts here-->
-                                    <p class="menu_head">Approximately Duration</p>
+                                    <p class="menu_head">Travel Time</p>
                                     <div class="menu_head" style="background-color: #f5f5f5">
                                         <a style="color: #006699"><label id="duration"> </label></a>
                                     </div>
