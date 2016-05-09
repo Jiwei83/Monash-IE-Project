@@ -150,7 +150,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 $(this).css({backgroundImage:"url(images/menu/down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
                 $(this).siblings().css({backgroundImage:"url(images/menu/left.png)"});
             });
-
         });
     </script>
     <!--style of map-->
@@ -166,7 +165,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
     <style type="text/css">
         body {  }
         .menu_list { width: 100%; }
-        .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left.png) center right no-repeat; }
+        .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left1.png) center right no-repeat; }
         .menu_body { display:none; }
         .menu_body a { display:block; color:#006699; background-color:#EFEFEF; padding-left:10px; font-weight:bold; text-decoration:none; }
         .menu_body a:hover { }
@@ -253,8 +252,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                 <div id="firstpane" class="menu_list">
                                     <!--Code for menu starts here-->
                                     <p class="menu_head">Approximately Duration</p>
-                                    <div class="menu_body">
-                                        <a><label id="duration"> </label></a>
+                                    <div class="menu_head" style="background-color: #f5f5f5">
+                                        <a style="color: #006699"><label id="duration"> </label></a>
                                     </div>
 <!--                                    <p class="menu_head">Daily Forecast Weather</p>-->
 <!--                                    <div class="menu_body">-->
@@ -270,14 +269,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                             for ($x=1; $x<7; $x++){
                                                 echo $forecastTamp[$x]."<br>";
                                             }?>
-
-
-                                        </a>
-                                    </div>
-                                    <p class="menu_head">Average Rate</p>
-                                    <div class="menu_body">
-                                        <a>
-                                            <?php echo $ratingRow['average_rating']; ?>
                                         </a>
                                     </div>
 
@@ -333,14 +324,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             var startLng;
             var endLat = <?php echo $lat;?>;
             var endLng = <?php echo $lng;?>;
-
-
-//        var mLat = Math.abs(endLat) - 37.884;
-//        var mLng = endLng - 145.0266;
-//        var powLatLng = Math.pow(mLat, 2) + Math.pow(mLng, 2);
-//        var sqrtLatLng = Math.sqrt(powLatLng);
-//
-//        var zoomValue = Math.round(127*sqrtLatLng);
 
             var pos;
             var pos2
@@ -505,23 +488,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             }
         });
     }
-//    function processRating(val, attrVal){
-//        $.ajax({
-//            type: 'POST',
-//            url: 'rating/rating.php',
-//            data: 'lat='+attrVal+'&ratingPoints='+val,
-//            dataType: 'json',
-//            success : function(data) {
-//                if (data.status == 'ok') {
-//                    alert('You have rated '+val+' to this place on ' +attrVal);
-//                    $('#avgrat').text(data.average_rating);
-//                    $('#totalrat').text(data.rating_number);
-//                }else{
-//                    alert('Some problem occured, please try again.');
-//                }
-//            }
-//        });
-//    }
 </script>
 
 </body>
