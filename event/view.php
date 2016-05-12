@@ -1,10 +1,3 @@
-<style>
-    #map, #pano {
-        float: left;
-        height: 100%;
-        width: 45%;
-    }
-</style>
 <?php
 include('../include/eventpath.php');
 include('../include/config.php');
@@ -70,6 +63,7 @@ include('../include/navigation.php');
     data-show-faces="true">
 </div>
 
+
    <h2>
        Event Details
        <div class="form-group" style="float: right">
@@ -120,15 +114,13 @@ include('../include/navigation.php');
         &nbsp;
     </dd>
 </dl>
-<div id="map"></div>
-<div id="pano"></div>
 <div class="form-group">
     <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
         <i class="glyphicon glyphicon-log-in"></i> &nbsp; Back
     </button>
 </div>
 <br/>
-    <form action="" method="post">
+    <form actio="" method="post">
     <td class="form-group">
         <?php
         $eventId = $list['eventId'];
@@ -155,7 +147,6 @@ include('../include/navigation.php');
     </td>
     </form>
     </div>
-
 </section>
 <?php
 
@@ -182,31 +173,10 @@ include('../include/footer.php');
         window.location.href = '../map/info.php?lat=' + lat + '&lng=' + lng + '&cata=' + category;
     }
 </script>
-<script type="text/javascript">
-    function initialize() {
-        var fenway = {lat: <?php echo $lat?>, lng: <?php echo $lng?>};
-//        var map = new google.maps.Map(document.getElementById('map'), {
-//            center: fenway,
-//            zoom: 14
-//        });
-        var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-                position: fenway,
-                pov: {
-                    heading: 34,
-                    pitch: 10
-                }
-            });
-        map.setStreetView(panorama);
-    }
-</script>
 
 <!-- Vimeo video API -->
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script type="text/javascript" src="assets/js/vimeo.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&callback=initialize">
-</script>
 </body>
 </html>
 
