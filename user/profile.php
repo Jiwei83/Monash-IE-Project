@@ -129,12 +129,11 @@ if($auth_user->is_loggedin()) : ?>
         <hr />
 
         <h2>
-            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
-            <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
-            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matched Profiles </a> &nbsp;
+            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a>
+            <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a>
+            <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Matched Profiles </a>
         </h2>
         <hr />
-        <p>&nbsp;</p>
         <div class="col-md-6 form-signin" style="background-color: #f5f5f5">
             <h2 class="tab">Update Details</h2>
             <?php
@@ -321,33 +320,6 @@ for($i=0; $i<sizeof($interests); $i++){
 }
 ?>
 
-<script type="text/javascript">
-//    function check() {
-//        document.getElementById("BBQ").checked=true;
-//        var length = <?php //echo $interests.count();?>
-
-//        for(var i=0; i<length; i++) {
-//            if(<?php //echo $interests[$i]?>//=="BBQ"){
-//                document.getElementById("BBQ").checked=true;
-//            }
-//            if(<?php //echo $interests[$i]?>//=="Basketball"){
-//                document.getElementById("").checked=true;
-//            }
-//            if(<?php //echo $interests[$i]?>//=="Yoga"){
-//                document.getElementById("").checked=true;
-//            }
-//            if(<?php //echo $interests[$i]?>//=="Swim"){
-//                document.getElementById("").checked=true;
-//            }
-//            if(<?php //echo $interests[$i]?>//=="Pet"){
-//                document.getElementById("").checked=true;
-//            }
-//            <?php //$i++;?>
-//        }
-
-    }
-
-</script>
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>

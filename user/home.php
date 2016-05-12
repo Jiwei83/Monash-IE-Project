@@ -180,9 +180,8 @@ if($auth_user->is_loggedin()) : ?>
     	<label class="h5">welcome : <?php print($userRow['user_name']); ?></label>
         <hr />
         <h2>
-         &nbsp;
 
-            <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a> &nbsp;
+            <a href="joinedEvent.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Joined Events </a>
         <a href="profile.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Profile </a>
             <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Matched Profiles </a>
 
