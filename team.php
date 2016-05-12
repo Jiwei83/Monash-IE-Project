@@ -132,7 +132,7 @@ if($login->is_loggedin()) : ?>
                             </figure><!--//profile-->
                             <div class="social">
                                 <ul class="social-list list-inline">
-                                    <li><a href="https://www.linkedin.com/in/abdullatif-alajlan-bb45b652"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/abdullatifALAJLAN"><i class="fa fa-linkedin"></i></a></li>
                                     <li><a href="https://twitter.com/tefo0o"><i class="fa fa-twitter"></i></a></li>
                                 </ul><!--//social-list-->
                             </div><!--//social-->
@@ -189,7 +189,7 @@ if($login->is_loggedin()) : ?>
                         <div class="footer-col-inner">
                             <h3 class="title">About us</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Who we are</a></li>
+                                <li><a href="team.php"><i class="fa fa-caret-right"></i>Who we are</a></li>
                                 <li><a href="terms.php"><i class="fa fa-caret-right"></i>Terms and conditions</a></li>
                             </ul>
                         </div><!--//footer-col-inner-->
@@ -228,7 +228,7 @@ if($login->is_loggedin()) : ?>
                                 <li><a href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://www.facebook.com/active-familynet-621951011296775/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://plus.google.com/u/0/114127749990367630116"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.instagram.com/activefamily4/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                             <div class="form-container">
 
