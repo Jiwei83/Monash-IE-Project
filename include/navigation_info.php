@@ -6,7 +6,7 @@
  * Time: 3:24 PM
  */
 ?>
-</head>
+
 
 <body class="home-page">
 <!-- ******HEADER****** -->

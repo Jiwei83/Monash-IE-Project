@@ -1,4 +1,12 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Tefo
+ * Date: 12/05/2016
+ * Time: 2:10 PM
+ */
+
+
 session_start();
 $user_id = $_SESSION['user_session'];
 $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
@@ -24,10 +32,12 @@ if($login->is_loggedin()) : ?>
         }
     </style>
 <?php endif; ?>
+
+
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <title>Active Family</title>
     <!-- Meta -->
@@ -35,13 +45,13 @@ if($login->is_loggedin()) : ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">    
-    <link rel="shortcut icon" href="favicon.ico">  
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'> 
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
-    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
     <!-- Theme CSS -->
@@ -50,14 +60,13 @@ if($login->is_loggedin()) : ?>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
     <![endif]-->
-</head> 
+</head>
 
-<body class="home-page">   
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header navbar-fixed-top">  
-        <div class="container">       
+<body class="home-page">
+    <!-- ******HEADER****** -->
+    <header id="header" class="header navbar-fixed-top">
+        <div class="container">
             <h1 class="logo">
                 <a href="index.php"><span class="text">Active Family</span></a>
             </h1><!--//logo-->
@@ -71,123 +80,106 @@ if($login->is_loggedin()) : ?>
                     </button><!--//nav-toggle-->
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
-                                        <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a href="index.php">Home</a></li>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a href="index.php">Home</a></li>
                         <li class="nav-item"><a href="map/index.php">Venues</a></li>
                         <li class="nav-item">
-                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-                             Events</a>
-                             <ul class="dropdown-menu">
-                                     <li><a href="event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
-                                     <li><a href="event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
-                             </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                                Events</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+                                <li><a href="event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item"><a href="about.php">About Us</a></li>
                         <li class="nav-item"><a href="user/index.php" id="register">Log in</a></li>
                         <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="user/sign-up.php" id="register">Sign Up Free</a></li>
-                                            <li class="nav-item dropdown" id="notlogedin">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-                                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-                                                    <li><a href="user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-                                                </ul>
-                                            </li>
+                        <li class="nav-item dropdown" id="notlogedin">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user/profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
+                                <li><a href="user/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
+                            </ul>
+                        </li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->                     
+            </nav><!--//main-nav-->
         </div><!--//container-->
     </header><!--//header-->
-    
-    <div class="bg-slider-wrapper">
-        <div class="flexslider bg-slider">
-            <ul class="slides">
-                <li class="slide slide-1"></li>
-                <li class="slide slide-2"></li>
-                <li class="slide slide-3"></li>
-            </ul>
-        </div>
-    </div><!--//bg-slider-wrapper-->        
-    
-    <section class="promo section section-on-bg">
-        <div class="container text-center">                
-            <h2 class="title">Active Family - Home</h2>
-            <p class="intro">Sign up and start searching and find the healthier you! <br /> </p> <strong>Together for a Healthier Community</strong> <p> <br /> </p>
-            <p><a class="btn btn-cta btn-cta-primary" href="map/index.php">Search for Venues</a></p>
-            <button type="button" class="play-trigger btn-link " data-toggle="modal" data-target="#modal-video" ><i class="fa fa-youtube-play"></i> Watch the video</button>
 
+    <div class="headline-bg about-headline-bg">
+    </div><!--//headline-bg-->
+
+    <!-- ******Video Section****** -->
+    <section class="story-section section section-on-bg">
+        <h2 class="title container text-center"></h2>
+        <div class="story-container container text-center">
+            <div class="story-container-inner" >
+
+                <div class="team row">
+                    <h3 class="title">Meet the team</h3>
+                    <div class="member col-md-4 col-sm-6 col-xs-12">
+                        <div class="member-inner">
+                            <figure class="profile">
+                                <img class="img-responsive" src="assets/images/team/member-1.png" alt=""/>
+                                <figcaption class="info">
+                                    <span class="name">Abdullatif ALAJLAN</span>
+                                    <br />
+                                    <span class="job-title">Desginer/Securiy Consultant</span>
+
+                                </figcaption>
+                            </figure><!--//profile-->
+                            <div class="social">
+                                <ul class="social-list list-inline">
+                                    <li><a href="https://www.linkedin.com/in/abdullatif-alajlan-bb45b652"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://twitter.com/tefo0o"><i class="fa fa-twitter"></i></a></li>
+                                </ul><!--//social-list-->
+                            </div><!--//social-->
+                        </div><!--//member-inner-->
+                    </div><!--//member-->
+                    <div class="member col-md-4 col-sm-6 col-xs-12">
+                        <div class="member-inner">
+                            <figure class="profile">
+                                <img class="img-responsive" src="assets/images/team/member-2.png" alt=""/>
+                                <figcaption class="info"><span class="name">Suraj Upreti</span><br /><span class="job-title">Analyst</span></figcaption>
+                            </figure><!--//profile-->
+
+                        </div><!--//member-inner-->
+                    </div><!--//member-->
+                    <div class="member col-md-4 col-sm-6 col-xs-12">
+                        <div class="member-inner">
+                            <figure class="profile">
+                                <img class="img-responsive" src="assets/images/team/member-3.png" alt=""/>
+                                <figcaption class="info"><span class="name">Yingying Huang</span><br /><span class="job-title">Business Analyst/Designer</span></figcaption>
+                            </figure><!--//profile-->
+
+                        </div><!--//member-inner-->
+                    </div><!--//member-->
+                    <div class="member col-md-4 col-sm-6 col-xs-12">
+                        <div class="member-inner">
+                            <figure class="profile">
+                                <img class="img-responsive" src="assets/images/team/member-4.png" alt=""/>
+                                <figcaption class="info"><span class="name">Lei Zhang</span><br /><span class="job-title">Developer</span></figcaption>
+                            </figure><!--//profile-->
+
+                        </div><!--//member-inner-->
+                    </div><!--//member-->
+                    <div class="member col-md-4 col-sm-6 col-xs-12">
+                        <div class="member-inner">
+                            <figure class="profile">
+                                <img class="img-responsive" src="assets/images/team/member-5.png" alt=""/>
+                                <figcaption class="info"><span class="name">Jiwei Ma</span><br /><span class="job-title">Developer</span></figcaption>
+                            </figure><!--//profile-->
+
+                        </div><!--//member-inner-->
+                    </div>
+                </div><!--//team-->
+
+            </div><!--//story-container-->
         </div><!--//container-->
-    </section><!--//promo-->
-    
-    <div class="sections-wrapper">   
-     
-        <!-- ******Why Section****** -->
-        <section id="why" class="section why">
-            <div class="container">
-                <h2 class="title text-center">How Can Active family Help You?</h2>
-                <p class="intro text-center">Our website works on providing the ultimate source of both outdoor and indoor activity, for to motivate families as a whole to stay active. we achieve this by integrating information from various sources into one simple easy to use system. </p>
-                <div class="row item">
-                    <div class="content col-md-4 col-sm-12 col-xs-12">
-                        <h3 class="title">Save you time and effort</h3>
-                        <div class="desc">
-                            <p>Search  for wide verity of facilities such as BBQ and Dog off leach areas.</p>
-                            <p>we went though the effort of integrating information from various sources. the data are gathered from all Melbourne councils' offical websites </p>
-                        </div>
-                                      
-                    </div><!--//content-->
-                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
-                        <img class="img-responsive" src="assets/images/figures/figure-1.png" alt="" />
-                        <figcaption class="figure-caption">(Screenshot: Victorian Government) </figcaption>
-                    </figure>
-                </div><!--//item-->
-                
-                <div class="row item">
-                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
-                        <h3 class="title">Works across all devices</h3>
-                        <div class="desc">
-                            <p>for the fact that that more mobile devices are connected to the Internet than PCs </p>
-                            <p>we promise that our website will run smoothly across all different devices, whether its mobile phone, tablets or PCs </p>
-                            
-                        </div>
-                        
-                                              
-                    </div><!--//content-->
-                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
-                        <img class="img-responsive" src="assets/images/figures/figure-2.png" alt="" />
-                        <div class="control text-center">
-                        <!-- play button 
-                            <button type="button" class="play-trigger" data-toggle="modal" data-target="#modal-video"><i class="fa fa-play"></i></button>               
-                            -->     
-                        </div><!--//control-->
-                    </figure>
-                </div><!--//item-->
-                
-                
-                
-                <div class="row item last-item">
-                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
-                        <h3 class="title">Get involved</h3>
-                        <div class="desc">
-                            <p>Families would be matched according to common interest.</p>
-                            <p>Families will also be able to create and participate on an event, to increase the collaboration among families with in the community to serve the ultimate goal of staying active.</p>
-                            
-                        </div>
-                        
-                        
-                    </div><!--//content-->
-                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
-                        <img class="img-responsive" src="assets/images/figures/figure-4.png" alt="" />
-                    </figure>
-                </div><!--//item-->
-            </div><!--//container-->
-        </section><!--//why-->  
-        
-        
-        
-        
-        
-    </div><!--//section-wrapper-->
-    
+    </section><!--//story-video-->
+
       <!-- ******FOOTER****** -->
     <footer class="footer">
         <div class="footer-content">
@@ -256,7 +248,8 @@ if($login->is_loggedin()) : ?>
             </div><!--//container-->
         </div><!--//bottom-bar-->
     </footer><!--//footer-->
-    
+
+
     <!-- Video Modal -->
     <div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -267,36 +260,55 @@ if($login->is_loggedin()) : ?>
                 </div>
                 <div class="modal-body">
                     <div class="video-container">
-                        <iframe id="vimeo-video" src="//player.vimeo.com/video/161650623?color=ffffff&amp;wmode=transparent" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe id="vimeo-video" src="//player.vimeo.com/video/28872840?color=ffffff&amp;wmode=transparent" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div><!--//video-container-->
                 </div><!--//modal-body-->
             </div><!--//modal-content-->
         </div><!--//modal-dialog-->
     </div><!--//modal-->
-    
-  
 
 
 
-    
-    <!-- Javascript -->          
+
+
+    <!-- *****CONFIGURE STYLE****** -->
+    <div class="config-wrapper">
+        <div class="config-wrapper-inner">
+            <a id="config-trigger" class="config-trigger" href="#"><i class="fa fa-cog"></i></a>
+            <div id="config-panel" class="config-panel">
+                <h5>Choose Colour</h5>
+                <ul id="color-options" class="list-unstyled list-inline">
+                    <li class="theme-1 active" ><a data-style="assets/css/styles.css" href="#"></a></li>
+                    <li class="theme-2"><a data-style="assets/css/styles-2.css" href="#"></a></li>
+                    <li class="theme-3"><a data-style="assets/css/styles-3.css" href="#"></a></li>
+                    <li class="theme-4"><a data-style="assets/css/styles-4.css" href="#"></a></li>
+                    <li class="theme-5"><a data-style="assets/css/styles-5.css" href="#"></a></li>
+                    <li class="theme-6"><a data-style="assets/css/styles-6.css" href="#"></a></li>
+                    <li class="theme-7"><a data-style="assets/css/styles-7.css" href="#"></a></li>
+                    <li class="theme-8"><a data-style="assets/css/styles-8.css" href="#"></a></li>
+                    <li class="theme-9"><a data-style="assets/css/styles-9.css" href="#"></a></li>
+                    <li class="theme-10"><a data-style="assets/css/styles-10.css" href="#"></a></li>
+                </ul><!--//color-options-->
+                <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+            </div><!--//configure-panel-->
+        </div><!--//config-wrapper-inner-->
+    </div><!--//config-wrapper-->
+
+    <!-- Javascript -->
     <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
     <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
     <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>     
+    <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-    
+
     <!-- Vimeo video API -->
     <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
     <script type="text/javascript" src="assets/js/vimeo.js"></script>
 
 
-    
-            
 </body>
-</html> 
-
+</html>

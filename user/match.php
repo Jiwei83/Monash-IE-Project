@@ -69,6 +69,7 @@ $intrList = explode(',', $interest);
 //$stmt = $pdo->query($sql);
 //$interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
 function getSelectForOneScale($intrList, $postcode, $user_id) {
     $select = "SELECT user_id, user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
