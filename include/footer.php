@@ -28,7 +28,6 @@
                         <ul class="list-unstyled">
                             <li><a href="../map/index.php"><i class="fa fa-caret-right"></i>Search For Venues</a></li>
                             <li><a href="../event/listEvent.php"><i class="fa fa-caret-right"></i>View Event</a></li>
-                            <li><a href="../event/createEventFromOther.php"><i class="fa fa-caret-right"></i>Create event</a></li>
                             <li><a href="../user/profile.php"><i class="fa fa-caret-right"></i>Member Area</a></li>
                         </ul>
                     </div><!--//footer-col-inner-->
@@ -53,7 +52,7 @@
                 <div class="footer-col connect col-md-3 col-sm-12 col-xs-12">
                     <div class="footer-col-inner">
                         <ul class="social list-inline">
-                            <li><a href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://twitter.com/activeFamily4" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="https://www.facebook.com/active-familynet-621951011296775/"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="https://plus.google.com/u/0/114127749990367630116"><i class="fa fa-google-plus"></i></a></li>
                             <li><a href="https://www.instagram.com/activefamily4/"><i class="fa fa-instagram"></i></a></li>
