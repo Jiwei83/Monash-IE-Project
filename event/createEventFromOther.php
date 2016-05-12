@@ -25,9 +25,7 @@ if(isset($_POST['btn-submit'])) {
             $stmt = $user->runQuery($sql);
             $stmt->execute($data);
             if($stmt) {
-                echo '<script language="javascript">';
-                echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
-                echo '</script>';
+                echo '<script language="javascript">alert("Event Successfully Created!!!")</script>';  //not showing an alert box.
                 echo("<script>location.href = 'listEvent.php';</script>");
             }
         }
@@ -82,22 +80,10 @@ if(isset($_POST['btn-submit'])) {
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
-<!--                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/^[^0][\d]?$/,'');this.value=this.value.replace('.','');"  required />-->
                 <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
-<!--                Capacity<span>*</span>-->
-<!--                <label>-->
-<!--                    <select name="capOption" size="0" id="eType" style="width: 7em" required>-->
-<!--                        <option selected="selected" value="">Number</option>-->
-<!--                        <option>5</option>-->
-<!--                        <option>10</option>-->
-<!--                        <option>15</option>-->
-<!--                        <option>20</option>-->
-<!--                    </select>-->
-<!--                </label>-->
-
                 <span id="check-e"></span>
                 Categories<span>*</span>
                 <label>
@@ -189,21 +175,6 @@ include('../include/footer.php');
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
-
-
-<!--<script>-->
-<!--    function checkInt(n,max){-->
-<!--        var regex = /^\d+$/;-->
-<!--        if(regex.test(n)){-->
-<!--            if(n<max && n>0){-->
-<!--            }else{-->
-<!--                alert("Please insert number less than"+max)-->
-<!--            }-->
-<!--        }else{-->
-<!--            alert("It is not integer");-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
 
 
 </html>

@@ -10,33 +10,35 @@ $user = new User();
 if(isset($_POST['btn-submit'])) {
     $address = $_GET['address'];
     $suburb = $_GET['suburb'];
-    $title = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
+    $type = $_GET['cata'];
+    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
     $desc = (isset($_POST['description']) ? $_POST['description'] : null);
     $curr_capa = 0;
     $status='active';
     $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
     $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
-    if (!empty($date)) {
-        $date = date('Y-m-d G:i', strtotime($date));
+    if (is_numeric($capacity)) {
+        if($capacity < 100 && $capacity > 0) {
+            $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
+              VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
+            $data = array(':user_id'=>"$user_id",':title'=>"$title1",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
+            $stmt = $user->runQuery($sql);
+            $stmt->execute($data);
+            if($stmt) {
+                echo '<script language="javascript">alert("Event Successfully Created!!!")</script>';  //not showing an alert box.
+                echo("<script>location.href = 'listEvent.php';</script>");
+            }
+        }
+        else {
+            echo '<script type="text/javascript">alert("Capacity should be between 1 ~ 100")</script>';
+            echo '<script type="text/javascript">document.getElementById("description").value = "haha";</script>';
+        }
+
     }
     else {
-        $date = null;
+        echo '<script type="text/javascript">alert("Capacity is not a number")</script>';
     }
-    $type = $_GET['cata'];
-    if(!empty($title) && !empty($desc) && !empty($capacity) && !empty($date) && !empty($type)) {
-        $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
-              VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
-        $data = array(':user_id'=>"$user_id",':title'=>"$title",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
-        $stmt = $user->runQuery($sql);
-        $stmt->execute($data);
 
-        if($stmt) {
-            echo '<script type="text/javascript">
-                    alert("Event Successfully Created!!!");
-                    window.location.href = "listEvent.php";
-                  </script>';
-        }
-    }
 }
 
 
@@ -64,23 +66,23 @@ if(isset($_POST['btn-submit'])) {
     ?>
     <div class="form-group">
         Title<span>*</span>
-        <input type="text" class="form-control" name="eTitle" placeholder="Event Title" required />
+        <input type="text" class="form-control" name="eTitle" placeholder="Event Title" value = "<?php echo $title1?>" required />
         <span id="check-e"></span>
     </div>
 
     <div class="form-group">
         Description<span>*</span><br>
-            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required></textarea>
+            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required><?php echo $desc?></textarea>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
         Hold Date<span>*</span>
-        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required />
+        <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" value = "<?php echo $date?>" required />
         <span id="check-e"></span>
     </div>
     <div class="form-group">
         Capacity<span>*</span>
-        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);" required/>
+        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
 
         <span id="check-e"></span>
     </div>
@@ -110,20 +112,6 @@ if(isset($_POST['btn-submit'])) {
 <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
-
-<script>
-    function checkInt(n,max){
-        var regex = /^\d+$/;
-        if(regex.test(n)){
-            if(n<max && n>0){
-            }else{
-                alert("Please insert number less than "+max)
-            }
-        }else{
-            alert("It is not integer");
-        }
-    }
-</script>
 
 
 
