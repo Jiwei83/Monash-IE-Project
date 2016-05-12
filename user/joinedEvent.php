@@ -120,7 +120,7 @@ if($auth_user->is_loggedin()) : ?>
         <label class="h5">welcome : <?php print($userRow['user_name']); ?></label>
         <hr />
         <h2>
-            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a> &nbsp;
+            <a href="home.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-calendar"></span> Home</a>
             <a href="profile.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Profile</a>
             <a href="match.php" class="btn btn-cta btn-cta-secondary"><span class="glyphicon glyphicon-user"></span> Matched People</a>
 
