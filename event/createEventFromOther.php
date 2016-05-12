@@ -126,7 +126,7 @@ include('../include/footer.php');
 
 ?>
 
-<script>$(document).ready(function() {$('#datetimepicker').datetimepicker();});  </script>
+<script>$(document).ready(function() {$('#datetimepicker').datetimepicker({minDate: 0});});  </script>
 <script>
     function initAutocomplete() {
         // Create the search box and link it to the UI element.

@@ -37,19 +37,6 @@ if(isset($_POST['btn-submit'])) {
                   </script>';
         }
     }
-
-//    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
-//    $data = array(':title_name'=>"$title");
-//    $stmt = $user->runQuery($sql);
-//    $stmt->execute($data);
-//
-//    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-//    $event_id = $userRow['eventId'];
-//    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
-//    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
-//    $stmt = $user->runQuery($sql);
-//    $stmt->execute($data);
-
 }
 
 
@@ -93,34 +80,12 @@ if(isset($_POST['btn-submit'])) {
     </div>
     <div class="form-group">
         Capacity<span>*</span>
-<!--        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');this.value=this.value.replace('.','');"  required />-->
         <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);" required/>
 
         <span id="check-e"></span>
     </div>
     <div class="form-group">
-<!--        Capacity<span>*</span>-->
-<!--        <label>-->
-<!--            <select name="capOption" size="0" id="eType" style="width: 7em" required>-->
-<!--                <option selected="selected" value="">Number</option>-->
-<!--                <option>5</option>-->
-<!--                <option>10</option>-->
-<!--                <option>15</option>-->
-<!--                <option>20</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--        <span id="check-e"></span>-->
-<!--        Categories<span>*</span>-->
-<!--        <label>-->
-<!--            <select name="taskOption" size="0" id="eType" style="width: 10em" required>-->
-<!--                <option selected="selected" value="">All Activities</option>-->
-<!--                <option>BBQ</option>-->
-<!--                <option>Walking Dog</option>-->
-<!--                <option>Yoga</option>-->
-<!--                <option>Sports Club</option>-->
-<!--                <option>Basketball</option>-->
-<!--            </select>-->
-<!--        </label>-->
+
     </div>
     <hr />
     <div class="form-group">
@@ -131,7 +96,7 @@ if(isset($_POST['btn-submit'])) {
     <br />
 </form>
 </section>
-<script>$(document).ready(function() {$('#datetimepicker').datetimepicker();});  </script>
+<script>$(document).ready(function() {$('#datetimepicker').datetimepicker({minDate: 0})});  </script>
 
 <?php include('../include/footer.php'); ?>
 </body>
@@ -152,7 +117,7 @@ if(isset($_POST['btn-submit'])) {
         if(regex.test(n)){
             if(n<max && n>0){
             }else{
-                alert("Please insert number less than"+max)
+                alert("Please insert number less than "+max)
             }
         }else{
             alert("It is not integer");
