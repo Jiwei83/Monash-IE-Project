@@ -162,4 +162,18 @@ include('../include/footer.php');
 
 ?>
 </body>
+<!-- Javascript -->
+<script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
+
+<!-- Vimeo video API -->
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<script type="text/javascript" src="assets/js/vimeo.js"></script>
 </html>

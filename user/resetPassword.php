@@ -1,4 +1,12 @@
 <?php
+include("../include/mapPath.php");
+//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+include('../include/header.php');
+include('../include/navigation.php');
+
+?>
+
+<?php
 session_start();
 $token=$_GET['token'];
 require_once('class.user.php');
@@ -30,7 +38,8 @@ if(isset($_POST['btn-signup']))
             $umail = $row['email'];
             $stmt = $user->runQuery("UPDATE users SET user_pass=:upass WHERE user_email=:umail");
             $stmt->execute(array(':upass'=>$new_password, ':umail'=>$umail));
-            $user->redirect("resetPassword.php?joined");
+            echo '<script type="text/javascript">window.location.href="resetPassword.php?joined"</script>';
+            //$user->redirect("resetPassword.php?joined");
         }
         catch(PDOException $e)
         {
@@ -40,16 +49,8 @@ if(isset($_POST['btn-signup']))
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Active Family: Reset Your Password</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="style.css" type="text/css"  />
-</head>
-<body>
+
+<link rel="stylesheet" href="style.css" type="text/css"  />
 
 <div class="signin-form">
 
@@ -94,8 +95,27 @@ if(isset($_POST['btn-signup']))
 
     </div>
 </div>
+</section>
 
-</div>
+<?php
+
+include('../include/footer.php');
+
+?>
 
 </body>
+<!-- Javascript -->
+<script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
+
+<!-- Vimeo video API -->
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<script type="text/javascript" src="assets/js/vimeo.js"></script>
 </html>
