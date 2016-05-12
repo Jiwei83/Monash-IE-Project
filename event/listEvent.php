@@ -10,9 +10,12 @@ include('../include/navigation.php');
 
 
 include('../include/config.php');
+date_default_timezone_set('Australia/Melbourne');
 
+    $time = time();
+    $date = date('Y-m-d H:i:s');
     //connection to the database
-    $sql = "SELECT * FROM events WHERE status = 'active' ORDER BY `date` DESC";
+    $sql = "SELECT * FROM events WHERE status = 'active' AND date > '$date' ORDER BY `date` DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $eventIDArray = array();

@@ -143,7 +143,6 @@ include('../include/navigation.php');
         if(isset($_POST['btn-join']) && $curr_capa >= $capacity) {
             echo '<script type="text/javascript">alert("This event is full!");</script>';
         }
-        echo $type;
         ?>
     </td>
     </form>

@@ -81,7 +81,7 @@ function mailresetlink($to,$token){
         <title>Forgot Password For active-family.net</title>
         </head>
         <body>
-        <p>Click on the given link to reset your password <a href="'.$uri.'/active%20family/Login-Signup-PDO-OOP/resetPassword.php?token='.$token.'">Reset Password</a></p>
+        <p>Click on the given link to reset your password <a href="'.$uri.'/user/resetPassword.php?token='.$token.'">Reset Password</a></p>
 
         </body>
         </html>
@@ -132,7 +132,7 @@ function mailresetlink($to,$token){
             {
                 ?>
                 <div class="alert alert-info">
-                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully Reset Your Password <a href='index.php'><i style="color: blue">login</i></a> here
+                    <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully Send The Mail
                 </div>
                 <?php
             }
