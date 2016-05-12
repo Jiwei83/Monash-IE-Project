@@ -25,6 +25,9 @@ $stmt->execute(array($eventId));
 $list = $stmt->fetch(PDO::FETCH_ASSOC);
 $address = $list['address'];
 $type = $list['type'];
+$day1 = date('d', strtotime($list['date']));
+$day = date('D', strtotime($list['date']));
+$month = date('M', strtotime($list['date']));
 
 
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address='$address'&sensor=true";
@@ -69,7 +72,11 @@ include('../include/navigation.php');
     data-width="450"
     data-show-faces="true">
 </div>
-
+<time datetime="<?php echo $date?>" class="icon">
+    <em><?php echo $day?></em>
+    <strong><?php echo $month?></strong>
+    <span><?php echo $day1?></span>
+</time>
    <h2>
        Event Details
        <div class="form-group" style="float: right">
