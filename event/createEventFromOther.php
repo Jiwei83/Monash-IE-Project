@@ -8,7 +8,7 @@ $user_id = $_SESSION['user_session'];
 $user = new User();
 
 if(isset($_POST['btn-submit'])) {
-    $title = $_POST['eTitle'];
+    $title1 = $_POST['eTitle'];
     $desc = $_POST['description'];
     $address = $_POST['eAddress'];
     $suburb = $_POST['eSuburb'];
@@ -17,29 +17,30 @@ if(isset($_POST['btn-submit'])) {
     $capacity = $_POST['capOption'];
     $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
     $type = $_POST['taskOption'];
-    $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
+    if (is_numeric($capacity)) {
+        if($capacity < 100 && $capacity > 0) {
+            $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
               VALUES (:user_id,:title,:desc,:type,:address,:suburb,:capacity,:curr_capa,:date,:status)";
-    $data = array(':user_id'=>"$user_id",':title'=>"$title",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
-    $stmt = $user->runQuery($sql);
-    $stmt->execute($data);
+            $data = array(':user_id'=>"$user_id",':title'=>"$title1",':desc'=>"$desc",':type'=>"$type", ':address'=>"$address",':suburb'=>"$suburb",':capacity'=>$capacity, ':curr_capa'=>$curr_capa,':date'=>"$date",':status'=>"$status");
+            $stmt = $user->runQuery($sql);
+            $stmt->execute($data);
+            if($stmt) {
+                echo '<script language="javascript">';
+                echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
+                echo '</script>';
+                echo("<script>location.href = 'listEvent.php';</script>");
+            }
+        }
+        else {
+            echo '<script type="text/javascript">alert("Capacity should be between 1 ~ 100")</script>';
+            echo '<script type="text/javascript">document.getElementById("description").value = "haha";</script>';
+        }
 
-//    $sql ="SELECT eventId FROM events WHERE eventName = :title_name";
-//    $data = array(':title_name'=>"$title");
-//    $stmt = $user->runQuery($sql);
-//    $stmt->execute($data);
-//
-//    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-//    $event_id = $userRow['eventId'];
-//    $data=array(':event_id'=>$event_id,':user_id'=>$user_id);
-//    $sql = "INSERT INTO eventParticipant (eventId,user_id) VALUES (:event_id, :user_id)";
-//    $stmt = $user->runQuery($sql);
-//    $stmt->execute($data);
-    if($stmt) {
-        echo '<script language="javascript">';
-        echo 'alery(Event Successfully Created!!!)';  //not showing an alert box.
-        echo '</script>';
-        echo("<script>location.href = 'listEvent.php';</script>");
     }
+    else {
+        echo '<script type="text/javascript">alert("Capacity is not a number")</script>';
+    }
+
 }
 
 
@@ -53,36 +54,36 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Title<span>*</span>
-                <input type="text" class="form-control" name="eTitle" placeholder="Event Title" required />
+                <input type="text" class="form-control" name="eTitle" placeholder="Event Title" value = "<?php echo $title1?>" required />
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Address<span>*</span>
-                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" required/>
+                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" value = "<?php echo $address?>" required/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Suburb<span>*</span>
-                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" required/>
+                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" value = "<?php echo $suburb?>" required/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required></textarea>
+                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required><?php echo $desc?></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Hold Date<span>*</span>
-                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" required/>
+                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" value = "<?php echo $date?>" required/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
 <!--                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" style="ime-mode:disabled" onKeyUp="this.value=this.value.replace(/^[^0][\d]?$/,'');this.value=this.value.replace('.','');"  required />-->
-                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" onblur="checkInt(this.value,100);"/>
+                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
@@ -101,7 +102,7 @@ if(isset($_POST['btn-submit'])) {
                 Categories<span>*</span>
                 <label>
                     <select name="taskOption" size="0" id="eType" style="width: 10em" required>
-                        <option selected="selected" value="">All Activities</option>
+                        <option selected="selected" value=""><?php echo $type?></option>
                         <option>BBQ</option>
                         <option>Walking Dog</option>
                         <option>Yoga</option>
@@ -190,19 +191,19 @@ include('../include/footer.php');
 <script type="text/javascript" src="assets/js/main.js"></script>
 
 
-<script>
-    function checkInt(n,max){
-        var regex = /^\d+$/;
-        if(regex.test(n)){
-            if(n<max && n>0){
-            }else{
-                alert("Please insert number less than"+max)
-            }
-        }else{
-            alert("It is not integer");
-        }
-    }
-</script>
+<!--<script>-->
+<!--    function checkInt(n,max){-->
+<!--        var regex = /^\d+$/;-->
+<!--        if(regex.test(n)){-->
+<!--            if(n<max && n>0){-->
+<!--            }else{-->
+<!--                alert("Please insert number less than"+max)-->
+<!--            }-->
+<!--        }else{-->
+<!--            alert("It is not integer");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 
 
 </html>
