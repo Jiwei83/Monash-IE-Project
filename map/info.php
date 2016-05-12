@@ -179,17 +179,16 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
         <div class="container">
             <?php
             if(!empty($user_id)) {
-                if($locRow) {
-                    if(empty($locRow['rating_status'])) {
-                        echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="1" />';
-                        echo '<div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow[\'average_rating\']; ?></span>
-                Based on <span id="totalrat"><?php echo $ratingRow[\'rating_number\']; ?></span>  rating)</span></div>';
-                    }
-                    else {
-                        echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="0" />';
-                        echo '<div class="overall-rating">You Have Rated This Place!</span></div>';
-                        echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
-                    }
+                if(empty($locRow)) {
+                    echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="1" />';
+                    echo '<div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow[\'average_rating\']; ?></span>
+            Based on <span id="totalrat"><?php echo $ratingRow[\'rating_number\']; ?></span>  rating)</span></div>';
+
+                }
+                else {
+                    echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="0" />';
+                    echo '<div class="overall-rating">You Have Rated This Place!</span></div>';
+                    echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
                 }
             }
             else {
