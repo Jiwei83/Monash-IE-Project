@@ -3480,5 +3480,17 @@ select {
   #header{
     background-color: white;
   }
+  dt {
+    float: left;
+    width: 100px;
+    overflow: hidden;
+    clear: left;
+    /* text-align: right; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  dd {
+    margin-left: 100px;
+  }
 }
 /* Large devices (large desktops, 1200px and up) */

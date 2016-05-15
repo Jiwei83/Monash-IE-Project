@@ -1,8 +1,8 @@
 <style>
     #map, #pano {
         float: left;
-        height: 100%;
-        width: 45%;
+        height: 50%;
+        width: 100%;
     }
 </style>
 <?php
@@ -72,63 +72,65 @@ include('../include/navigation.php');
     data-width="450"
     data-show-faces="true">
 </div>
-<time datetime="<?php echo $date?>" class="icon">
-    <em><?php echo $day?></em>
-    <strong><?php echo $month?></strong>
-    <span><?php echo $day1?></span>
-</time>
+
    <h2>
        Event Details
        <div class="form-group" style="float: right">
            <button type="submit" name="btn-login" class="btn btn-primary btn-lg" onclick="direct()">
-               Venue Information
+               Venue Info
            </button>
        </div>
 
    </h2>
 <br>
-<dl class="table table-striped table-bordered">
-    <dt><?php echo "event title"; ?></dt>
-    <dd>
-        <?php echo $list['eventName']; ?>
-        &nbsp;
-    </dd>
-    <dt><?php echo "event Description"; ?></dt>
-    <dd>
-        <?php echo $list['eventDescription']; ?>
-        &nbsp;
-    </dd>
-    <dt><?php echo "Category"; ?></dt>
-    <dd>
-        <?php echo $list['type']; ?>
-        &nbsp;
-    </dd>
-    <dt><?php echo "Location"; ?></dt>
-    <dd>
-        <?php echo $list['address']; ?>
-        &nbsp;
-    </dd>
-    <dt><?php echo "Suburb"; ?></dt>
-    <dd>
-        <?php echo $list['suburb']; ?>
-        &nbsp;
-    </dd>
-    <dt><?php echo "Capacity"; ?></dt>
-    <dd>
-        <?php echo $list['capacity']; ?>
-        &nbsp;
-    </dd>
-
-
-
-    <dt><?php echo "Date and time"; ?></dt>
-    <dd>
-        <?php echo date('d-m-Y G:i', strtotime($list['date'])); ?>
-        &nbsp;
-    </dd>
-</dl>
-<div id="map"></div>
-<div id="pano"></div>
+<div class="row">
+    <div class="col-md-5">
+        <dl>
+            <dt><?php echo "Event title:"; ?></dt>
+            <dd>
+                <?php echo $list['eventName']; ?>
+            </dd>
+            <dt><?php echo "Description:"; ?></dt>
+            <dd>
+                <?php echo $list['eventDescription']; ?>
+                &nbsp;
+            </dd>
+            <dt><?php echo "Category:"; ?></dt>
+            <dd>
+                <?php echo $list['type']; ?>
+                &nbsp;
+            </dd>
+            <dt><?php echo "Location:"; ?></dt>
+            <dd>
+                <?php echo $list['address']; ?>
+                &nbsp;
+            </dd>
+            <dt><?php echo "Suburb:"; ?></dt>
+            <dd>
+                <?php echo $list['suburb']; ?>
+                &nbsp;
+            </dd>
+            <dt><?php echo "Capacity:"; ?></dt>
+            <dd>
+                <?php echo $list['capacity']; ?>
+                &nbsp;
+            </dd>
+            <dt><?php echo "Time:"; ?></dt>
+            <dd>
+                <?php echo date('G:i', strtotime($list['date'])); ?>
+                &nbsp;
+            </dd>
+        </dl>
+        <time style="float: left" datetime="<?php echo $date?>" class="icon">
+            <em><?php echo $day?></em>
+            <strong><?php echo $month?></strong>
+            <span><?php echo $day1?></span>
+        </time>
+    </div>
+    <div class="col-md-7">
+        <div id="map"></div>
+    </div>
+</div>
 <div class="form-group">
     <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
         <i class="glyphicon glyphicon-log-in"></i> &nbsp; Back
@@ -192,19 +194,24 @@ include('../include/footer.php');
 <script type="text/javascript">
     function initialize() {
         var fenway = {lat: <?php echo $lat?>, lng: <?php echo $lng?>};
-//        var map = new google.maps.Map(document.getElementById('map'), {
-//            center: fenway,
-//            zoom: 14
-//        });
-        var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-                position: fenway,
-                pov: {
-                    heading: 34,
-                    pitch: 10
-                }
-            });
-        map.setStreetView(panorama);
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: fenway,
+            zoom: 14
+        });
+        var marker = new google.maps.Marker({
+            position: fenway,
+            map: map,
+            icon:"http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        });
+//        var panorama = new google.maps.StreetViewPanorama(
+//            document.getElementById('pano'), {
+//                position: fenway,
+//                pov: {
+//                    heading: 34,
+//                    pitch: 10
+//                }
+//            });
+        //map.setStreetView(panorama);
     }
 </script>
 
