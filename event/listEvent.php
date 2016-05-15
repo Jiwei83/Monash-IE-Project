@@ -139,7 +139,7 @@ date_default_timezone_set('Australia/Melbourne');
 
                 <script>$('#event').DataTable({
                         responsive: true,
-                        order: [[ 5, "desc"]]
+                        order: [[ 4, "desc"]]
                 });</script>
 
         </div>
