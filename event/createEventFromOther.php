@@ -8,13 +8,12 @@ $user_id = $_SESSION['user_session'];
 $user = new User();
 
 if(isset($_POST['btn-submit'])) {
-    $title1 = $_POST['eTitle'];
-    $desc = $_POST['description'];
-    $address = $_POST['eAddress'];
-    $suburb = $_POST['eSuburb'];
+    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
+    $desc = (isset($_POST['description']) ? $_POST['description'] : null);
     $curr_capa = 0;
     $status='active';
-    $capacity = $_POST['capOption'];
+    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
+    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
     $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
     $type = $_POST['taskOption'];
     if (is_numeric($capacity)) {
@@ -70,7 +69,7 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required><?php echo $desc?></textarea>
+                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">

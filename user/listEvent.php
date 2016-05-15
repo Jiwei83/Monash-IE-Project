@@ -58,13 +58,13 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 $btnJoin[$i] = "btn-join".$i;?>
                             <tr>
                                 <td>
-                                    <?php echo substr($val['eventName'], 0, 100);?>
+                                    <?php echo substr($val['eventName'], 0, 30);?>
                                 </td>
                                 <td>
                                     <?php echo $val['type'];?>
                                 </td>
                                 <td>
-                                    <?php echo substr($val['suburb'], 0, 100);?>
+                                    <?php echo substr($val['suburb'], 0, 30);?>
                                 </td>
                                 <td>
                                     <?php echo $val['capacity'];?>

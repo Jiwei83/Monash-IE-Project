@@ -72,7 +72,7 @@ if(isset($_POST['btn-submit'])) {
 
     <div class="form-group">
         Description<span>*</span><br>
-            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" autofocus required><?php echo $desc?></textarea>
+            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
