@@ -77,12 +77,15 @@ date_default_timezone_set('Australia/Melbourne');
                                     ?>
                                 </td>
 <!--                                <form action="" method="post">-->
-                                    <td class="form-group">
-                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href ='view.php?eventId=<?php echo $eventId; ?>'">
-<!--                                            <a href="view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
+                                    <td>
+                                        <div class="form-group">
+                                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href ='view.php?eventId=<?php echo $eventId; ?>'">
+                                                <!--                                            <a href="view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
                                                 <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-<!--                                            </a>-->
-                                        </button>
+                                                <!--                                            </a>-->
+                                            </button>
+                                        </div>
+
                                     </td>
 <!--                                </form>-->
 
@@ -91,7 +94,6 @@ date_default_timezone_set('Australia/Melbourne');
                                     <button type="submit" name="<?php echo $btnJoin[$i]?>" class="btn btn-primary btn-lg">
                                         <i class="glyphicon glyphicon-log-in"></i> Join
                                     </button>
-                                    </td>
                                     <?php
                                     $eventId = $val['eventId'];
                                     $curr_capa = $val['curr_capa'];
