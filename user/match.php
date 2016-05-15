@@ -16,7 +16,7 @@ $intrList = explode(',', $interest);
 
 
 function getSelectForOneScale($intrList, $postcode, $user_id) {
-    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 1 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'High' FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -24,25 +24,25 @@ function getSelectForOneScale($intrList, $postcode, $user_id) {
             $select = $select."interest LIKE '%$intrList[$i]%' OR ";
         }
     }
-    $select = $select."null)";
+    $select = $select." null)";
     return $select;
 }
 
 function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
-    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 0.5 FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'Medium' FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
             $intrList[$i] = trim($intrList[$i]);
-            $select = $select."interest LIKE '%$intrList[$i]%' OR ";
+            $select = $select."interest LIKE '%$intrList[$i]%' OR";
         }
     }
-    $select = $select."null)";
+    $select = $select." null)";
     return $select;
 }
 
 function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
-    $select = "SELECT user_id, user_fname, postcode, street, interest, 0.5 FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
+    $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'Medium' FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
         if($intrList[$i] != " ") {
@@ -66,7 +66,7 @@ $selectThree = getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user
 $sql = "INSERT INTO interest ($selectThree)";
 $stmt = $pdo->query($sql);
 
-$sql = "SELECT * FROM interest";
+$sql = "SELECT * FROM interest ORDER BY match_scale";
 $stmt = $pdo->query($sql);
 $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -171,7 +171,7 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $btnView = array();
                 $i = 0;
                 foreach ($interestRow as $intr){
-                ?>
+                    ?>
                     <tr>
                         <td>
                             <?php echo $intr['name'];?>
@@ -188,22 +188,22 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <?php echo $intr['match_scale'];?>
                         </td>
-<!--                        <form action="" method="post">-->
-                            <td class="form-group">
-                                <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='listEvent.php?user_id=<?php echo $intr['user_id']; ?>'">
-<!--                                    <a href="listEvent.php?user_id=--><?php //echo $intr['user_id']; ?><!--" style="color: white">-->
-                                        <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-<!--                                    </a>-->
-                                </button>
-                            </td>
-<!--                        </form>-->
+                        <!--                        <form action="" method="post">-->
+                        <td class="form-group">
+                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='listEvent.php?user_id=<?php echo $intr['user_id']; ?>'">
+                                <!--                                    <a href="listEvent.php?user_id=--><?php //echo $intr['user_id']; ?><!--" style="color: white">-->
+                                <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
+                                <!--                                    </a>-->
+                            </button>
+                        </td>
+                        <!--                        </form>-->
 
                     </tr>
                     <?php
-                        $i++; }
-                        $sql = "DELETE FROM interest";
-                        $pdo->exec($sql);
-                    ?>
+                    $i++; }
+                $sql = "DELETE FROM interest";
+                $pdo->exec($sql);
+                ?>
 
                 </tbody>
 
@@ -218,10 +218,12 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
             <script type="text/javascript" src="assets/js/main.js"></script>
             <script>$('#event').DataTable({
-                    responsive: true
+                    responsive: true,
+                    order: [[ 5, "asc"]]
                 });</script>
 
-        </div>    </div>
+        </div>
+    </div>
 
 </div>
 

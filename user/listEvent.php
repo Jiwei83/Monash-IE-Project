@@ -11,13 +11,14 @@ $user_id1 = $_GET['user_id'];
 $user_id2 = $_SESSION['user_session'];
 
 include('../include/config.php');
+$date = date('Y-m-d H:i:s');
 
-    //connection to the database
-    $sql = "SELECT * FROM events WHERE status = 'active' AND  create_user_id = '$user_id1' ORDER BY `events`.`date` DESC";
-    $stmt = $pdo->query($sql);
-    $eventIDArray = array();
-    //$i = 0;
-    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//connection to the database
+$sql = "SELECT * FROM events WHERE status = 'active' AND  create_user_id = '$user_id1' AND date > '$date'";
+$stmt = $pdo->query($sql);
+$eventIDArray = array();
+//$i = 0;
+$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //
 //    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 //    $sql2->execute(array(":user_id"=>$user_id));
@@ -134,7 +135,8 @@ include('../include/config.php');
 
 
                 <script>$('#event').DataTable({
-                        responsive: true
+                        responsive: true,
+                        order: [[ 4, "desc"]]
                 });</script>
 
         </div>
