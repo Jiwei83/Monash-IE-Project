@@ -8,10 +8,11 @@ $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
+$date = date('Y-m-d');
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM events e, eventParticipant p where p.user_id = '$user_id' and e.eventId = p.eventId";
+$sql = "SELECT * FROM events e, eventParticipant p where p.user_id = '$user_id' and e.eventId = p.eventId and e.date > '$date'";
 $stmt = $pdo->query($sql);
 $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -212,7 +213,8 @@ if($auth_user->is_loggedin()) : ?>
             <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
             <script type="text/javascript" src="assets/js/main.js"></script>
             <script>$('#event').DataTable({
-                    responsive: true
+                    responsive: true,
+                    order: [[4, "desc"]]
                 });</script>
 
         </div>
