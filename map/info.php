@@ -30,6 +30,10 @@ $sql = $login->runQuery("SELECT * FROM user_rating_status WHERE user_id=:user_id
 $sql->execute(array(":user_id"=>$user_id, ":lat"=>$lat));
 $locRow = $sql->fetch(PDO::FETCH_ASSOC);
 
+$sql2 = $login->runQuery("SELECT * FROM location WHERE latitude=$lat");
+$sql2->execute();
+$location = $sql2->fetch(PDO::FETCH_ASSOC);
+
 $address = $data->results['0']->formatted_address;
 $suburb = $data->results['0']->address_components['2']->long_name;
 //$postcode = $data->results['0']->address_components['5']->long_name;
@@ -180,10 +184,11 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             <?php
             if(!empty($user_id)) {
                 if(empty($locRow)) {
-                    echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="1" />';
-                    echo '<div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow[\'average_rating\']; ?></span>
+                    if(!empty($location)) {
+                        echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="1" />';
+                        echo '<div class="overall-rating">(Average Rating <span id="avgrat"><?php echo $ratingRow[\'average_rating\']; ?></span>
             Based on <span id="totalrat"><?php echo $ratingRow[\'rating_number\']; ?></span>  rating)</span></div>';
-
+                    }
                 }
                 else {
                     echo '<input name="rating" value="0" id="rating_star" type="hidden" postID="0" />';
