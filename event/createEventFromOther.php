@@ -7,17 +7,18 @@ require_once("../user/class.user.php");
 $user_id = $_SESSION['user_session'];
 $user = new User();
 
+//check if the submit button pushed
 if(isset($_POST['btn-submit'])) {
-    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
-    $desc = (isset($_POST['description']) ? $_POST['description'] : null);
-    $curr_capa = 0;
-    $status='active';
-    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
-    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
-    $date = date('Y-m-d G:i', strtotime($date));
-    $type = $_POST['taskOption'];
-    $suburb = (isset($_POST['eSuburb']) ? $_POST['eSuburb'] : null);
-    $address = (isset($_POST['eAddress']) ? $_POST['eAddress'] : null);
+    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null); //get the title of the event the user input
+    $desc = (isset($_POST['description']) ? $_POST['description'] : null); //get the description of event the user input
+    $curr_capa = 0; //set the current capacity of the event to 0
+    $status='active'; //set the event status to active
+    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null); //get the capacity of the event the user input
+    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null); //get the date of event the user input
+    $date = date('Y-m-d G:i', strtotime($date)); //convert date to yyyy-mm-dd format
+    $type = $_POST['taskOption']; //get the type of the event the user input
+    $suburb = (isset($_POST['eSuburb']) ? $_POST['eSuburb'] : null); //get the suburb from map info page
+    $address = (isset($_POST['eAddress']) ? $_POST['eAddress'] : null); //get the address
     if (is_numeric($capacity)) {
         if($capacity < 100 && $capacity > 0) {
             $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
@@ -71,7 +72,7 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
+                <textarea rows="5" cols="52" id="description" placeholder="Please Insert Only 50 Words" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
@@ -81,7 +82,7 @@ if(isset($_POST['btn-submit'])) {
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
-                <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
+                <input class="form-control" placeholder="Please Insert Number" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">

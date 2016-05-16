@@ -19,7 +19,8 @@ class USER
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-	
+
+	//user register function
 	public function register($uname,$umail,$upass)
 	{
 		try
@@ -48,7 +49,7 @@ class USER
 		}				
 	}
 	
-	
+	//user login function
 	public function doLogin($uname,$umail,$upass)
 	{
 		try
@@ -74,7 +75,8 @@ class USER
 			echo $e->getMessage();
 		}
 	}
-	
+
+	//check the user login status
 	public function is_loggedin()
 	{
 		if(isset($_SESSION['user_session']))
@@ -82,12 +84,13 @@ class USER
 			return true;
 		}
 	}
-	
+
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
-	
+
+	//user logout function
 	public function doLogout()
 	{
 		session_destroy();

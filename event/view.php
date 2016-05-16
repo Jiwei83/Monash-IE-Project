@@ -13,26 +13,25 @@ include('../include/config.php');
 
 $eventId = $_GET['eventId'];
 
-
-
-
 /* Execute a prepared statement by passing an array of values */
-
 
 $stmt=$pdo->prepare('select * from events where eventId= ?');
 
 $stmt->execute(array($eventId));
 $list = $stmt->fetch(PDO::FETCH_ASSOC);
-$address = $list['address'];
-$type = $list['type'];
-$day1 = date('d', strtotime($list['date']));
-$day = date('D', strtotime($list['date']));
-$month = date('M', strtotime($list['date']));
+$address = $list['address']; //get the address of the event
+$type = $list['type']; //get the type of the event
+$day1 = date('d', strtotime($list['date'])); //get the day of the event
+$day = date('D', strtotime($list['date'])); //get the date of the event
+$month = date('M', strtotime($list['date']));   //get the month of the event
 
-
+//set the google map api url
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address='$address'&sensor=true";
+//set the format of the usl
 $url = str_replace(' ', '%20', $url);
+//get the response from google
 $json = file_get_contents($url);
+//decode the json response
 $data = json_decode($json);
 
 $lat = $data->results['0']->geometry->location->lat;

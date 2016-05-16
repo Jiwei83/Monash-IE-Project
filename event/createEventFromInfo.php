@@ -7,16 +7,17 @@ require_once("../user/class.user.php");
 $user_id = $_SESSION['user_session'];
 $user = new User();
 
+//check if the submit button pushed
 if(isset($_POST['btn-submit'])) {
-    $address = $_GET['address'];
-    $suburb = $_GET['suburb'];
-    $type = $_GET['cata'];
-    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);
-    $desc = (isset($_POST['description']) ? $_POST['description'] : null);
-    $curr_capa = 0;
-    $status='active';
-    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
-    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
+    $address = $_GET['address']; //get the address from map info page
+    $suburb = $_GET['suburb'];   //get the suburb from map info page
+    $type = $_GET['cata'];       //get the type of the location
+    $title1 = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null); //get the title of the event the user input
+    $desc = (isset($_POST['description']) ? $_POST['description'] : null); //get the description of event the user input
+    $curr_capa = 0; //set the current capacity of the event to 0
+    $status='active';   //set the event status to active
+    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null); //get the capacity of the event the user input
+    $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null); //get the date of event the user input
     if (is_numeric($capacity)) {
         if($capacity < 100 && $capacity > 0) {
             $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)
@@ -72,7 +73,7 @@ if(isset($_POST['btn-submit'])) {
 
     <div class="form-group">
         Description<span>*</span><br>
-            <textarea rows="5" cols="52" id="description" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
+            <textarea rows="5" cols="52" placeholder="Please Insert Only 50 Words" id="description" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
         <span id="check-e"></span>
     </div>
     <div class="form-group">
@@ -82,7 +83,7 @@ if(isset($_POST['btn-submit'])) {
     </div>
     <div class="form-group">
         Capacity<span>*</span>
-        <input class="form-control" placeholder="Please Insert Integer" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
+        <input class="form-control" placeholder="Please Insert Number" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
 
         <span id="check-e"></span>
     </div>

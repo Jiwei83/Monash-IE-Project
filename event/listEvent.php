@@ -3,28 +3,20 @@ include('../include/eventpath.php');
 include('../include/header.php');
 include('../include/navigation.php');
 
-    //session_start();
-    //require_once('../user/class.user.php');
-    //$user = new USER();
-    //$user_id = $_SESSION['user_session'];
-
-
 include('../include/config.php');
 date_default_timezone_set('Australia/Melbourne');
 
-    $time = time();
-    $date = date('Y-m-d H:i:s');
-    //connection to the database
-    $sql = "SELECT * FROM events WHERE status = 'active' AND date > '$date'";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $eventIDArray = array();
-    //$i = 0;
-    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-//    $sql2->execute(array(":user_id"=>$user_id));
-//    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
+//get the current time and date
+$time = time();
+$date = date('Y-m-d H:i:s');
+
+//connection to the database
+$sql = "SELECT * FROM events WHERE status = 'active' AND date > '$date'";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$eventIDArray = array();
+//$i = 0;
+$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php
@@ -98,6 +90,7 @@ date_default_timezone_set('Australia/Melbourne');
                                     $eventId = $val['eventId'];
                                     $curr_capa = $val['curr_capa'];
                                     $capacity = $val['capacity'];
+                                    //check if the join button pushed and the current capacity is less than capacity of the event then let the user join the event
                                     if(isset($_POST[$btnJoin[$i]]) && $curr_capa < $capacity) {
                                         $sql1 = "INSERT INTO eventParticipant VALUES ($eventId, $user_id)";
                                         $resp1 = $pdo->exec($sql1);

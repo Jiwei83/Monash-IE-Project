@@ -5,7 +5,6 @@
  * Date: 2/05/2016
  * Time: 8:40 PM
  */
-<?php
 $app_id = "564570863724922";
 $app_secret = "740c9691e39a500bc862b98ab157f7f3";
 $my_url = "http://www.active-family.net/";
