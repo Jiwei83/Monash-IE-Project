@@ -274,18 +274,7 @@ if($auth_user->is_loggedin()) : ?>
                     </tr>
                     <?php $i++; }?>
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Suburb</th>
-                    <th>Capacity</th>
-                    <th>Date</th>
-                    <th style="display: none">View</th>
-                    <th style="display: none">Edit</th>
-                    <th style="display: none">Cancel</th>
-                </tr>
-                </tfoot>
+               
             </table>
             <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
