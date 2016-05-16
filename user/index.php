@@ -74,7 +74,7 @@ if(isset($_POST['btn-login']))
                         </ul>
                     </li>
                     <li class="nav-item"><a href="../about.php">About Us</a></li>
-                    <li class="nav-item"><a href="index.php" id="register">Log in</a></li>
+                    <li class="active nav-item"><a href="index.php" id="register">Log in</a></li>
                     <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="sign-up.php" id="register">Sign Up Free</a></li>
                 </ul><!--//nav-->
             </div><!--//navabr-collapse-->

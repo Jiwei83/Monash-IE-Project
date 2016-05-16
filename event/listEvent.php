@@ -27,7 +27,7 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php ?>
     <div class="container" >
             <div class='row'>
-                    <table id='event' class="display responsive nowrap" cellspacing="0" width="100%">
+                    <table id='event' class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>Name</th>

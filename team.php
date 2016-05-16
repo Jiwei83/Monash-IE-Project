@@ -198,7 +198,7 @@ if($login->is_loggedin()) : ?>
                         <div class="footer-col-inner">
                             <h3 class="title">Features</h3>
                             <ul class="list-unstyled">
-                                <li><a href="index.php"><i class="fa fa-caret-right"></i>Search For Venues</a></li>
+                                <li><a href="map/index.php"><i class="fa fa-caret-right"></i>Search For Venues</a></li>
                                 <li><a href="event/listEvent.php"><i class="fa fa-caret-right"></i>View Event</a></li>
                                 <li><a href="user/profile.php"><i class="fa fa-caret-right"></i>Member Area</a></li>
                             </ul>

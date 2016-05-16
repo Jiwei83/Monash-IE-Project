@@ -71,7 +71,7 @@
     </div><!--//footer-content-->
     <div class="bottom-bar">
         <div class="container">
-            <small class="copyright">Copyright @ 2016 <a href="copyright.txt" target="_blank">Active family</a></small>
+            <small class="copyright">Copyright @ 2016 <a href="http://active-family.net/copyright.txt" target="_blank">Active family</a></small>
         </div><!--//container-->
     </div><!--//bottom-bar-->
 </footer><!--//footer-->
