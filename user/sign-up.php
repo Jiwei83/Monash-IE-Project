@@ -278,7 +278,6 @@ if(isset($_POST['btn-signup']))
 					<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
 					<div class="col-md-3"><input type="checkbox" name="interest[]" value="basketball"> Basketball</div>
 					<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
-					<div class="col-md-2"><input type="checkbox" name="interest[]" value="pet"> Pet</div>
 				</div>
 
 				<div class="clearfix"></div><hr />

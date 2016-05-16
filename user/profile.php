@@ -190,7 +190,6 @@ if($auth_user->is_loggedin()) : ?>
                 <div class="col-md-2"><input type="checkbox" name="interest[]" id="Yoga" value="Yoga">Yoga</div>
                 <div class="col-md-3"><input type="checkbox" name="interest[]" id="Basketball" value="basketball"> Basketball</div>
                 <div class="col-md-3"><input type="checkbox" name="interest[]" id="Swim" value="Swim"> Swim</div>
-                <div class="col-md-2"><input type="checkbox" name="interest[]" id="Pet" value="pet"> Pet</div>
             </div>
             <div class="form-group">
                 <input type="submit" name="update" class="btn btn-primary btn-lg" style="float: right;" value="Update"/>
