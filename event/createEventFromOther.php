@@ -14,8 +14,10 @@ if(isset($_POST['btn-submit'])) {
     $status='active';
     $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);
     $date = (isset($_POST['eDate']) ? $_POST['eDate'] : null);
-    $date = date('Y-m-d G:i', strtotime($_POST['eDate']));
+    $date = date('Y-m-d G:i', strtotime($date));
     $type = $_POST['taskOption'];
+    $suburb = (isset($_POST['eSuburb']) ? $_POST['eSuburb'] : null);
+    $address = (isset($_POST['eAddress']) ? $_POST['eAddress'] : null);
     if (is_numeric($capacity)) {
         if($capacity < 100 && $capacity > 0) {
             $sql =  "INSERT INTO events (create_user_id, eventName, eventDescription, type, address, suburb, capacity, curr_capa, date, status)

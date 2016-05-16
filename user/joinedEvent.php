@@ -191,7 +191,7 @@ if($auth_user->is_loggedin()) : ?>
                                     $stmt = $pdo->query($sql);
                                     if($stmt) {
                                         echo '<script type="text/javascript">alert("Successful!");</script>';
-                                        echo '<script type="text/javascript">location.reload();</script>';
+                                        echo '<script type="text/javascript">window.location.href="joinedEvent.php"</script>';
                                     }
                                 }
                                 ?>

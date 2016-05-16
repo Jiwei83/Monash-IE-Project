@@ -257,7 +257,7 @@ if($auth_user->is_loggedin()) : ?>
                                                 sendCancelMail($to);
                                             }
                                             echo '<script type="text/javascript">alert("Successfully Cancelled!");</script>';
-                                            echo '<script type="text/javascript">location.reload();</script>';
+                                            echo '<script type="text/javascript">window.location.href = "home.php"</script>';
                                         }
                                         else {
                                             echo '<script type="text/javascript">alert("Already Cancelled");</script>';
@@ -282,6 +282,7 @@ if($auth_user->is_loggedin()) : ?>
                 </tr>
                 </tfoot>
             </table>
+            <?php echo '<script type="text/javascript">location.reload()</script>';?>
             <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
             <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
