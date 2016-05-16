@@ -1,11 +1,14 @@
 <?php
+//set the user session
 require_once("session.php");
+//include the database config file
 include('../include/config.php');
 require_once("class.user.php");
+//create the user object
 $auth_user = new USER();
 
-
-$user_id = $_SESSION['user_session'];
+$user_id = $_SESSION['user_session']; //get the user id
+//select the details of the user
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
 
@@ -203,7 +206,7 @@ if($auth_user->is_loggedin()) : ?>
 
 </div>
 <?php
-
+//update the user information
 if(isset($_POST['update'])) {
     $fname = (isset($_POST['firstname']) ? $_POST['firstname'] : null);
     $lname = (isset($_POST['lastname']) ? $_POST['lastname'] : null);

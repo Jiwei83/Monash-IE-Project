@@ -132,9 +132,6 @@ for($x=0; $x<7;$x++){
 ?>
 <?php
 //Fetch rating deatails from database
-//$query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM post_rating WHERE post_id = 1 AND status = 1";
-//$result = $pdo->query($query);
-//$ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 $query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM location WHERE latitude = $lat AND status = 1";
 $result = $pdo->query($query);
 $ratingRow = $result->fetch(PDO::FETCH_ASSOC);

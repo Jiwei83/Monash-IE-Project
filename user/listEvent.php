@@ -1,28 +1,23 @@
 <?php
+//include the event header link path
 include('../include/eventpath.php');
+//include the header
 include('../include/header.php');
+//include the navigation
 include('../include/navigation.php');
 
-    //session_start();
-    //require_once('../user/class.user.php');
-    //$user = new USER();
-    //$user_id = $_SESSION['user_session'];
-$user_id1 = $_GET['user_id'];
-$user_id2 = $_SESSION['user_session'];
-
+$user_id1 = $_GET['user_id']; //get the creater id of the event
+$user_id2 = $_SESSION['user_session']; //get the current user id
+//include the database config file
 include('../include/config.php');
+//get the current date
 $date = date('Y-m-d H:i:s');
 
-//connection to the database
+//select the events of the matched user
 $sql = "SELECT * FROM events WHERE status = 'active' AND  create_user_id = '$user_id1' AND date > '$date'";
 $stmt = $pdo->query($sql);
 $eventIDArray = array();
-//$i = 0;
 $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//    $sql2 = $user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-//    $sql2->execute(array(":user_id"=>$user_id));
-//    $userRow = $sql2->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <?php
@@ -48,13 +43,12 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <tbody>
                             <?php
-                            $btnEdit[] = array();
-                            $btnCancel[] = array();
+                            $btnView[] = array();
                             $btnJoin[] = array();
                             $i = 0;
+                            //display the
                             foreach ($list as $val){
-                                $btnEdit[$i] = "btn-edit".$i;
-                                $btnCancel[$i] = "btn-cancel".$i;
+                                $btnView[$i] = "btn-view".$i;
                                 $btnJoin[$i] = "btn-join".$i;?>
                             <tr>
                                 <td>

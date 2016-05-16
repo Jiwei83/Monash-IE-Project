@@ -1,17 +1,22 @@
 <?php
+//set the user session
 require_once("session.php");
+//include the database config file
 include('../include/config.php');
 require_once("class.user.php");
+//create a new object of the user class
 $auth_user = new USER();
 
 
-$user_id = $_SESSION['user_session'];
+$user_id = $_SESSION['user_session']; //get the user id
+//select the user details based on the user id
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
-$date = date('Y-m-d');
+$date = date('Y-m-d'); // get the current date
 
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+//select the user joined events
 $sql = "SELECT * FROM events e, eventParticipant p where p.user_id = '$user_id' and e.eventId = p.eventId and e.date > '$date'";
 $stmt = $pdo->query($sql);
 $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -145,6 +150,7 @@ if($auth_user->is_loggedin()) : ?>
                 <?php
                 $btnView = array();
                 $i = 0;
+                //display all the user joined events
                 foreach ($list as $val){
                     $btnView[$i] = "btnView".$i;
                     $btnLeave[$i] = "btnLeave".$i;

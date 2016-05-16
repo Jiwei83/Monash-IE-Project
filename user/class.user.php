@@ -3,23 +3,23 @@
 require_once('dbconfig.php');
 
 class USER
-{	
-
+{
 	private $conn;
-	
+
+	//constructor of the user class
 	public function __construct()
 	{
 		$database = new Database();
 		$db = $database->dbConnection();
 		$this->conn = $db;
     }
-	
+	//prepare the sql statement
 	public function runQuery($sql)
 	{
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-
+	//user register function
 	public function register($uname,$umail,$upass, $ufname, $ulname, $udob, $uphone, $upostcode, $usuburb, $uaddress, $ufsize, $uinterest, $upno)
 	{
 		try
@@ -60,7 +60,7 @@ class USER
 		}				
 	}
 	
-	
+	//user login function
 	public function doLogin($uname,$umail,$upass)
 	{
 		try
@@ -86,7 +86,8 @@ class USER
 			echo $e->getMessage();
 		}
 	}
-	
+
+	//check the user login status
 	public function is_loggedin()
 	{
 		if(isset($_SESSION['user_session']))
@@ -94,12 +95,14 @@ class USER
 			return true;
 		}
 	}
-	
+
+	//redirect function
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
-	
+
+	//user logout function
 	public function doLogout()
 	{
 		session_destroy();

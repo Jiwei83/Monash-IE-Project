@@ -1,11 +1,5 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: Tefo
- * Date: 30/04/2016
- * Time: 7:41 PM
- */
+//send the motivate reminder email for the users if they have not joined the event for 15 days
 
 
 include('../include/config.php');
