@@ -1,7 +1,9 @@
 <?php
+//include the map header link path
 include("../include/mapPath.php");
-//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+//include the header file
 include('../include/header.php');
+//include the navigation file
 include('../include/navigation.php');
 
 ?>
@@ -10,9 +12,10 @@ include('../include/navigation.php');
 require_once('class.user.php');
 require_once('PHPMailer-master/class.phpmailer.php');
 require_once('PHPMailer-master/class.smtp.php');
-
+//create the user object
 $user = new User();
 
+//send the user reset password email
 if(isset($_POST['btn-reset']))
 {
     $umail = strip_tags($_POST['txt_umail']);
@@ -49,7 +52,7 @@ if(isset($_POST['btn-reset']))
         }
     }
 }
-
+//set token
 function getRandomString($length)
 {
     $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
@@ -62,7 +65,7 @@ function getRandomString($length)
     }
     return $result;
 }
-
+//send the reset mail
 function mailresetlink($to,$token){
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -94,8 +97,6 @@ function mailresetlink($to,$token){
 
 
     if($mail->send()){
-        $user = new User();
-//        $user->redirect('resetPage.php?joined');
         echo '<script type="text/javascript">window.location.href="resetPage.php?joined"</script>';
 
     }
@@ -103,8 +104,6 @@ function mailresetlink($to,$token){
         //echo "Mail Error: " . $mail->ErrorInfo;
     }
 }
-
-//if(isset($_GET['email']))mailresetlink($email,$token);
 ?>
 
 

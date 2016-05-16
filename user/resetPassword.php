@@ -1,22 +1,25 @@
 <?php
+//include the map path link of the header
 include("../include/mapPath.php");
-//$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+//include the header
 include('../include/header.php');
+//include the navigation
 include('../include/navigation.php');
 
 ?>
 
 <?php
 session_start();
-$token=$_GET['token'];
+$token=$_GET['token']; //get the token
 require_once('class.user.php');
+//create the user object
 $user = new USER();
 
 if($user->is_loggedin()!="")
 {
     $user->redirect('home.php');
 }
-
+//set the user password
 if(isset($_POST['btn-signup']))
 {
     $upass = strip_tags($_POST['txt_upass']);

@@ -7,7 +7,7 @@ if($user->is_loggedin()!="")
 {
 	$user->redirect('home.php');
 }
-
+//user sign up
 if(isset($_POST['btn-signup']))
 {
 	$uname = strip_tags($_POST['txt_uname']);
