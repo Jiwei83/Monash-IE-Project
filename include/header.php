@@ -7,12 +7,12 @@
  */
 session_start();
 //$user_id = $_SESSION['user_session'];
-$user_id = (isset($_SESSION['user_session']) ? $_SESSION['user_session'] : null);
-$sql = "SELECT * FROM users WHERE user_id = '$user_id'";
-$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+$user_id = (isset($_SESSION['user_session']) ? $_SESSION['user_session'] : null); //get the user id if the user not login then set it to null
+$sql = "SELECT * FROM users WHERE user_id = '$user_id'";    //select the details about the user based on the user_id
+$_SESSION['url'] = $_SERVER['REQUEST_URI']; //store the previous page url
 require_once("../user/class.user.php");
-$login = new USER();
-$stmt = $login->runQuery($sql);
+$login = new USER(); //create a new user object
+$stmt = $login->runQuery($sql); //run the select query to select the user info
 $stmt->execute(array(":user_id"=>$user_id));
 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 if($login->is_loggedin()) : ?>

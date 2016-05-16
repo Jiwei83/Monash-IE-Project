@@ -5,7 +5,7 @@
  * Date: 8/05/2016
  * Time: 8:23 PM
  */
-
+//set the url to every header link for user page
 $home='"nav-item"';
 $ven='"nav-item"';
 $event='"nav-item"';

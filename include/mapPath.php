@@ -5,6 +5,7 @@
  * Date: 26/04/2016
  * Time: 7:15 PM
  */
+//set the url to every header link for map page
 $home='"nav-item"';
 $ven='"active nav-item"';
 $event='"nav-item"';
