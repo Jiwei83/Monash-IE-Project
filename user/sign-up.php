@@ -189,7 +189,7 @@ if(isset($_POST['btn-signup']))
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
 							Events</a>
 						<ul class="dropdown-menu">
-							<li><a href="../event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>
+<!--							<li><a href="../event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>-->
 							<li><a href="../event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
 						</ul>
 					</li>
