@@ -1,4 +1,7 @@
 <?php
+include('../include/userpath.php');
+include('../include/header.php');
+
 session_start();
 require_once('class.user.php');
 $user = new USER();
@@ -28,21 +31,21 @@ if(isset($_POST['btn-signup']))
 	for($i=0; $i<$n; $i++) {
 		$uinterest = $uinterest.$ui[$i].",";
 	}
-	
+
 	if($uname=="")	{
-		$error[] = "provide username !";	
+		$error[] = "provide username !";
 	}
 	else if($umail=="")	{
-		$error[] = "provide email id !";	
+		$error[] = "provide email id !";
 	}
 	else if(!filter_var($umail, FILTER_VALIDATE_EMAIL))	{
-	    $error[] = 'Please enter a valid email address !';
+		$error[] = 'Please enter a valid email address !';
 	}
 	else if($upass=="")	{
 		$error[] = "provide password !";
 	}
 	else if(strlen($upass) < 6){
-		$error[] = "Password must be atleast 6 characters";	
+		$error[] = "Password must be atleast 6 characters";
 	}
 	else if($ufname=="") {
 		$error[] = "Provide First name!";
@@ -93,7 +96,7 @@ if(isset($_POST['btn-signup']))
 			$stmt = $user->runQuery("SELECT user_name, user_email FROM users WHERE user_name=:uname OR user_email=:umail");
 			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
 			$row=$stmt->fetch(PDO::FETCH_ASSOC);
-				
+
 			if($row['user_name']==$uname) {
 				$error[] = "sorry username already taken !";
 			}
@@ -134,75 +137,22 @@ if(isset($_POST['btn-signup']))
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Active Family - Sign up</title>
-	<!-- Global CSS -->
-	<link rel="shortcut icon" href="../favicon.ico">
-	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
-	<!-- Theme CSS -->
-	<link id="theme-style" rel="stylesheet" href="../map/assets/css/styles.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/custom.css"/>
-	<link rel="stylesheet" href="style.css" type="text/css"  />
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-	<meta charset="utf-8">
-	<title>jQuery UI Datepicker - Default functionality</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script>
-		$(document).ready(function() {
-			$("#datepicker").datepicker({
-				changeYear:true,
-				yearRange: "-100:+0"
-			});
+<link rel="stylesheet" href="style.css" type="text/css"  />
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<meta charset="utf-8">
+<!-- jQuery UI Datepicker - Default functionality-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+	$ ( function() {
+		$("#datepicker").datepicker({
+			changeYear:true,
+			yearRange: "-100:+0"
 		});
-	</script>
-</head>
-<body style="background-color: #f5f5f5">
-<!-- ******HEADER****** -->
-<header id="header" class="header navbar-fixed-top" style="position: relative; background-color: white">
-	<div class="container">
-		<h1 class="logo">
-			<a href="../index.php"><img src="../logo.png" style="height:120px"></a>
-		</h1><!--//logo-->
-		<nav class="main-nav navbar-right" role="navigation">
-			<div class="navbar-header">
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button><!--//nav-toggle-->
-			</div><!--//navbar-header-->
-			<div id="navbar-collapse" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="nav-item"><a href="../index.php">Home</a></li>
-					<li class="nav-item"><a href="../map/index.php">Venues</a></li>
-					<li class="nav-item">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="flase">
-							Events</a>
-						<ul class="dropdown-menu">
-<!--							<li><a href="../event/createEventFromOther.php" id="notlogedin"><span class="glyphicon glyphicon-calendar" ></span>&nbsp;Create an Event</a></li>-->
-							<li><a href="../event/listEvent.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp;View Events</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="../about.php">About Us</a></li>
-					<li class="nav-item"><a href="index.php" id="register">Log in</a></li>
-					<li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="sign-up.php" id="register">Sign Up Free</a></li>
-
-				</ul><!--//nav-->
-			</div><!--//navabr-collapse-->
-		</nav><!--//main-nav-->
-</header><!--header-->
-
+	});
+</script>
+<?php include('../include/navigation.php');?>
 <div class="signin-form">
 	<div class="container">
 		<form method="post">
@@ -245,9 +195,8 @@ if(isset($_POST['btn-signup']))
 					<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" id="datepicker" class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
+					<input type="text" id='datepicker' class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
 				</div>
-
 
 			</div>
 			<div class="col-md-1"></div>
@@ -301,124 +250,9 @@ if(isset($_POST['btn-signup']))
 	<br>
 </div>
 
-<!-- ******FOOTER****** -->
-<footer class="footer">
-	<div class="footer-content">
-		<div class="container">
-			<div class="row">
-				<div class="footer-col links col-md-3 col-sm-4 col-xs-12">
-					<div class="footer-col-inner">
-						<h3 class="title">About us</h3>
-						<ul class="list-unstyled">
-							<li><a href="../team.php"><i class="fa fa-caret-right"></i>Who we are</a></li>
-							<li><a href="../terms.php"><i class="fa fa-caret-right"></i>Terms and conditions</a></li>
-						</ul>
-					</div><!--//footer-col-inner-->
-				</div><!--//foooter-col-->
-				<div class="footer-col links col-md-3 col-sm-4 col-xs-12">
-					<div class="footer-col-inner">
-						<h3 class="title">Features</h3>
-						<ul class="list-unstyled">
-							<li><a href="../map/index.php"><i class="fa fa-caret-right"></i>Search For Venues</a></li>
-							<li><a href="../event/listEvent.php"><i class="fa fa-caret-right"></i>View Event</a></li>
-							<li><a href="../user/profile.php"><i class="fa fa-caret-right"></i>Member Area</a></li>
-						</ul>
-					</div><!--//footer-col-inner-->
-				</div><!--//foooter-col-->
-				<div class="footer-col links col-md-3 col-sm-4 col-xs-12 sm-break">
-					<div class="footer-col-inner">
-						<h3 class="title">Contact us</h3>
-						<p class="adr clearfix">
-							<i class="fa fa-map-marker pull-left"></i>
-                                <span class="adr-group pull-left">
-                                    <span class="street-address">Monash University</span><br>
-                                    <span class="region">900 Dandenong Rd</span><br>
-                                    <span class="postal-code">Caulfield East VIC 3145</span><br>
-                                    <span class="country-name">Au</span>
-                                </span>
-						</p>
-						<p class="email"><i class="fa fa-envelope-o"></i><a href="#">enquires@active-family.net</a></p>
-						<a href="https://twitter.com/activeFamily4" class="twitter-follow-button" data-show-count="false">Follow @activeFamily4</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-					</div><!--//footer-col-inner-->
-				</div><!--//foooter-col-->
-				<div class="footer-col connect col-md-3 col-sm-12 col-xs-12">
-					<div class="footer-col-inner">
-						<ul class="social list-inline">
-							<li><a href="https://twitter.com/activeFamily4" target="_blank"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="https://www.facebook.com/active-familynet-621951011296775/"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="https://plus.google.com/u/0/114127749990367630116"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="https://www.instagram.com/activefamily4/"><i class="fa fa-instagram"></i></a></li>
-						</ul>
-						<div class="form-container">
+<?php include('../include/footer.php'); ?>
 
-						</div>
-						</form>
-					</div><!--//subscription-form-->
-				</div><!--//footer-col-inner-->
-			</div><!--//foooter-col-->
-			<div class="clearfix"></div>
-		</div><!--//row-->
 
-	</div><!--//container-->
-	</div><!--//footer-content-->
-	<div class="bottom-bar">
-		<div class="container">
-			<small class="copyright">Copyright @ 2016 <a href="copyright.txt" target="_blank">Active family</a></small>
-		</div><!--//container-->
-	</div><!--//bottom-bar-->
-</footer><!--//footer-->
-
-<script>
-	function initAutocomplete() {
-		// Create the search box and link it to the UI element.
-		var input1 = document.getElementById('pac-input1');
-		var input2 = document.getElementById('pac-input2');
-		var searchBox1 = new google.maps.places.SearchBox(input1);
-		var searchBox2 = new google.maps.places.SearchBox(input2);
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input1);
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
-
-		// Bias the SearchBox results towards current map's viewport.
-		map.addListener('bounds_changed', function() {
-			searchBox.setBounds(map.getBounds());
-		});
-
-		// Listen for the event fired when the user selects a prediction and retrieve
-		// more details for that place.
-		searchBox.addListener('places_changed', function() {
-			var places1 = searchBox1.getPlaces();
-			var places2 = searchBox2.getPlaces();
-
-			if (places1.length == 0) {
-				return;
-			}
-
-			// For each place, get the icon, name and location.
-			var bounds = new google.maps.LatLngBounds();
-			places.forEach(function(place) {
-				var icon = {
-					url: place.icon,
-					size: new google.maps.Size(71, 71),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(17, 34),
-					scaledSize: new google.maps.Size(25, 25)
-				};
-				if (place.geometry.viewport) {
-					// Only geocodes have viewport.
-					bounds.union(place.geometry.viewport);
-				} else {
-					bounds.extend(place.geometry.location);
-				}
-			});
-		});
-	}
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&libraries=places&callback=initAutocomplete"
-		async defer></script>
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>

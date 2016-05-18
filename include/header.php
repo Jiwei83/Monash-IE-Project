@@ -67,4 +67,3 @@ if($login->is_loggedin()) : ?>
 
     <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
     <![endif]-->
-</head>
