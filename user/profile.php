@@ -47,7 +47,7 @@ if($auth_user->is_loggedin()) : ?>
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="../map/assets/css/styles.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/custom.css"/>
     <link rel="stylesheet" href="style.css" type="text/css"  />
@@ -79,8 +79,8 @@ if($auth_user->is_loggedin()) : ?>
 <header id="header" class="header navbar-fixed-top" style="position: relative; background-color: white">
     <div class="container">
         <h1 class="logo">
-            <a href="http://active-family.net"><span class="logo-icon"></span><span class="text">Active Family</span></a>
-        </h1><!--logo-->
+            <a href="../index.php"><img src="../logo.png" style="height:120px"></a>
+        </h1><!--//logo-->
         <nav class="main-nav navbar-right" role="navigation">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">

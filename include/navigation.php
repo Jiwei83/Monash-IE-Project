@@ -15,8 +15,8 @@
     <header id="header" class="header navbar-fixed-top">
         <div class="container">
             <h1 class="logo">
-                <a href=<?php echo $url_home ?>><span class="text">Active Family</span></a>
-</h1><!--//logo-->
+                <a href="../index.php"><img src="../logo.png" style="height:120px"></a>
+            </h1><!--//logo-->
 <nav class="main-nav navbar-right" role="navigation">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
