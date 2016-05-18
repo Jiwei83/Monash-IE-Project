@@ -84,7 +84,7 @@ include('../include/navigation.php');
                 var h = $(window).height(),
                     offsetTop = 105; // Calculate the top offset
 
-                $('#map_canvas').css('height', (h - offsetTop));
+                $('#map_canvas').css('height', (h - offsetTop - 160));
             }).resize();
 
             $(function() {

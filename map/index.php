@@ -1,8 +1,8 @@
 <?php
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-include('../include/header.php');
-?>
+include('../include/header.php');?>
+
 <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
 <?php include('../include/navigation.php');
@@ -22,6 +22,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
+
 
             <div class='container-fluid'>
     <div class='row'>
@@ -96,7 +97,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         var h = $(window).height(),
                 offsetTop = 105; // Calculate the top offset
 
-        $('#map_canvas').css('height', (h - offsetTop));
+        $('#map_canvas').css('height', (h - offsetTop - 160));
     }).resize();
 
     $(function() {
