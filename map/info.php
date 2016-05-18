@@ -213,8 +213,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                         <b> Category: <?php echo $cata?>
                     </div>
 
-                    <div class="col-md-3" style="border-style: solid; border-width: 1px;">
-                        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/><b>Current location </b><br>
+                    <div class="col-md-3">
+                        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" style="padding-bottom: 7px"/><b style="padding-bottom: 7px">Current location </b><br>
                         <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Destination location </b>
                     </div>
                 </div>
