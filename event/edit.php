@@ -68,10 +68,9 @@ catch(PDOException $e) {
 
 <!-- ******HEADER****** -->
 <header id="header" class="header navbar-fixed-top" style="position: relative;">
-    <div class="container">
-        <h1 class="logo">
-            <a href="http://active-family.net"><span class="logo-icon"></span><span class="text">Active Family</span></a>
-        </h1><!--logo-->
+    <h1 class="logo">
+        <a href="../index.php"><img src="../logo.png" style="height:120px"></a>
+    </h1><!--//logo-->
         <nav class="main-nav navbar-right" role="navigation">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
