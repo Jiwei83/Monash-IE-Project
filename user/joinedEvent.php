@@ -175,7 +175,7 @@ if($auth_user->is_loggedin()) : ?>
                             <?php echo $val['capacity'];?>
                         </td>
                         <td>
-                            <?php echo $val['date'];?>
+                            <?php echo date("d/m/Y H:i", strtotime($val['date']));?>
                         </td>
                         <td >
                             <div class="form-group">
