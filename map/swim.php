@@ -96,10 +96,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <script type='text/javascript'>
     //<![CDATA[
     $(window).resize(function () {
-        var h = $(window).height(),
-                offsetTop = 105; // Calculate the top offset
+        var h = $('.col-md-8').height(),
+            offsetTop = 105;// Calculate the top offset
 
-        $('#map_canvas').css('height', (h - offsetTop - 160));
+        $('#map_canvas').css('height', (h - offsetTop));
     }).resize();
 
     $(function() {
