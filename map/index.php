@@ -67,7 +67,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <option value='500'>1/2 km</option>
                         <option value='1000'>1 km</option>
                         <option value='2000'>2 km</option>
-                        <option value='5000'>5 km</option>
+                        <option value='5000' selected="selected">5 km</option>
                     </select>
                 </p>
 

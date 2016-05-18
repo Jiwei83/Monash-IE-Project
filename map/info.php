@@ -230,17 +230,25 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
 
                                 </p>
-                                <p>
-                                    <label>
-                                <p><b> Please select your travel model </b> </p>
-                                <select id = "mode" class="btn-lg" style="width: 100%;" >
-                                    <option value="DRIVING">Driving</option>
-                                    <option value="WALKING">Walking</option>
-                                    <option value="BICYCLING">Bicycling</option>
-                                    <option value="TRANSIT">Public Transport</option>
-                                </select>
-                                </label>
+
+
+
+                                <p class="btn-group">
+                                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Please select your travel model
+                                        <span class="caret"></span>
+                                    </button>
+
+                                    <select id = "mode" multiple class=" dropdown-menu" style="width: 100%;" >
+                                        <option value="DRIVING" selected="selected">Driving</option>
+                                        <option value="WALKING">Walking</option>
+                                        <option value="BICYCLING">Bicycling</option>
+                                        <option value="TRANSIT">Public Transport</option>
+                                    </select>
                                 </p>
+
+
+
                                 <br>
                                 <!--Get direction button-->
                                     <i class="btn btn-primary btn-lg"" id="direct"><b>Get Direction</b></i>
@@ -403,6 +411,10 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 }
             });
 
+            window.onload = function () {
+
+                calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng);
+            };
         }
     </script>
     <script async defer
