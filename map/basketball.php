@@ -81,9 +81,8 @@ include('../include/navigation.php');
         <script type='text/javascript'>
             //<![CDATA[
             $(window).resize(function () {
-                var h = $('.col-md-8').height(),
+                var h = 650,
                     offsetTop = 105;// Calculate the top offset
-
                 $('#map_canvas').css('height', (h - offsetTop));
             }).resize();
 
