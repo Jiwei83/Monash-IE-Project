@@ -15,7 +15,7 @@
     <header id="header" class="header navbar-fixed-top">
         <div class="container">
             <h1 class="logo">
-                <a href="../index.php"><img src="../logo.png" style="height:120px"></a>
+                <a href="../index.php"><img src="../logo.png" style="height:70px"></a>
             </h1><!--//logo-->
 <nav class="main-nav navbar-right" role="navigation">
     <div class="navbar-header">
@@ -61,5 +61,8 @@
         <!-- ******Why Section****** -->
         <section id="why" class="section why">
             <div class="container">
+                <p><br></p>
+                <p><br></p>
+
 
 

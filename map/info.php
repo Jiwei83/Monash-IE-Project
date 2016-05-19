@@ -192,10 +192,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 echo '<div class="overall-rating">'."(Average Rating ".$ratingRow['average_rating']. " Based on ".$ratingRow['rating_number'].")".'</div>';
             }
             ?>
-<!--            <input name="rating" value="0" id="rating_star" type="hidden" postID="1" />-->
-<!--            <input name="rating" value="0" id="rating_star" type="hidden" lat=--><?php //echo $lat?><!-- />-->
-<!--            <div class="overall-rating">(Average Rating <span id="avgrat">--><?php //echo $ratingRow['average_rating']; ?><!--</span>-->
-<!--                Based on <span id="totalrat">--><?php //echo $ratingRow['rating_number']; ?><!--</span>  rating)</span></div>-->
+
             <div class='container-fluid'>
                 <br>
                 <div class="row">
@@ -231,25 +228,43 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
                                 </p>
 
+                                <hr>
 
+<!--                                <p class="btn-group">-->
+<!--<!--                                    <button class="btn btn-primary btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--<!--                                        <i class="glyphicon glyphicon-circle-arrow-down"></i>&nbsp;Please select your travel model-->
+<!--<!--                                    </button>-->
+<!---->
+<!--                                    <label>-->
+<!--                                        <i class="glyphicon glyphicon-circle-arrow-down"></i>&nbsp;Please select your travel model-->
+<!---->
+<!---->
+<!--                                    <select id = "mode" class=" dropdown-menu" style="width: 100%;" >-->
+<!--                                        <option value="DRIVING">Driving</option>-->
+<!--                                        <option value="WALKING">Walking</option>-->
+<!--                                        <option value="BICYCLING">Bicycling</option>-->
+<!--                                        <option value="TRANSIT">Public Transport</option>-->
+<!--                                    </select>-->
+<!--                                    </label>-->
+<!--                                </p>-->
 
-                                <p class="btn-group">
-                                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Please select your travel model
-                                        <span class="caret"></span>
-                                    </button>
-
-                                    <select id = "mode" multiple class=" dropdown-menu" style="width: 100%;" >
-                                        <option value="DRIVING" selected="selected">Driving</option>
-                                        <option value="WALKING">Walking</option>
-                                        <option value="BICYCLING">Bicycling</option>
-                                        <option value="TRANSIT">Public Transport</option>
-                                    </select>
+                                <p>
+                                    <label>
+                                        <p>
+                                    <b>Please select your travel model</b>
+                                </p>
+                                <select id = "mode" class="btn-lg" style="width: 100%;" >
+                                    <option value="DRIVING">Driving</option>
+                                    <option value="WALKING">Walking</option>
+                                    <option value="BICYCLING">Bicycling</option>
+                                    <option value="TRANSIT">Public Transport</option>
+                                </select>
+                                    </label>
                                 </p>
 
 
 
-                                <br>
+                                <hr>
                                 <!--Get direction button-->
                                     <i class="btn btn-primary btn-lg"" id="direct"><b>Get Direction</b></i>
                                 <hr>
@@ -262,14 +277,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                     <div class="menu_head" style="background-color: #f5f5f5">
                                         <a style="color: #006699"><label id="duration"> </label></a>
                                     </div>
-<!--                                    <p class="menu_head">Daily Forecast Weather</p>-->
-<!--                                    <div class="menu_body">-->
-<!--                                        <a>-->
-<!--                                            <div id="curve_chart" style="width: 30%; height: 200px"></div>-->
-<!---->
-<!--                                        </a>-->
-<!--                                    </div>-->
-                                    <p class="menu_head">Forecast Weather</p>
+
+                                    <p class="menu_head ">Forecast Weather<span class="glyphicon glyphicon-chevron-down" style="float: right"></span></p>
                                     <div class="menu_body">
                                         <a>
                                             <?php
@@ -436,7 +445,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Time', 'Temperature'],
+                ['Time','Temperature'],
                 ['<?php echo $t[0]?>:00, <?php echo $des[0]?>', <?php echo $tmp[0]?> ],
                 ['<?php echo $t[1]?>:00, <?php echo $des[1]?>', <?php echo $tmp[1]?> ],
                 ['<?php echo $t[2]?>:00, <?php echo $des[2]?>', <?php echo $tmp[2]?> ],
@@ -448,9 +457,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
             var options = {
                 title: 'Daily Forecast Weather',
-                hAxis: {
-                    title: 'Time'
-                },
                 curveType: 'function',
                 legend: { position: 'bottom' },
             };

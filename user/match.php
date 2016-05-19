@@ -170,7 +170,7 @@ $interestRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Street</th>
                     <th>Interest</th>
                     <th>Match Scale</th>
-                    <th>View Event</th>
+                    <th>Created Event</th>
                 </tr>
                 </thead>
 
