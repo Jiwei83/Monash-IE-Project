@@ -266,7 +266,7 @@ if($login->is_loggedin()) : ?>
                 </div>
                 <div class="modal-body">
                     <div class="video-container">
-                        <iframe id="vimeo-video" src="//player.vimeo.com/video/161650623?color=ffffff&amp;wmode=transparent" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe id="vimeo-video" src="//player.vimeo.com/video/167228157?color=ffffff&amp;wmode=transparent" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div><!--//video-container-->
                 </div><!--//modal-body-->
             </div><!--//modal-content-->
