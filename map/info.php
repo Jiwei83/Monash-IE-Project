@@ -105,6 +105,7 @@ if ($lat!=null&&$lng!=null){
     $a = 272.15;
 
     $forecastTamp[] = array();
+    $icon[] = array();
 
     for ($x=1; $x<7; $x++){
         $max = $fdata['list'][$x]['temp']['max']-$a;
@@ -114,7 +115,9 @@ if ($lat!=null&&$lng!=null){
         $fdt = $fdata ['list'][$x]['dt'];
         $ftime = date('D', $fdt);
 
-        $forecastTamp[$x]= $ftime.", ".$range.", ".$fdescription;
+        $icon[$x] = $fdata['list'][$x]['weather'][0]['icon'];
+
+        $forecastTamp[$x]= $ftime.", ".$range;
 
     }
 
@@ -175,7 +178,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
     <style type="text/css">
         body {  }
         .menu_list { width: 100%; }
-        .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url(images/menu/left1.png) center right no-repeat; }
+        .menu_head { padding: 5px 10px; cursor: pointer; position: relative; margin:1px; font-weight:bold; background: #eef4d3 url() center right no-repeat; }
         .menu_body { display:none; }
         .menu_body a { display:block; color:#006699; background-color:#EFEFEF; padding-left:10px; font-weight:bold; text-decoration:none; }
         .menu_body a:hover { }
@@ -237,16 +240,10 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                             <div id="mapfuc">
                                 <!--Drop down Category -->
                                 <p>
-
                                         <div id="curve_chart" class="chart" style="width: 100%; height: 200px"></div>
-
-
                                 </p>
 
                                 <hr>
-
-
-
                                 <p>
                                     <label>
                                         <p><b>Please select your travel model</b></p>
@@ -280,9 +277,12 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                                         <a>
                                             <?php
                                             for ($x=1; $x<7; $x++){
-                                                echo $forecastTamp[$x]."<br>";
+                                                $url = "http://openweathermap.org/img/w/".$icon[$x].".png";
+                                                echo "<img src=".$url.">".$forecastTamp[$x]."<br>";
+
                                             }?>
                                         </a>
+
                                     </div>
 
                                 </div>
@@ -442,19 +442,22 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Time','Temperature'],
-                ['<?php echo $t[0]?>:00, <?php echo $des[0]?>', <?php echo $tmp[0]?> ],
-                ['<?php echo $t[1]?>:00, <?php echo $des[1]?>', <?php echo $tmp[1]?> ],
-                ['<?php echo $t[2]?>:00, <?php echo $des[2]?>', <?php echo $tmp[2]?> ],
-                ['<?php echo $t[3]?>:00, <?php echo $des[3]?>', <?php echo $tmp[3]?> ],
-                ['<?php echo $t[4]?>:00, <?php echo $des[4]?>', <?php echo $tmp[4]?> ],
-                ['<?php echo $t[5]?>:00, <?php echo $des[5]?>', <?php echo $tmp[5]?> ],
-                ['<?php echo $t[6]?>:00, <?php echo $des[6]?>', <?php echo $tmp[6]?> ]
+                ['<?php echo $t[0]?>:00', <?php echo $tmp[0]?> ],
+                ['', <?php echo $tmp[1]?> ],
+                ['<?php echo $t[2]?>:00', <?php echo $tmp[2]?> ],
+                ['', <?php echo $tmp[3]?> ],
+                ['<?php echo $t[4]?>:00', <?php echo $tmp[4]?> ],
+                ['', <?php echo $tmp[5]?> ],
+                ['<?php echo $t[6]?>:00', <?php echo $tmp[6]?> ]
             ]);
-
+            
             var options = {
                 title: 'Daily Forecast Weather',
                 curveType: 'function',
                 legend: { position: 'bottom' },
+                vAxis:{
+                    title: 'Tempertaure'
+                }
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));

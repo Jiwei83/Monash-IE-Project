@@ -131,7 +131,7 @@ include('../include/navigation.php');
     </div>
 </div>
 <div class="form-group">
-    <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
+    <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.go(-1);">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> &nbsp; Back
     </button>
 </div>

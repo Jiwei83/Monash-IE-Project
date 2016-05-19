@@ -12,27 +12,27 @@
     //create a new object of user class
 	$auth_user = new USER();
 
-    $eventId = (isset($_POST['event_id']) ? $_POST['event_id'] : null); //get the event id
-    $title = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);   //get the event title
-    $desc = (isset($_POST['description']) ? $_POST['description'] : null);  //get the event description
-    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);  //get the event capacity
-    $date = date('Y-m-d G:i', strtotime((isset($_POST['eDate']) ? $_POST['eDate'] : null)));    //get the date of the event
-    $type = (isset($_POST['taskOption']) ? $_POST['taskOption'] : null);    //get event type
-
-    //update the event
-    if(!empty($type) && !empty($capacity)) {
-        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date', type = '$type' where eventId='$eventId'";
-    }
-    elseif(!empty($type)) {
-        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date', type = '$type' where eventId='$eventId'";
-    }
-    elseif(!empty($capacity)) {
-        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date' where eventId='$eventId'";
-    }
-    elseif(empty($type) && empty($capacity)) {
-        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date' where eventId='$eventId'";
-    }
-    $response = $pdo->exec($sql);
+//    $eventId = (isset($_POST['event_id']) ? $_POST['event_id'] : null); //get the event id
+//    $title = (isset($_POST['eTitle']) ? $_POST['eTitle'] : null);   //get the event title
+//    $desc = (isset($_POST['description']) ? $_POST['description'] : null);  //get the event description
+//    $capacity = (isset($_POST['capOption']) ? $_POST['capOption'] : null);  //get the event capacity
+//    $date = date('Y-m-d G:i', strtotime((isset($_POST['eDate']) ? $_POST['eDate'] : null)));    //get the date of the event
+//    $type = (isset($_POST['taskOption']) ? $_POST['taskOption'] : null);    //get event type
+//
+//    //update the event
+//    if(!empty($type) && !empty($capacity)) {
+//        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date', type = '$type' where eventId='$eventId'";
+//    }
+//    elseif(!empty($type)) {
+//        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date', type = '$type' where eventId='$eventId'";
+//    }
+//    elseif(!empty($capacity)) {
+//        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', capacity='$capacity', date ='$date' where eventId='$eventId'";
+//    }
+//    elseif(empty($type) && empty($capacity)) {
+//        $sql = "UPDATE events SET eventName='$title', eventDescription='$desc', date ='$date' where eventId='$eventId'";
+//    }
+//    $response = $pdo->exec($sql);
 
 	$user_id = $_SESSION['user_session'];   //get the user id from session
     //select the user details based on the user id
