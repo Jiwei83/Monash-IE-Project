@@ -122,13 +122,7 @@ for($x=0; $x<7;$x++){
     $t[$x]=$time;
     $des[$x] = $data['list'][$x]['weather'][0]['description'];
 }
-//for($x=0;$x<7;$x++){
-//    echo  $tmp[$x];
-//    echo "<br>";
-//    echo $t[$x];
-//    echo "<br>";
-//
-//}
+
 ?>
 <?php
 //Fetch rating deatails from database
@@ -208,7 +202,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                     <div class="col-md-2">
                         <div class="form-group">
                             <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
-                                Back
+                                <i class="glyphicon glyphicon-circle-arrow-left"></i> &nbsp; Back
                             </button>
                         </div>
                     </div>
@@ -219,8 +213,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                         <b> Category: <?php echo $cata?>
                     </div>
 
-                    <div class="col-md-3" style="border-style: solid; border-width: 1px;">
-                        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/><b>Current location </b><br>
+                    <div class="col-md-3">
+                        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" style="padding-bottom: 7px"/><b style="padding-bottom: 7px">Current location </b><br>
                         <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/><b>Destination location </b>
                     </div>
                 </div>
@@ -236,17 +230,25 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
 
                                 </p>
-                                <p>
-                                    <label>
-                                <p><b> Please select your travel model </b> </p>
-                                <select id = "mode" class="btn-lg" style="width: 100%;" >
-                                    <option value="DRIVING">Driving</option>
-                                    <option value="WALKING">Walking</option>
-                                    <option value="BICYCLING">Bicycling</option>
-                                    <option value="TRANSIT">Public Transport</option>
-                                </select>
-                                </label>
+
+
+
+                                <p class="btn-group">
+                                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Please select your travel model
+                                        <span class="caret"></span>
+                                    </button>
+
+                                    <select id = "mode" multiple class=" dropdown-menu" style="width: 100%;" >
+                                        <option value="DRIVING" selected="selected">Driving</option>
+                                        <option value="WALKING">Walking</option>
+                                        <option value="BICYCLING">Bicycling</option>
+                                        <option value="TRANSIT">Public Transport</option>
+                                    </select>
                                 </p>
+
+
+
                                 <br>
                                 <!--Get direction button-->
                                     <i class="btn btn-primary btn-lg"" id="direct"><b>Get Direction</b></i>
@@ -286,16 +288,12 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                             <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
                             <div>
                                 <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
-<!--                                <form class="form-signin" method="post" id="login-form">-->
                                     <div class="form-group">
                                         <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg" onclick="window.location.href='../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>&cata=<?php echo $cata?>'">
-<!--                                            <a style="color: white" href="../event/createEventFromInfo.php?address=--><?php //echo $address?><!--&suburb=--><?php //echo $suburb?><!--" class="event">-->
                                                 Create Event
-<!--                                            </a>-->
                                         </button>
                                     </div>
                                 <p id="info">Please create event and rate after login</p>
-<!--                                </form>-->
                             </div>
                             <div>
 
@@ -413,6 +411,10 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 }
             });
 
+            window.onload = function () {
+
+                calculateAndDisplayRoute(directionsService, directionsDisplay, pos, endLat, endLng);
+            };
         }
     </script>
     <script async defer

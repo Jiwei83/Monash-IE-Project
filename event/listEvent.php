@@ -64,7 +64,8 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <?php echo $val['capacity'];?>
                                 </td>
                                 <td>
-                                    <?php echo $val['date'];
+
+                                    <?php echo date("d/m/Y H:i", strtotime($val['date']));
                                           $eventId = $val['eventId'];
                                     ?>
                                 </td>

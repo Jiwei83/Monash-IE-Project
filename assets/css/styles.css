@@ -194,11 +194,9 @@ select {
   opacity: 1;
 }
 .header.scrolled .main-nav .nav .nav-item.nav-item-cta a.btn-cta-secondary {
-  background: #ec6952;
   border-color: #ec6952;
 }
 .header.scrolled .main-nav .nav .dropdown-menu a {
-  color: #fff;
 }
 .header h1.logo {
   font-family: "Roboto Slab", arial, sans-serif;
@@ -208,14 +206,13 @@ select {
   font-size: 15px;
   float: left;
 }
+
 .header h1.logo a {
   color: #fff;
-  padding: 15px 25px;
   display: inline-block;
   text-align: center;
   line-height: 1.4;
   max-width: 200px;
-  background: #ec6952;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
@@ -3310,9 +3307,8 @@ select {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     color: #ec6952;
-    background: #fff;
     padding-left: 0;
-    padding-top: 20px;
+    padding-top: 2px;
   }
   .header.scrolled .main-nav .nav .nav-item a {
     color: #666666;

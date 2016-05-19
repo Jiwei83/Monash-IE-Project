@@ -1,8 +1,8 @@
 <?php
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-include('../include/header.php');
-?>
+include('../include/header.php');?>
+
 <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
 <?php include('../include/navigation.php');
@@ -22,6 +22,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
+
 
             <div class='container-fluid'>
     <div class='row'>
@@ -66,13 +67,13 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                         <option value='500'>1/2 km</option>
                         <option value='1000'>1 km</option>
                         <option value='2000'>2 km</option>
-                        <option value='5000'>5 km</option>
+                        <option value='5000' selected="selected">5 km</option>
                     </select>
                 </p>
 
             </div>
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-8' style="height:600px">
             <noscript>
                 <div class='alert alert-info'>
                     <h4>Your JavaScript is disabled</h4>
@@ -93,9 +94,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <script type='text/javascript'>
     //<![CDATA[
     $(window).resize(function () {
-        var h = $(window).height(),
-                offsetTop = 105; // Calculate the top offset
-
+        var h = 650,
+            offsetTop = 105;// Calculate the top offset
         $('#map_canvas').css('height', (h - offsetTop));
     }).resize();
 
