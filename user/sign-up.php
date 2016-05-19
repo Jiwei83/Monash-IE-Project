@@ -224,10 +224,16 @@ if(isset($_POST['btn-signup']))
 				</div>
 
 				<div class="form-group">
-					<div class="col-md-2"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
-					<div class="col-md-2"><input type="checkbox" name="interest[]" value="Yoga">Yoga</div>
-					<div class="col-md-3"><input type="checkbox" name="interest[]" value="basketball"> Basketball</div>
-					<div class="col-md-3"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
+					<span><b style="color: black">Interests:</b></span>
+					<div class="row">
+						<div class="col-md-6"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
+						<div class="col-md-6"><input type="checkbox" name="interest[]" value="Yoga"> Yoga</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6"><input type="checkbox" name="interest[]" value="basketball"> Basketball</div>
+						<div class="col-md-6"><input type="checkbox" name="interest[]" value="Swim"> Swim</div>
+					</div>
+
 				</div>
 
 				<div class="clearfix"></div><hr />
