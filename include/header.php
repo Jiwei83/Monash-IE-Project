@@ -34,6 +34,7 @@ if($login->is_loggedin()) : ?>
         #create {
             pointer-events: none;
             cursor: default;
+            background-color: grey;
         }
     </style>
 <?php endif; ?>

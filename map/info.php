@@ -202,7 +202,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                     <div class="col-md-2">
                         <div class="form-group">
                             <button type="goBack" name="btn-login" class="btn btn-primary btn-lg" onclick="window.history.back();">
-                                Back
+                                <i class="glyphicon glyphicon-circle-arrow-left"></i> &nbsp; Back
                             </button>
                         </div>
                     </div>

@@ -237,8 +237,8 @@ if(isset($_POST['btn-signup']))
 					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
 						<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
 					</button>
-					<button type="goBack" name="submitBtn" class="btn btn-primary" onclick="window.history.back();">
-						Back
+					<button type="goBack" name="btn-login" class="btn btn-primary" onclick="window.history.back();">
+						<i class="glyphicon glyphicon-circle-arrow-left"></i> &nbsp; Back
 					</button>
 				</div>
 				<br />
