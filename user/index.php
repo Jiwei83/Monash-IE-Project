@@ -3,12 +3,13 @@ include('../include/userpath.php');
 
 include('../include/header.php');
 include('../include/navigation.php');
-session_start();
 require_once("class.user.php");
 $login = new USER();
 if($login->is_loggedin()!="")
 {
-    $login->redirect('home.php');
+    //$login->redirect('home.php');
+    echo "<script type='text/javascript'>location.href='home.php'</script>";
+
 }
 if(isset($_POST['btn-login']))
 {
@@ -19,11 +20,12 @@ if(isset($_POST['btn-login']))
     {
         if(isset($_SESSION['url'])) {
             $url = $_SESSION['url']; // holds url for last page visited.
-            $login->redirect($url);
+            echo "<script type='text/javascript'>location.href='".$url."'</script>";
         }
         else {
             $url = "home.php";
-            $login->redirect($url);
+            //$login->redirect($url);
+            echo "<script type='text/javascript'>location.href='".$url."'</script>";
         }
         //header("Location: home.php");
         //header("Location:$url");
