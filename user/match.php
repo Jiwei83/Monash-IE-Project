@@ -7,6 +7,7 @@ require_once("session.php");
 require_once("class.user.php");
 //create the object of the user class
 $auth_user = new USER();
+$date = date('Y-m-d');
 
 $user_id = $_SESSION['user_session']; //get the user id
 //select the user details based on the user id
@@ -19,7 +20,7 @@ $interest = $userRow['interest']; //get the interest
 $intrList = explode(',', $interest); //seperate the interest
 
 //select the high match scale user
-function getSelectForOneScale($intrList, $postcode, $user_id) {
+function getSelectForOneScale($intrList, $postcode, $user_id, $date) {
     $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'High' FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
@@ -28,12 +29,12 @@ function getSelectForOneScale($intrList, $postcode, $user_id) {
             $select = $select."interest LIKE '%$intrList[$i]%' OR ";
         }
     }
-    $select = $select." null)";
+    $select = $select." null) AND user_id IN (SELECT create_user_id FROM events WHERE date > '$date')";
     return $select;
 }
 
 //select the medium match scale user
-function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
+function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id, $date) {
     $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'Medium' FROM user_profile WHERE postcode = $postcode AND user_id != $user_id AND interest NOT IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
@@ -42,12 +43,12 @@ function getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id) {
             $select = $select."interest LIKE '%$intrList[$i]%' OR";
         }
     }
-    $select = $select." null)";
+    $select = $select." null) AND user_id IN (SELECT create_user_id FROM events WHERE date > '$date')";
     return $select;
 }
 
 //select the medium match scale user
-function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
+function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id, $date) {
     $select = "SELECT user_id, user_fname, postcode, suburb, interest, 'Medium' FROM user_profile WHERE postcode != $postcode AND user_id != $user_id AND interest IN (SELECT interest FROM user_profile WHERE ";
 
     for($i=0; $i<count($intrList); $i++) {
@@ -56,22 +57,22 @@ function getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id) {
             $select = $select."interest LIKE '%$intrList[$i]%' OR ";
         }
     }
-    $select = $select."null)";
+    $select = $select."null) AND user_id IN (SELECT create_user_id FROM events WHERE date > '$date')";
     return $select;
 }
 
 //run the high match scale query
-$selectOne = getSelectForOneScale($intrList, $postcode, $user_id);
+$selectOne = getSelectForOneScale($intrList, $postcode, $user_id, $date);
 $sql = "INSERT INTO interest ($selectOne)";
 $stmt = $pdo->exec($sql);
 
 //run the medium match scale query
-$selectTwo = getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id);
+$selectTwo = getSelectForPointFiveScaleForInterest($intrList, $postcode, $user_id, $date);
 $sql = "INSERT INTO interest ($selectTwo)";
 $stmt = $pdo->exec($sql);
 
 //run the medium match scale query
-$selectThree = getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id);
+$selectThree = getSelectForPointFiveScaleForPostcode($intrList, $postcode, $user_id, $date);
 $sql = "INSERT INTO interest ($selectThree)";
 $stmt = $pdo->query($sql);
 
