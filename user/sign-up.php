@@ -255,8 +255,54 @@ if(isset($_POST['btn-signup']))
 </div>
 </section>
 <?php include('../include/footer.php'); ?>
+<script>
+	function initAutocomplete() {
+		// Create the search box and link it to the UI element.
+		var input1 = document.getElementById('pac-input1');
+		var input2 = document.getElementById('pac-input2');
+		var searchBox1 = new google.maps.places.SearchBox(input1);
+		var searchBox2 = new google.maps.places.SearchBox(input2);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input1);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
 
+		// Bias the SearchBox results towards current map's viewport.
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
 
+		// Listen for the event fired when the user selects a prediction and retrieve
+		// more details for that place.
+		searchBox.addListener('places_changed', function() {
+			var places1 = searchBox1.getPlaces();
+			var places2 = searchBox2.getPlaces();
+
+			if (places1.length == 0) {
+				return;
+			}
+
+			// For each place, get the icon, name and location.
+			var bounds = new google.maps.LatLngBounds();
+			places.forEach(function(place) {
+				var icon = {
+					url: place.icon,
+					size: new google.maps.Size(71, 71),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(17, 34),
+					scaledSize: new google.maps.Size(25, 25)
+				};
+				if (place.geometry.viewport) {
+					// Only geocodes have viewport.
+					bounds.union(place.geometry.viewport);
+				} else {
+					bounds.extend(place.geometry.location);
+				}
+			});
+		});
+	}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&libraries=places&callback=initAutocomplete"
+		async defer></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
