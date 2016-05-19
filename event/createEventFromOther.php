@@ -54,42 +54,42 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Title<span>*</span>
-                <input type="text" class="form-control" name="eTitle" placeholder="Event Title" value = "<?php echo $title1?>" required />
+                <input type="text" class="form-control" name="eTitle" placeholder="Event Title" value = "<?php echo $title1?>" required="true" />
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Address<span>*</span>
-                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" value = "<?php echo $address?>" required/>
+                <input id="pac-input1" type="text" class="form-control" name="eAddress" placeholder="Search address" value = "<?php echo $address?>" required="true"/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Suburb<span>*</span>
-                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" value = "<?php echo $suburb?>" required/>
+                <input id="pac-input2" type="text" class="form-control" name="eSuburb" placeholder="Search Suburb" value = "<?php echo $suburb?>" required="true"/>
                 <span id="check-e"></span>
             </div>
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" placeholder="Please Insert Only 50 Words" name="description" style="max-width: 100%; border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
+                <textarea rows="5" cols="52" id="description" placeholder="Please Insert Only 50 Words" name="description" style="max-width: 100%; border-color: lightgray;" maxlength="50" autofocus required="true"><?php echo $desc?></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Hold Date<span>*</span>
-                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" value = "<?php echo $date?>" required/>
+                <input id="datetimepicker" type="text" class="form-control" name="eDate" id="eDate" value = "<?php echo $date?>" required="true"/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 Capacity<span>*</span>
-                <input class="form-control" placeholder="Please Insert Number" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required/>
+                <input class="form-control" placeholder="Please Insert Number" type="text" name="capOption" id="capOption" type="text" value = "<?php echo $capacity?>" required="true"/>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
                 <span id="check-e"></span>
                 Categories<span>*</span>
                 <label>
-                    <select name="taskOption" size="0" id="eType" style="width: 10em" required>
+                    <select name="taskOption" size="0" id="eType" style="width: 10em" required="true">
                         <option selected="selected" value=""><?php echo $type?></option>
                         <option>BBQ</option>
                         <option>Walking Dog</option>
@@ -165,7 +165,14 @@ include('../include/footer.php');
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&libraries=places&callback=initAutocomplete"
         async defer></script>
 
-
+<script type="text/javascript"> var form = document.getElementById('login-form');
+    form.noValidate = true;
+    form.addEventListener('submit', function(event) { // listen for form submitting
+        if (!event.target.checkValidity()) {
+            event.preventDefault(); // dismiss the default functionality
+            alert('Please, fill all the required fields'); // error message
+        }
+    }, false);</script>
 </body>
 <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
 <script src="datetimepicker-master/jquery.js"></script>
