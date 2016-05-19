@@ -6,6 +6,18 @@ include('../include/header.php');?>
 
 <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        style: 'btn-info',
+        size: 4
+    });
+</script>
 <?php
 include('../include/navigation.php');
 
