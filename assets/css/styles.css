@@ -2285,7 +2285,6 @@ select {
 }
 .has-full-screen-bg .header h1.logo {
   float: none;
-  text-align: center;
 }
 .has-full-screen-bg .header h1.logo a {
   margin: 0 auto;
