@@ -88,7 +88,6 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     $capacity = $val['capacity'];
                                     if(isset($_POST[$btnJoin[$i]]) && $curr_capa < $capacity) {
                                         $sql1 = "INSERT INTO eventParticipant VALUES ($eventId, $user_id2)";
-                                        echo $sql1;
                                         $resp1 = $pdo->exec($sql1);
                                         if($resp1) {
                                             $sql2 = "UPDATE events SET curr_capa = curr_capa + 1 WHERE eventId = $eventId";
