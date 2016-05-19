@@ -3,7 +3,6 @@ include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');?>
 
-<script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
