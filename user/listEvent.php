@@ -28,7 +28,7 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php ?>
     <div class="container" >
             <div class='row'>
-                    <table id='event' class="display responsive nowrap" cellspacing="0" width="100%">
+                    <table id='event' class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -68,12 +68,15 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                           $eventId = $val['eventId'];?>
                                 </td>
 <!--                                <form action="" method="post">-->
-                                    <td class="form-group">
-                                        <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
-<!--                                            <a href="../event/view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
+                                    <td>
+                                        <div class="form-group">
+                                            <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
+                                                <!--                                            <a href="../event/view.php?eventId=--><?php //echo $eventId; ?><!--" style="color: white">-->
                                                 <i class="glyphicon glyphicon-log-in"></i>&nbsp; View
-<!--                                            </a>-->
-                                        </button>
+                                                <!--                                            </a>-->
+                                            </button>
+                                        </div>
+
                                     </td>
 <!--                                </form>-->
 
@@ -136,6 +139,7 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </section>
 <?php include('../include/footer.php');?>
+
 </body>
 </html>
 

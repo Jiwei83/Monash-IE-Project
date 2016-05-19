@@ -185,6 +185,7 @@ if($auth_user->is_loggedin()) : ?>
                 </div>
 
             <div class="form-group">
+                <div>Interests:</div>
                 <div class="col-md-2"><input type="checkbox" name="interest[]" id="BBQ" value="BBQ"> BBQ</div>
                 <div class="col-md-2"><input type="checkbox" name="interest[]" id="Yoga" value="Yoga">Yoga</div>
                 <div class="col-md-3"><input type="checkbox" name="interest[]" id="Basketball" value="basketball"> Basketball</div>
