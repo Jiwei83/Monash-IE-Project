@@ -1,8 +1,6 @@
 <?php
 include('../include/userpath.php');
 include('../include/header.php');
-
-session_start();
 require_once('class.user.php');
 $user = new USER();
 
@@ -180,51 +178,51 @@ if(isset($_POST['btn-signup']))
 				}
 				?>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+					<input type="text" class="form-control" name="txt_uname" placeholder="Enter Username*" value="<?php if(isset($error)){echo $uname;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
+					<input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID*" value="<?php if(isset($error)){echo $umail;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+					<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password*" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name" value="<?php if(isset($error)){echo $ufname;}?>" />
+					<input type="text" class="form-control" name="txt_ufname" placeholder="Enter Your First Name*" value="<?php if(isset($error)){echo $ufname;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
+					<input type="text" class="form-control" name="txt_ulname" placeholder="Enter Your Last Name*" value="<?php if(isset($error)){echo $ulname;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" id='datepicker' class="form-control" name="txt_udob" placeholder="Enter Your DOB" value="<?php if(isset($error)){echo $udob;}?>" />
+					<input type="text" id='datepicker' class="form-control" name="txt_udob" placeholder="Enter Your DOB*" value="<?php if(isset($error)){echo $udob;}?>" />
 				</div>
 
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-6 form-signin" style="background-color: #f5f5f5">
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number" value="<?php if(isset($error)){echo $uphone;}?>" />
+					<input type="text" class="form-control" name="txt_uphone" placeholder="Enter Your Phone number*" value="<?php if(isset($error)){echo $uphone;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode" value="<?php if(isset($error)){echo $upostcode;}?>" />
+					<input type="text" class="form-control" name="txt_upostcode" placeholder="Enter Postcode*" value="<?php if(isset($error)){echo $upostcode;}?>" />
 				</div>
 				<div class="form-group">
-					<input id="pac-input1" type="text" class="form-control" name="txt_usuburb" placeholder="Search Suburb" value="<?php if(isset($error)){echo $usuburb;}?>"/>
+					<input id="pac-input1" type="text" class="form-control" name="txt_usuburb" placeholder="Search Suburb*" value="<?php if(isset($error)){echo $usuburb;}?>"/>
 					<span id="check-e"></span>
 				</div>
 
 				<div class="form-group">
-					<input id="pac-input2" type="text" class="form-control" name="txt_uaddress" placeholder="Search Address" value="<?php if(isset($error)){echo $uaddress;}?>"/>
+					<input id="pac-input2" type="text" class="form-control" name="txt_uaddress" placeholder="Search Address*" value="<?php if(isset($error)){echo $uaddress;}?>"/>
 					<span id="check-e"></span>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size" value="<?php if(isset($error)){echo $ufsize;}?>" />
+					<input type="text" class="form-control" name="txt_ufsize" placeholder="Enter Family Size*" value="<?php if(isset($error)){echo $ufsize;}?>" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" name="txt_upno" placeholder="Enter Pet Number" value="<?php if(isset($error)){echo $upno;}?>" />
+					<input type="text" class="form-control" name="txt_upno" placeholder="Enter Pet Number*" value="<?php if(isset($error)){echo $upno;}?>" />
 				</div>
 
 				<div class="form-group">
-					<span><b style="color: black">Interests:</b></span>
+					<span><b style="color: black">Interests*:</b></span>
 					<div class="row">
 						<div class="col-md-6"><input type="checkbox" name="interest[]" value="BBQ"> BBQ</div>
 						<div class="col-md-6"><input type="checkbox" name="interest[]" value="Yoga"> Yoga</div>
