@@ -2,6 +2,22 @@
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+        $('.selectpicker').selectpicker({
+            style: 'btn-info',
+            size: 4
+        });
+    </script>
+
+<?php
+
 include('../include/navigation_info.php');
 include('../include/config.php');
 
@@ -131,7 +147,6 @@ $result = $pdo->query($query);
 $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 ?>
 
-    <script src="js/jquery.js"></script>
     <script type="text/javascript">
         <!--//---------------------------------+
         //  Developed by Roshan Bhattarai
@@ -250,18 +265,16 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
                                 <p>
                                     <label>
-                                        <p>
-                                    <b>Please select your travel model</b>
-                                </p>
-                                <select id = "mode" class="btn-lg" style="width: 100%;" >
+                                        <p><b>Please select your travel model</b></p>
+                                <select id = "mode" class="selectpicker">
                                     <option value="DRIVING">Driving</option>
                                     <option value="WALKING">Walking</option>
                                     <option value="BICYCLING">Bicycling</option>
                                     <option value="TRANSIT">Public Transport</option>
                                 </select>
                                     </label>
-                                </p>
 
+                                </p>
 
 
                                 <hr>
@@ -296,7 +309,6 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                             <!--display public events details-->
                             <!--weights source code from http://www.eventsvictoria.com/distribution-centre/widget/-->
                             <div>
-                                <p><script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script>
                                     <div class="form-group">
                                         <button type="submit" id="create" name="btn-login" class="btn btn-primary btn-lg" onclick="window.location.href='../event/createEventFromInfo.php?address=<?php echo $address?>&suburb=<?php echo $suburb?>&cata=<?php echo $cata?>'">
                                                 Create Event
@@ -507,6 +519,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
         });
     }
 </script>
+
 
 </body>
 </html>
