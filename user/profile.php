@@ -264,7 +264,7 @@ for($i=0; $i<sizeof($interests); $i++){
 <script type="text/javascript" src="assets/js/main.js"></script>
 
 <?php
-include "../include/footer.php";
+include ("../include/footer.php");
 ?>
 
 </body>
