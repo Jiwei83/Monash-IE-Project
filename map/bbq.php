@@ -46,19 +46,20 @@ include('../include/navigation.php');
                         </a>
                         <a id='find_me' href='#' class="btn btn-primary btn-lg">Locate</a>
                         <p> <br></p>
-                        <p class="btn-group">
-                            <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Choose Search Radius
-                                <span class="caret"></span>
-                            </button>
+                            <p>
+                                <label>
+                            <p><b>Please select the Search radius</b></p>
 
-                            <select id='search_radius' multiple class=" dropdown-menu" name="radius">
+                            <select id='search_radius' class="selectpicker" >
                                 <option value='400'>2 blocks</option>
                                 <option value='500'>1/2 km</option>
                                 <option value='1000'>1 km</option>
                                 <option value='2000'>2 km</option>
+                                <option value='5000' selected="selected">5 km</option>
                             </select>
-                        </p>
+                            </label>
+
+                            </p>
                         </form>
                         <?php ?>
                     </div>

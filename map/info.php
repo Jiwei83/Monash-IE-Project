@@ -245,23 +245,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 
                                 <hr>
 
-<!--                                <p class="btn-group">-->
-<!--<!--                                    <button class="btn btn-primary btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--<!--                                        <i class="glyphicon glyphicon-circle-arrow-down"></i>&nbsp;Please select your travel model-->
-<!--<!--                                    </button>-->
-<!---->
-<!--                                    <label>-->
-<!--                                        <i class="glyphicon glyphicon-circle-arrow-down"></i>&nbsp;Please select your travel model-->
-<!---->
-<!---->
-<!--                                    <select id = "mode" class=" dropdown-menu" style="width: 100%;" >-->
-<!--                                        <option value="DRIVING">Driving</option>-->
-<!--                                        <option value="WALKING">Walking</option>-->
-<!--                                        <option value="BICYCLING">Bicycling</option>-->
-<!--                                        <option value="TRANSIT">Public Transport</option>-->
-<!--                                    </select>-->
-<!--                                    </label>-->
-<!--                                </p>-->
+
 
                                 <p>
                                     <label>

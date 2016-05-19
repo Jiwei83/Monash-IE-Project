@@ -5,6 +5,19 @@ include('../include/header.php');?>
 
 <script src="//fast.eager.io/WCgAF8HnKW.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        style: 'btn-info',
+        size: 4
+    });
+</script>
+
 <?php include('../include/navigation.php');
 
 ?>
@@ -56,20 +69,21 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 </a>
                 <a name="location" id='find_me' href='#' class="btn btn-primary btn-lg" >Locate</a>
             <p> <br></p>
-                <p class="btn-group">
-                    <button class="btn btn-defult dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose Search Radius
-                        <span class="caret"></span>
-                    </button>
+                <p>
+                    <label>
+                <p><b>Please select the Search radius</b></p>
 
-                    <select id='search_radius' multiple class=" dropdown-menu" >
+                    <select id='search_radius' class="selectpicker" >
                         <option value='400'>2 blocks</option>
                         <option value='500'>1/2 km</option>
                         <option value='1000'>1 km</option>
                         <option value='2000'>2 km</option>
                         <option value='5000' selected="selected">5 km</option>
                     </select>
+                </label>
+
                 </p>
+
 
             </div>
         </div>

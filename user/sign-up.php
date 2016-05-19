@@ -237,7 +237,7 @@ if(isset($_POST['btn-signup']))
 				</div>
 
 				<div class="clearfix"></div><hr />
-				<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD"></div><hr/>
+				<div class="g-recaptcha" data-sitekey="6LfxyB0TAAAAAIdTgHD_v6UbuvWvFVLl55cgmXkD" style="margin-left: -2px;"></div><hr/>
 				<INPUT TYPE="checkbox" NAME="Terms" VALUE="Conditions"> "I have read and agree to the following" <a target="_blank" href="../terms.php">Terms and conditions</a>
 				<div class="form-group">
 					<button id="submitBtn" type="submit" class="btn btn-primary" name="btn-signup">
@@ -255,7 +255,7 @@ if(isset($_POST['btn-signup']))
 	</form>
 	<br>
 </div>
-
+</section>
 <?php include('../include/footer.php'); ?>
 
 
