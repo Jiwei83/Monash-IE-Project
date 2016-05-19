@@ -72,7 +72,7 @@ if(isset($_POST['btn-submit'])) {
 
             <div class="form-group">
                 Description<span>*</span><br>
-                <textarea rows="5" cols="52" id="description" placeholder="Please Insert Only 50 Words" name="description" style="border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
+                <textarea rows="5" cols="52" id="description" placeholder="Please Insert Only 50 Words" name="description" style="max-width: 100%; border-color: lightgray;" maxlength="50" autofocus required><?php echo $desc?></textarea>
                 <span id="check-e"></span>
             </div>
             <div class="form-group">
