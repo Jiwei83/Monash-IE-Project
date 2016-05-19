@@ -92,7 +92,7 @@ function mailresetlink($to,$token){
     $mail->Body = $message;
     $mail->AddAddress($to);
     $mail->Subject = $subject;
-    $mail->setFrom("auroraemailtest@gmail.com");
+    $mail->setFrom("no-reply@active-family.net");
     $mail->SMTPDebug = false;
 
 
