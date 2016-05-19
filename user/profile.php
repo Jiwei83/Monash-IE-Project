@@ -97,7 +97,7 @@ include('../include/header.php');
                 </div>
                 <div class="form-group">
                     <td>Suburb</td>
-                    <input type="text" class="form-control" name="suburb" value="<?php echo (empty($profileRow['suburb'])) ? " " : $profileRow['suburb'];?>"/>
+                    <input type="text" id="pac-input1" class="form-control" name="suburb" value="<?php echo (empty($profileRow['suburb'])) ? " " : $profileRow['suburb'];?>"/>
                 </div>
                 <div class="form-group">
                     <td>Post Code</td>
@@ -105,7 +105,7 @@ include('../include/header.php');
                 </div>
                 <div class="form-group">
                     <td>Address</td>
-                    <input type="text" class="form-control" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/>
+                    <input type="text" id="pac-input2" class="form-control" name="address" value="<?php echo (empty($profileRow['address'])) ? " " : $profileRow['address'];?>"/>
                 </div>
 
             <div class="form-group">
@@ -252,6 +252,55 @@ for($i=0; $i<sizeof($interests); $i++){
     }
 }
 ?>
+
+<script>
+    function initAutocomplete() {
+        // Create the search box and link it to the UI element.
+        var input1 = document.getElementById('pac-input1');
+        var input2 = document.getElementById('pac-input2');
+        var searchBox1 = new google.maps.places.SearchBox(input1);
+        var searchBox2 = new google.maps.places.SearchBox(input2);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input1);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+            var places1 = searchBox1.getPlaces();
+            var places2 = searchBox2.getPlaces();
+
+            if (places1.length == 0) {
+                return;
+            }
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+        });
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKWfGBpeBLZ2vVsvEeFdJrOEkVH7sE9Uk&libraries=places&callback=initAutocomplete"
+        async defer></script>
 
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11,r-2.0.2/datatables.min.js"></script>

@@ -84,7 +84,7 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <form action="" method="post">
                                 <td class="form-group">
-                                    <button type="submit" name="<?php echo $btnJoin[$i]?>" class="btn btn-primary btn-lg">
+                                    <button type="submit" name="<?php echo $btnJoin[$i]?>" class="btn btn-primary btn-lg" style="float: left;">
                                         <i class="glyphicon glyphicon-log-in"></i> Join
                                     </button>
                                     <?php
