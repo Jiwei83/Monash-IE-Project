@@ -2,6 +2,8 @@
 //include the map header link path
 include("../include/mapPath.php");
 //include the header file
+$title="Rest your password";
+$ven="nav-item";
 include('../include/header.php');
 //include the navigation file
 include('../include/navigation.php');

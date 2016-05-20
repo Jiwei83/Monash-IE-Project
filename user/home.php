@@ -47,7 +47,7 @@
     $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     //send the cancel reminder mail to the participants of the event
-    function sendCancelMail($to){
+    function sendCancelMail($to, $fname, $ename, $date){
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
@@ -65,8 +65,7 @@
             <title>Cancel Reminder From active-family.net</title>
             </head>
             <body>
-            <p>Your event Has Been Cancelled!</p>
-
+            <p>Dear '.$fname.' <br> the event '.$ename.' scheduled on '.$date.' <br> has been canceled <br> <br> Active-family Stay Healthy Stay Active  </p>
             </body>
             </html>
             ';
@@ -181,12 +180,15 @@ include('../include/navigation.php'); ?>
                                         $sql = "UPDATE events SET status = 'cancel' where eventId='$eventId'";
                                         $responce = $pdo->exec($sql);
                                         if ($responce) {
-                                            $sql = "SELECT u.user_email FROM users u, eventParticipant e WHERE u.user_id = e.user_id AND e.eventId = '$eventId'";
+                                            $sql = "SELECT u.user_email, f.user_fname, t.eventName, t.date FROM users u, user_profile f, eventParticipant e, events t WHERE u.user_id = e.user_id AND e.eventId = t.eventId AND u.user_id = f.user_id AND e.eventId = '$eventId'";
                                             $stmt = $pdo->query($sql);
                                             $list =$stmt->fetchAll(PDO::FETCH_ASSOC);
                                             foreach($list as $email) {
                                                 $to = $email['user_email'];
-                                                sendCancelMail($to);
+                                                $fname = $email['user_fname'];
+                                                $ename = $email['eventName'];
+                                                $date = $email['date'];
+                                                sendCancelMail($to, $fname, $ename, $date);
                                             }
                                             echo '<script type="text/javascript">alert("Successfully Cancelled!");</script>';
                                             echo '<script type="text/javascript">window.location.href = "home.php"</script>';
