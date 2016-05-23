@@ -315,7 +315,7 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
     </section>
-
+<!--This is footer-->
     <?php
 
     include('../include/footer.php')
