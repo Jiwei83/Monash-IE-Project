@@ -512,3 +512,4 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
 </body>
 </html>
 
+<!--hello-->
