@@ -160,7 +160,7 @@ include('../include/navigation.php'); ?>
                         <td>
                             <?php echo date("d/m/Y H:i", strtotime($val['date']));?>
                         </td>
-                        <td class="form-group">
+                        <td>
                             <button type="submit" name="<?php echo $btnView[$i]?>" class="btn btn-primary btn-lg" onclick="window.location.href='../event/view.php?eventId=<?php echo $eventId; ?>'">
                                 <i class="glyphicon glyphicon-log-in"></i> View
                             </button>
@@ -170,8 +170,9 @@ include('../include/navigation.php'); ?>
                                 <i class="glyphicon glyphicon-log-in"></i> Edit
                             </button>
                         </td>
-                        <form action="" method="post">
-                            <td class="form-group">
+
+                            <td>
+                                <form action="" method="post">
                                 <button type="submit" name="<?php echo $btnCancel[$i]?>" class="btn btn-primary btn-lg">
                                     <i class="glyphicon glyphicon-log-in"></i> Cancel
                                 </button>
@@ -198,8 +199,9 @@ include('../include/navigation.php'); ?>
                                         }
                                     }
                                 ?>
+                                </form>
                             </td>
-                        </form>
+
                     </tr>
                     <?php $i++; }?>
                 </tbody>

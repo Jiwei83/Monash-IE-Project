@@ -80,8 +80,9 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </td>
 <!--                                </form>-->
 
-                                <form action="" method="post">
                                 <td class="form-group">
+                                    <form action="" method="post">
+
                                     <button type="submit" name="<?php echo $btnJoin[$i]?>" class="btn btn-primary btn-lg" style="float:left;">
                                         <i class="glyphicon glyphicon-log-in"></i> Join
                                     </button>
@@ -110,8 +111,9 @@ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         echo '<script type="text/javascript">alert("This event is full!");</script>';
                                     }
                                     ?>
+                                    </form>
                                 </td>
-                                </form>
+
                             </tr>
                         <?php
                             $i++;

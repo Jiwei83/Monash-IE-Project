@@ -450,7 +450,8 @@ $ratingRow = $result->fetch(PDO::FETCH_ASSOC);
                 ['', <?php echo $tmp[5]?> ],
                 ['<?php echo $t[6]?>:00', <?php echo $tmp[6]?> ]
             ]);
-            
+
+
             var options = {
                 title: 'Daily Forecast Weather',
                 curveType: 'function',
