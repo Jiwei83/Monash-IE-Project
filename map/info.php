@@ -1,4 +1,5 @@
 <?php
+//include header path
 include("../include/mapPath.php");
 //$_SESSION['url'] = $_SERVER['REQUEST_URI'];
 include('../include/header.php');
