@@ -5,6 +5,7 @@
  * Date: 26/04/2016
  * Time: 3:22 PM
  */
+include_once("analyticstracking.php");
 session_start();
 //$user_id = $_SESSION['user_session'];
 $user_id = (isset($_SESSION['user_session']) ? $_SESSION['user_session'] : null); //get the user id if the user not login then set it to null
