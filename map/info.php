@@ -66,7 +66,7 @@ $wind;
 $week;
 if ($lat!=null&&$lng!=null){
     //current weather api
-    $url = "http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lng&appid=2685e072f39f0387a6ff22225a56f4ba";
+    $url = "http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lng&appid=79ca8df1ef0ba87f75d5c1d10e838264";
     $data = file_get_contents($url);
     $data = json_decode($data, true);
     //City name
@@ -98,7 +98,7 @@ $fdescription;
 $temprage;
 if ($lat!=null&&$lng!=null){
     //forcast weather api
-    $furl = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=$lat&lon=$lng&cnt=10&mode=json&appid=2685e072f39f0387a6ff22225a56f4ba";
+    $furl = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=$lat&lon=$lng&cnt=10&mode=json&appid=79ca8df1ef0ba87f75d5c1d10e838264";
     $json = file_get_contents($furl);
     $fdata = json_decode($json, true);
     //description
@@ -127,7 +127,7 @@ if ($lat!=null&&$lng!=null){
 <?php
 $lat = $_GET['lat'];
 $lng = $_GET['lng'];
-$durl = "http://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lng&appid=2685e072f39f0387a6ff22225a56f4ba";
+$durl = "http://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lng&appid=79ca8df1ef0ba87f75d5c1d10e838264";
 $json = file_get_contents($durl);
 $data = json_decode($json, true);
 $a = 272.15;
